@@ -5,6 +5,7 @@ import json as j
 from ruamel.yaml import YAML
 import click
 from dctap.config import get_config, write_configfile
+from dctap2shex.config import DEFAULT_CONFIG_YAML, DEFAULT_CONFIGFILE_NAME
 from dctap.loggers import stderr_logger
 from dctap.utils import expand_uri_prefixes
 
@@ -69,5 +70,8 @@ def generate(context, csvfile_name, configfile, expand_prefixes, warnings, json)
 @click.help_option(help="Show help and exit")
 @click.pass_context
 def init(context, configfile):
-    """Write out a starter config file [default: ".d2shexrc"]"""
-    write_configfile(configfile)
+    """Write out starter config file [default: tap2shex.yml]"""
+    write_configfile(
+        configfile=DEFAULT_CONFIGFILE_NAME, 
+        defaults_yaml=DEFAULT_CONFIG_YAML,
+    )
