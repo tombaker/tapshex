@@ -1,0 +1,3 @@
+nst:Issue1 a ex:Issue ;
+    ex:state        ex:unassigned ;
+    ex:reportedBy   "Bob Smith" .

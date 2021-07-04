@@ -1,0 +1,3 @@
+my:IssueShape {
+  ex:state [ex:unassigned ex:assigned]
+}

@@ -1,0 +1,3 @@
+nst:Issue1 ex:status   excodes:resolved ;
+            ex:mood     "hungry"@en-gb .
+my:Product2 ex:hasIssue inst:Issue1 .

@@ -1,0 +1,3 @@
+my:IssueShape {
+  ex:label [@en @fr]
+}

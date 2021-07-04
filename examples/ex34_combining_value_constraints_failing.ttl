@@ -1,0 +1,7 @@
+inst:Issue1
+  ex:state ex:accepted ;
+  ex:reproducedBy <http://hr.example/id#abc> .
+
+<http://hr.example/id#abc>                  
+  foaf:name "Bob Smith" ;                   
+  ex:department ex:ProgrammingDepartment . 

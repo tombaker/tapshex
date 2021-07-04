@@ -1,0 +1,3 @@
+{ "my:IssueShape": { "type": "Shape",
+  "expression": { "type": "TripleConstraint", "predicate": "ex:status",
+    "value": { "type": "NodeConstraint", "values": [ "ex:unassigned", "ex:assigned" ] } } } }

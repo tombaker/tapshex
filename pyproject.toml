@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools!=50.0","flit"]
+build-backend = "flit.buildapi"
+
+[tool.flit.metadata]
+module = "dctap2shex"
+author = "Tom Baker"
+author-email = "tom@tombaker.org"
+home-page = "https://github.com/tombaker/dctap2shex"
+requires = [
+    "click",
+    "dataclasses",
+    "ruamel.base",
+    "ruamel.yaml",
+    "PyShEx",
+    "PyShExC",
+    "ShExJSG",
+    "dctap",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+description-file = 'README.rst'
+requires-python = '>=3.8'
+
+[tool.flit.metadata.requires-extra]
+test = [
+    "pytest",
+    "pytest-cov",
+]
+doc = [
+    "sphinx",
+    "sphinx_rtd_theme",
+]
+
+[tool.flit.scripts]
+dctap2shex = "dctap2shex.cli:cli"

@@ -1,0 +1,8 @@
+inst:Issue3 a ex:Issue ;
+    ex:state        ex:unsinged ; # <-- typo
+    ex:reportedBy   inst:User4 .
+
+inst:User4 a foaf:Person ;
+    foaf:name       "Bob Smith", "Robert Smith" ;
+    foaf:mbox       <mailto:bob@example.org> ;
+    foaf:mbox       <mailto:rs@example.org> .

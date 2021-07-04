@@ -1,0 +1,6 @@
+inst:Issue2 ex:status   ex:done ;
+            ex:mood     "angry"@en-fr .
+my:Product1 ex:hasIssue inst:Issue2 .
+
+inst:Issue3 ex:status  auxterms:done.
+my:Product3 ex:hasIssue inst:Issue3 .

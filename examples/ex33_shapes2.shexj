@@ -1,0 +1,38 @@
+{ "@context": "https://shexspec.github.io/context.jsonld",
+  "type": "Schema",
+  "shapes": [
+    { "id": "http://my.example/#IssueShape",
+      "type": "Shape",
+      "expression": {
+        "type": "EachOf",
+        "expressions": [
+          { "type": "TripleConstraint",
+            "predicate": "http://ex.example/#state",
+            "valueExpr": {
+              "type": "NodeConstraint",
+              "values": [
+                "http://ex.example/#unassigned",
+                "http://ex.example/#assigned"
+              ] } },
+          { "type": "TripleConstraint",
+            "predicate": "http://ex.example/#reportedBy",
+            "valueExpr": "http://my.example/#UserShape" }
+        ] } },
+    { "id": "http://my.example/#UserShape",
+      "type": "Shape",
+      "expression": {
+        "type": "EachOf",
+        "expressions": [
+          { "type": "TripleConstraint", "min": 0, "max": 1,
+            "predicate": "http://xmlns.com/foaf/0.1/name",
+            "valueExpr": {
+              "type": "NodeConstraint",
+              "nodeKind": "literal" }
+          },
+          { "type": "TripleConstraint", "min": 0, "max": -1,
+            "predicate": "http://xmlns.com/foaf/0.1/mbox",
+            "valueExpr": {
+              "type": "NodeConstraint",
+              "nodeKind": "iri" } }
+        ] } }
+  ] }

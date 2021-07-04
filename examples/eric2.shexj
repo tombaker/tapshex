@@ -1,0 +1,78 @@
+{
+  "type": "Schema",
+  "shapes": [
+    {
+      "type": "Shape",
+      "id": "http://shex.io/webapps/shex.js/doc/book",
+      "expression": {
+        "type": "EachOf",
+        "expressions": [
+          {
+            "type": "TripleConstraint",
+            "predicate": "http://shex.io/webapps/shex.js/doc/color",
+            "valueExpr": {
+              "type": "NodeConstraint",
+              "values": [
+                {
+                  "value": "red"
+                },
+                {
+                  "value": "green"
+                },
+                {
+                  "value": "blue"
+                }
+              ]
+            },
+            "min": 0,
+            "max": 1,
+            "annotations": [
+              {
+                "type": "Annotation",
+                "predicate": "http://shex.io/webapps/shex.js/doc/propertyLabel",
+                "object": {
+                  "value": "Colour"
+                }
+              },
+              {
+                "type": "Annotation",
+                "predicate": "http://shex.io/webapps/shex.js/doc/note",
+                "object": {
+                  "value": "so pretty"
+                }
+              }
+            ]
+          },
+          {
+            "type": "TripleConstraint",
+            "predicate": "http://shex.io/webapps/shex.js/doc/hue",
+            "valueExpr": {
+              "type": "NodeConstraint",
+              "values": [
+                {
+                  "value": "yellow"
+                }
+              ]
+            },
+            "min": 0,
+            "max": 1
+          },
+          {
+            "type": "TripleConstraint",
+            "predicate": "http://shex.io/webapps/shex.js/doc/saturation"
+          }
+        ]
+      },
+      "annotations": [
+        {
+          "type": "Annotation",
+          "predicate": "http://shex.io/webapps/shex.js/doc/shapeLabel",
+          "object": {
+            "value": "some book"
+          }
+        }
+      ]
+    }
+  ],
+  "@context": "http://www.w3.org/ns/shex.jsonld"
+}

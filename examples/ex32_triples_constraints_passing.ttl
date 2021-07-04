@@ -1,0 +1,5 @@
+inst:User1                              
+    foaf:name  "Bob Smith"^^xsd:string .
+
+inst:User2                              
+    foaf:name  "Bob Smith" .            
