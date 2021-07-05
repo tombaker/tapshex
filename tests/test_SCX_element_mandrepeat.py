@@ -2,12 +2,13 @@
 
 from textwrap import dedent
 from dctap.tapclasses import TAPShape, TAPStatementConstraint
+from dctap2shex.xclasses import TAPShapeX, TAPStatementConstraintX
 from dctap.inspect import pprint_tapshapes
 
 
 def test_mandatory_repeatable_true_given_supported_boolean_values():
     """Literal 'True' (case-insensitive) is a supported Boolean value."""
-    sc = TAPStatementConstraint()
+    sc = TAPStatementConstraintX()
     sc.propertyID = "wdt:P31"
     sc.mandatory = "true"
     sc.repeatable = "TRUE"
@@ -18,7 +19,7 @@ def test_mandatory_repeatable_true_given_supported_boolean_values():
 
 def test_mandatory_and_repeatable_one_zero_normalized_to_true_false():
     """The integers 0 and 1 are supported Boolean values."""
-    sc = TAPStatementConstraint()
+    sc = TAPStatementConstraintX()
     sc.propertyID = "wdt:P31"
     sc.mandatory = "1"
     sc.repeatable = "0"
@@ -29,7 +30,7 @@ def test_mandatory_and_repeatable_one_zero_normalized_to_true_false():
 
 def test_mandatory_and_repeatable_default_to_none():
     """The Boolean elements default to None if no value is declared."""
-    sc = TAPStatementConstraint()
+    sc = TAPStatementConstraintX()
     sc.propertyID = "wdt:P31"
     sc._mandatory_repeatable_have_supported_boolean_values()
     assert sc.mandatory is None
@@ -67,7 +68,7 @@ def test_booleans_shown_as_True_False_in_text_display():
 
 def test_mandatory_and_repeatable_raise_warnings_given_unsupported_boolean_value():
     """@@@"""
-    sc = TAPStatementConstraint()
+    sc = TAPStatementConstraintX()
     print(f"Instance: {sc}")
     print(f"Statement warnings at start of test: {sc.sc_warnings}")
     sc.propertyID = "dc:creator"

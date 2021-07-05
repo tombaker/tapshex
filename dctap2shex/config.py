@@ -1,8 +1,5 @@
 """Default settings."""
 
-# get_config(configfile=DEFAULT_CONFIGFILE_NAME, defaults_yaml=DEFAULT_CONFIG_YAML)
-# write_configfile(configfile=DEFAULT_CONFIGFILE_NAME, defaults_yaml=DEFAULT_CONFIG_YAML)
-
 DEFAULT_CONFIGFILE_NAME = "tap2shex.yml"
 
 DEFAULT_CONFIG_YAML = """# dctap configuration file (in YAML format)

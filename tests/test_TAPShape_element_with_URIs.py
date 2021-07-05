@@ -1,11 +1,11 @@
 """Test for elements mandatory and repeatable."""
 
-from dctap.tapclasses import TAPShape
+from dctap2shex.xclasses import TAPShapeX
 
 
 def test_warn_if_shapeID_not_URI():
-    """@@@."""
-    shap = TAPShape()
+    """In ShEx, ShapeID must be a URI (@@@or blank node?)."""
+    shap = TAPShapeX()
     shap.shapeID = "book"
     shap.sc_list = []
     shap.sc_list.append({"propertyID": "dct:creator"})

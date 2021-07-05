@@ -1,12 +1,13 @@
 """Classes for Python objects derived from CSV files."""
 
 import re
+from dataclasses import dataclass, asdict
 from dctap.tapclasses import TAPStatementConstraint, TAPShape
 from dctap.utils import is_uri_or_prefixed_uri
 
 
 @dataclass
-class StatementConstraintX(TAPStatementConstraint):
+class TAPStatementConstraintX(TAPStatementConstraint):
     """A statement constraint, its fields extended from 'dctap' for ShEx."""
     min: str = ""
     max: str = ""

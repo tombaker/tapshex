@@ -1,10 +1,10 @@
 """Test for elements mandatory and repeatable."""
 
-from dctap.tapclasses import TAPStatementConstraint
+from dctap2shex.xclasses import TAPStatementConstraintX
 
 def test_warn_if_propertyID_not_URI():
     """@@@"""
-    sc = TAPStatementConstraint()
+    sc = TAPStatementConstraintX()
     sc.propertyID = "P31"
     sc._elements_taking_IRIs_warn_if_not_IRIs()
     print(sc.sc_warnings)
@@ -15,7 +15,7 @@ def test_warn_if_propertyID_not_URI():
 
 def test_warn_if_valueShape_not_URI():
     """@@@"""
-    sc = TAPStatementConstraint()
+    sc = TAPStatementConstraintX()
     sc.propertyID = "wdt:P31"
     sc.valueShape = "Person"
     sc._elements_taking_IRIs_warn_if_not_IRIs()

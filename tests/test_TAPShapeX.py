@@ -1,8 +1,8 @@
 """TAPShape object holds statements sharing a common shapeID."""
 
-from dctap.tapclasses import TAPShape
+from dctap2shex.xclasses import TAPShapeX
 
-SHAPE_OBJECT = TAPShape(
+SHAPE_OBJECT = TAPShapeX(
     shapeID=":a",
     shapeLabel="Resource",
     sc_list=[
@@ -31,7 +31,7 @@ def test_sc_list_items_are_individually_addressable():
 
 def test_shape_initialized_by_assignment():
     """TAPShape instances can be created by assignment."""
-    shap = TAPShape()
+    shap = TAPShapeX()
     shap.shapeID = ":a"
     shap.shapeLabel = "Resource"
     shap.sc_list = []
@@ -43,7 +43,7 @@ def test_shape_initialized_by_assignment():
 
 def test_shape_initialized_with_no_shapeid_field_should_pass_for_now():
     """Shape initialized with no shapeID will use default shapeID."""
-    shap = TAPShape()
+    shap = TAPShapeX()
     shap.sc_list = []
     shap.sc_list.append({"propertyID": "dct:creator", "valueNodeType": "IRI"})
     shap.sc_list.append({"propertyID": "dct:subject", "valueNodeType": "IRI"})
@@ -51,7 +51,7 @@ def test_shape_initialized_with_no_shapeid_field_should_pass_for_now():
     config_dict = dict()
     config_dict['default_shape_name'] = ":default"
     shap._normalize_default_shapeID(config_dict)
-    assert shap == TAPShape(
+    assert shap == TAPShapeX(
         shapeID = ":default",
         sc_list=[
             {"propertyID": "dct:creator", "valueNodeType": "IRI"},
