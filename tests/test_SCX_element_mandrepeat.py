@@ -1,7 +1,6 @@
 """Test for elements mandatory and repeatable."""
 
 from textwrap import dedent
-from dctap.tapclasses import TAPShape, TAPStatementConstraint
 from dctap2shex.xclasses import TAPShapeX, TAPStatementConstraintX
 from dctap.inspect import pprint_tapshapes
 
