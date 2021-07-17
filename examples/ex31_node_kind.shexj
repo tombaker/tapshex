@@ -1,4 +1,0 @@
-{ "my:UserShape": { "type": "Shape",
-  "expression": {
-    "type": "TripleConstraint", "predicate": "foaf:mbox",
-    "value": { "type": "NodeConstraint", "nodeKind": "IRI" } } } }

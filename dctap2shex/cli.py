@@ -2,9 +2,11 @@
 
 import sys
 import json as j
+from pprint import pprint
 from ruamel.yaml import YAML
 import click
 from dctap.config import get_config, write_configfile
+from dctap.csvreader import csvreader
 from dctap2shex.config import DEFAULT_CONFIG_YAML, DEFAULT_CONFIGFILE_NAME
 from dctap.loggers import stderr_logger
 from dctap.utils import expand_uri_prefixes
@@ -42,10 +44,9 @@ def generate(context, csvfile_name, configfile, expand_prefixes, warnings, json)
 
     config_dict = get_config(configfile)
     csvreader_output = csvreader(csvfile_name, config_dict)
-    tapshapes_dict = csvreader_output[0]
+    tapshapes_dict, warnings_dict = csvreader_output
     if expand_prefixes:
         tapshapes_dict = expand_uri_prefixes(tapshapes_dict, config_dict)
-    warnings_dict = csvreader_output[1]
 
     if json:
         json_output = j.dumps(tapshapes_dict, indent=4)
@@ -71,7 +72,17 @@ def generate(context, csvfile_name, configfile, expand_prefixes, warnings, json)
 @click.pass_context
 def init(context, configfile):
     """Write out starter config file [default: tap2shex.yml]"""
-    write_configfile(
-        configfile=DEFAULT_CONFIGFILE_NAME, 
-        defaults_yaml=DEFAULT_CONFIG_YAML,
-    )
+    if not configfile:
+        configfile = DEFAULT_CONFIGFILE_NAME
+    write_configfile(configfile)
+
+
+@cli.command()
+@click.argument("csvfile", type=click.Path(), required=False)
+@click.help_option(help="Show help and exit")
+@click.pass_context
+def get_shapesdict(context, csvfile):
+    """Get shapes as dictionary."""
+    config_dict = get_config()
+    # pylint: disable=consider-using-with
+    pprint(csvreader(open(csvfile), config_dict)[0])

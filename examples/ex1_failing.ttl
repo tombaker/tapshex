@@ -1,9 +1,0 @@
-PREFIX ex: <http://ex.example/#>
-PREFIX inst: <http://example.com/users/>
-PREFIX school: <http://school.example/#>
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-
-inst:Claire foaf:age 12 ;                     
-  ex:hasGuardian inst:Person5 .               
-
-inst:Don foaf:age 14 .                        

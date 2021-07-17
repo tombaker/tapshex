@@ -1,7 +1,0 @@
-<book> {
-  <color> ["red" "green" "blue"] ?
-   // <propertyLabel> "Colour"
-   // <note> "so pretty" ;
-  <hue> ["yellow"] ? ;
-  <saturation> .
-} // <shapeLabel> "some book"

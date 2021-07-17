@@ -1,0 +1,66 @@
+{
+    "shapes": [
+        {
+            "shapeID": ":book",
+            "shapeLabel": "Book",
+            "statement_constraints": [
+                {
+                    "propertyID": "dct:creator",
+                    "propertyLabel": "Author",
+                    "mandatory": "True",
+                    "repeatable": "True",
+                    "valueNodeType": "iri",
+                    "note": "Writer of the book"
+                },
+                {
+                    "propertyID": "dct:date",
+                    "valueNodeType": "literal",
+                    "valueDataType": "xsd:date"
+                },
+                {
+                    "propertyID": "dct:subject",
+                    "valueNodeType": "iri",
+                    "valueConstraint": [
+                        "https://id.loc.gov"
+                    ],
+                    "valueConstraintType": "iristem"
+                },
+                {
+                    "propertyID": ":status",
+                    "valueConstraint": "confidential"
+                },
+                {
+                    "propertyID": ":language",
+                    "mandatory": "True",
+                    "repeatable": "True",
+                    "valueNodeType": "literal",
+                    "valueDataType": "xsd:string",
+                    "valueConstraint": [
+                        "fr",
+                        "it",
+                        "en"
+                    ],
+                    "valueConstraintType": "languagetag"
+                }
+            ]
+        },
+        {
+            "shapeID": ":author",
+            "statement_constraints": [
+                {
+                    "propertyID": ":nickname",
+                    "valueConstraint": "John*",
+                    "valueConstraintType": "pattern"
+                },
+                {
+                    "propertyID": ":favcolor",
+                    "valueConstraint": [
+                        "blue,",
+                        "green"
+                    ],
+                    "valueConstraintType": "picklist"
+                }
+            ]
+        }
+    ]
+}

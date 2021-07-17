@@ -1,3 +1,0 @@
-{ "my:IssueShape": { "type": "Shape",
-  "expression": { "type": "TripleConstraint", "predicate": "ex:reportedBy",
-      "value": "my:PersonShape" } } }

@@ -1,5 +1,0 @@
-my:IssueShape {
-  ex:status   [ excodes:~ auxterms:~ ];
-  ex:mood     [ @en~ - @en-fr ];
- ^ex:hasIssue [ my:Product1 my:Product2 ]
-}

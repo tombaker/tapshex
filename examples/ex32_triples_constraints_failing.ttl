@@ -1,6 +1,0 @@
-inst:User3                              
-    foaf:name  "Joe Jones"^^xsd:string ;
-    foaf:name  "J. Jones"^^xsd:string . 
-
-inst:User4                              
-    foaf:name  "Bob Smith"^^xsd:anyURI .
