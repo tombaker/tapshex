@@ -5,6 +5,25 @@ from pathlib import Path
 import pytest
 from dctap.config import get_config
 from dctap.csvreader import _get_rows
+def test_get_rows_including_header_not_in_DCTAP(tmp_path):
+    """Get rows where one header is not part of the DCTAP model."""
+    os.chdir(tmp_path)
+    csvfile_path = Path(tmp_path).joinpath("some.csv")
+    csvfile_path.write_text(
+        (
+            "PropertyID,Ricearoni\n"
+            "dc:creator,SFO treat\n"
+        )
+    )
+    csvfile_obj = open(csvfile_path)
+    config_dict = get_config()
+    expected_csvrow_dicts_list = [ 
+        {
+            'propertyID': 'dc:creator',
+            'ricearoni': 'SFO treat',
+        }
+    ]
+    assert _get_rows(csvfile_obj, config_dict) == expected_csvrow_dicts_list
 
 def test_get_rows_minimal(tmp_path):
     """Get list of rows, as dicts, from one-row, one-column CSV."""
@@ -195,30 +214,12 @@ def test_liststatements_with_csv_column_outside_dctap_model_are_ignored(tmp_path
     config_dict = get_config()
     assert _get_rows(csvfile_obj, config_dict) == expected_csvrow_dicts_list
 
-def test_get_rows_correct_shapeID(tmp_path):
-    """Corrects DCTAP headers - redundant to "real mess" test?"""
-    os.chdir(tmp_path)
-    csvfile_path = Path(tmp_path).joinpath("some.csv")
-    csvfile_path.write_text(
-            "SID,property-ID\n"
-            ":book,dcterms:creator\n"
-    )
-    csvfile_obj = open(csvfile_path)
-    expected_output = [
-            {
-             'shapeID': ':book', 
-             'propertyID': 'dcterms:creator'
-            }
-    ]
-    config_dict = get_config()
-    assert _get_rows(csvfile_obj, config_dict) == expected_output
-
 def test_get_rows_correct_a_real_mess(tmp_path):
     """Messiness in headers (extra spaces, punctuation, wrong case) is corrected."""
     os.chdir(tmp_path)
     csvfile_path = Path(tmp_path).joinpath("some.csv")
     csvfile_path.write_text(
-            "S ID,pr-opertyID___,valueShape     ,wildCard    \n"
+            "S h a p e ID,pr-opertyID___,valueShape     ,wildCard    \n"
             ":book,dcterms:creator,:author,Yeah yeah yeah\n"
     )
     csvfile_obj = open (csvfile_path)

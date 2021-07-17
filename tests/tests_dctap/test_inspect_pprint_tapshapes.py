@@ -48,25 +48,3 @@ SHAPES_DICT = {'shapes': [{'sh_warnings': {},
                                         'valueShape': None}]}]}
 
 
-def test_pprint_tapshapes_two_shapes():
-    """Pretty-print list of TAPShape objects."""
-    expected_output_dedented = dedent(
-        """\
-    DCTAP instance
-        Shape
-            shapeID:                 :a
-            Statement Constraint
-                propertyID:          dct:creator
-                mandatory:           False
-                repeatable:          True
-            Statement Constraint
-                propertyID:          dct:date
-                mandatory:           False
-                repeatable:          True
-        Shape
-            shapeID:                 :b
-            Statement Constraint
-                propertyID:          foaf:name
-    """
-    )
-    assert pprint_tapshapes(SHAPES_DICT) == expected_output_dedented.splitlines()
