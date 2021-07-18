@@ -66,7 +66,6 @@ def test_get_annotation_attributes():
     expected_annotation_attributes = {'object', 'predicate', 'type'}
     annotation_attributes = get_annotation_attributes(SCHEMA)
     assert get_annotation_attributes(SCHEMA) == expected_annotation_attributes
-    assert get_annotation_attributes(SCHEMA) == annotation_attributes
     assert "type" in annotation_attributes
     assert "predicate" in annotation_attributes
     assert "object" in annotation_attributes
@@ -77,6 +76,47 @@ def test_get_annotation_attributes():
                 assert isinstance(annotation.get("type"), str)
                 assert isinstance(annotation.get("predicate"), str)
                 assert isinstance(annotation.get("object"), dict)
+
+def get_eachof_expression_attributes(schema):
+    """Gets attributes from items of list "expressions" in object of type "EachOf"."""
+    shapes = SCHEMA["shapes"]
+    expression_attributes = list()
+    for shape in shapes:
+        if shape.get("expression"):
+            expression = shape.get("expression")
+            if expression.get("type") == "EachOf":
+                for eachof_expression in expression["expressions"]:
+                    for key in eachof_expression:
+                        expression_attributes.append(key)
+    return set(expression_attributes)
+
+def test_get_eachof_expression_attributes():
+    """@@@"""
+    expected_expression_attributes = {'valueExpr', 'predicate', 'type', 'min', 'max', 'annotations'}
+    expression_attributes = get_eachof_expression_attributes(SCHEMA)
+    assert get_eachof_expression_attributes(SCHEMA) == expected_expression_attributes
+    assert get_eachof_expression_attributes(SCHEMA) == expression_attributes
+#    assert "type" in expression_attributes
+#    assert "predicate" in expression_attributes
+#    assert "object" in expression_attributes
+#    shapes = SCHEMA["shapes"]
+#    for shape in shapes:
+#        if shape.get("expressions"):
+#            for expression in shape.get("expressions"):
+#                assert isinstance(expression.get("type"), str)
+#                assert isinstance(expression.get("predicate"), str)
+#                assert isinstance(expression.get("object"), dict)
+
+
+
+
+
+
+
+
+
+
+
 
 
 SCHEMA = {
