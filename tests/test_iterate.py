@@ -24,8 +24,32 @@ def test_get_shape_list():
     """@@@"""
     shape_list = get_shape_list(SCHEMA)
     assert len(shape_list) == 2
+    for item in shape_list:
+        assert isinstance(item, dict)
 
+def get_shape_attributes(schema):
+    """@@@"""
+    shape_attributes = []
+    # breakpoint(context=5) 
+    for shape in schema["shapes"]:
+        for key in shape:
+            shape_attributes.append(key)
+    return set(shape_attributes)
 
+def test_get_shape_attributes():
+    """@@@"""
+    shape_attributes = get_shape_attributes(SCHEMA)
+    shapes = SCHEMA["shapes"]
+    assert "annotations" in shape_attributes
+    assert "expression" in shape_attributes
+    assert "id" in shape_attributes
+    assert "type" in shape_attributes
+    for shape in shapes:
+        if shape.get("annotations"):
+            assert isinstance(shape["annotations"], list)
+        assert isinstance(shape["expression"], dict)
+        assert isinstance(shape["id"], str)
+        assert isinstance(shape["type"], str)
 
 
 SCHEMA = {
