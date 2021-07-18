@@ -1,6 +1,6 @@
 """Convert statement constraints of value constraint type "picklist"."""
 
-def _convert_sc_vct_iristem_picklist_to_nc(sc):
+def _convert_sc_vct_pattern_to_nc(sc):
     """@@@"""
     if sc.get("valueConstraintType") == "pattern":
         nc = dict()
@@ -8,7 +8,7 @@ def _convert_sc_vct_iristem_picklist_to_nc(sc):
         nc["pattern"] = sc.get("valueConstraint")
     return nc
 
-def test_convert_picklist_of_two_literals():
+def test_convert_vct_pattern_to_nc():
     """@@@"""
     input_dict = {
         "propertyID": ":nickname",
@@ -19,4 +19,4 @@ def test_convert_picklist_of_two_literals():
         "type": "NodeConstraint",
         "pattern": "John*"
     }
-    assert _convert_sc_vct_iristem_picklist_to_nc(input_dict) == output_nc_dict
+    assert _convert_sc_vct_pattern_to_nc(input_dict) == output_nc_dict
