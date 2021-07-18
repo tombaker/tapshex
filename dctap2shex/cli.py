@@ -7,9 +7,9 @@ from ruamel.yaml import YAML
 import click
 from dctap.config import get_config, write_configfile
 from dctap.csvreader import csvreader
-from dctap2shex.config import DEFAULT_CONFIG_YAML, DEFAULT_CONFIGFILE_NAME
 from dctap.loggers import stderr_logger
 from dctap.utils import expand_uri_prefixes
+from dctap2shex.defaults import DEFAULT_CONFIG_YAML, DEFAULT_CONFIGFILE_NAME
 
 # pylint: disable=unused-argument,no-value-for-parameter
 # => unused-argument: Allows placeholders for now.
@@ -25,7 +25,7 @@ def cli(context):
 
 
 @cli.command()
-@click.argument("csvfile_name", type=click.File(mode="r", encoding="utf-8-sig"))
+@click.argument("csvfile_obj", type=click.File(mode="r", encoding="utf-8-sig"))
 @click.option(
     "--configfile", type=click.Path(exists=True), help="Pathname of configuration file."
 )
@@ -38,12 +38,12 @@ def cli(context):
 @click.option("--json", is_flag=True, help="Print JSON to stdout.")
 @click.help_option(help="Show help and exit")
 @click.pass_context
-def generate(context, csvfile_name, configfile, expand_prefixes, warnings, json):
-    """Given CSV, generate ShEx, (maybe) with warnings."""
+def generate(context, csvfile_obj, configfile, expand_prefixes, warnings, json):
+    """Given CSV, generate ShExJ, optionally with warnings."""
     # pylint: disable=too-many-locals,too-many-arguments
 
     config_dict = get_config(configfile)
-    csvreader_output = csvreader(csvfile_name, config_dict)
+    csvreader_output = csvreader(csvfile_obj, config_dict)
     tapshapes_dict, warnings_dict = csvreader_output
     if expand_prefixes:
         tapshapes_dict = expand_uri_prefixes(tapshapes_dict, config_dict)
@@ -54,7 +54,7 @@ def generate(context, csvfile_name, configfile, expand_prefixes, warnings, json)
 
     # pylint: disable=logging-fstring-interpolation
     if not json:
-        pprint_output = pprint_tapshapes(tapshapes_dict)
+        pprint_output = pprint_tapshapes(tapshapes_dict, config_dict)
         for line in pprint_output:
             print(line, file=sys.stdout)
         if warnings:
@@ -71,7 +71,7 @@ def generate(context, csvfile_name, configfile, expand_prefixes, warnings, json)
 @click.help_option(help="Show help and exit")
 @click.pass_context
 def init(context, configfile):
-    """Write out starter config file [default: tap2shex.yml]"""
+    """Generate customizable configuration file [default: tap2shex.yml]."""
     if not configfile:
         configfile = DEFAULT_CONFIGFILE_NAME
     write_configfile(configfile)
