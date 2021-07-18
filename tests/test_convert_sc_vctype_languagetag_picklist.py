@@ -1,4 +1,7 @@
-"""Convert statement constraints of value constraint type "picklist"."""
+"""Convert statement constraints of value constraint type "picklist".
+
+Unclear: generate entire TripleConstraint (as here) or just node constraint?
+"""
 
 def _convert_sc_vct_languagetag_picklist(sc):
     """@@@"""
