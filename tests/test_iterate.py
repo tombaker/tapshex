@@ -29,8 +29,7 @@ def test_get_shape_list():
 
 def get_shape_attributes(schema):
     """@@@"""
-    shape_attributes = []
-    # breakpoint(context=5) 
+    shape_attributes = list()
     for shape in schema["shapes"]:
         for key in shape:
             shape_attributes.append(key)
@@ -38,8 +37,8 @@ def get_shape_attributes(schema):
 
 def test_get_shape_attributes():
     """@@@"""
-    shape_attributes = get_shape_attributes(SCHEMA)
     shapes = SCHEMA["shapes"]
+    shape_attributes = get_shape_attributes(SCHEMA)
     assert "annotations" in shape_attributes
     assert "expression" in shape_attributes
     assert "id" in shape_attributes
@@ -50,6 +49,34 @@ def test_get_shape_attributes():
         assert isinstance(shape["expression"], dict)
         assert isinstance(shape["id"], str)
         assert isinstance(shape["type"], str)
+
+def get_annotation_attributes(schema):
+    """@@@"""
+    shapes = SCHEMA["shapes"]
+    annotation_attributes = list()
+    for shape in shapes:
+        if shape.get("annotations"):
+            for annotation in shape.get("annotations"):
+                for key in annotation:
+                    annotation_attributes.append(key)
+    return set(annotation_attributes)
+
+def test_get_annotation_attributes():
+    """@@@"""
+    expected_annotation_attributes = {'object', 'predicate', 'type'}
+    annotation_attributes = get_annotation_attributes(SCHEMA)
+    assert get_annotation_attributes(SCHEMA) == expected_annotation_attributes
+    assert get_annotation_attributes(SCHEMA) == annotation_attributes
+    assert "type" in annotation_attributes
+    assert "predicate" in annotation_attributes
+    assert "object" in annotation_attributes
+    shapes = SCHEMA["shapes"]
+    for shape in shapes:
+        if shape.get("annotations"):
+            for annotation in shape.get("annotations"):
+                assert isinstance(annotation.get("type"), str)
+                assert isinstance(annotation.get("predicate"), str)
+                assert isinstance(annotation.get("object"), dict)
 
 
 SCHEMA = {
