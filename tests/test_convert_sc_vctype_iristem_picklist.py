@@ -1,4 +1,8 @@
-"""Convert statement constraints of value constraint type "picklist"."""
+"""Convert statement constraints of value constraint type "picklist".
+
+Can ignore: 
+    "valueNodeType": "IRI"
+"""
 
 def _convert_sc_vct_iristem_picklist_to_tc(sc):
     """@@@"""
