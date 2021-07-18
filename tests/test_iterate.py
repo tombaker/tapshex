@@ -96,16 +96,25 @@ def test_get_eachof_expression_attributes():
     expression_attributes = get_eachof_expression_attributes(SCHEMA)
     assert get_eachof_expression_attributes(SCHEMA) == expected_expression_attributes
     assert get_eachof_expression_attributes(SCHEMA) == expression_attributes
-#    assert "type" in expression_attributes
-#    assert "predicate" in expression_attributes
-#    assert "object" in expression_attributes
-#    shapes = SCHEMA["shapes"]
-#    for shape in shapes:
-#        if shape.get("expressions"):
-#            for expression in shape.get("expressions"):
-#                assert isinstance(expression.get("type"), str)
-#                assert isinstance(expression.get("predicate"), str)
-#                assert isinstance(expression.get("object"), dict)
+    assert "type" in expression_attributes
+    assert "predicate" in expression_attributes
+    assert "valueExpr" in expression_attributes
+    assert "min" in expression_attributes
+    assert "max" in expression_attributes
+    assert "annotations" in expression_attributes
+    shapes = SCHEMA["shapes"]
+    for shape in shapes:
+        if shape.get("expressions"):
+            expression = shape.get("expression")
+            if expression.get("type") == "EachOf":
+                for eachof_expression in expression["expressions"]:
+                    for key in eachof_expression:
+                        assert isinstance(expression.get("type"), str)
+                        assert isinstance(expression.get("predicate"), str)
+                        assert isinstance(expression.get("min"), str)
+                        assert isinstance(expression.get("max"), str)
+                        assert isinstance(expression.get("valueExpr"), list)
+                        assert isinstance(expression.get("annotations"), list)
 
 
 
