@@ -8,6 +8,7 @@ def _mkshape(shape_identifier):
     shape["expression"] = dict()
     shape["expression"]["type"] = "EachOf"
     shape["expression"]["expressions"] = list()
+    shape["annotations"] = list()
     return shape
 
 def test_convert_picklist_of_two_literals():
@@ -19,7 +20,8 @@ def test_convert_picklist_of_two_literals():
       "expression": {
         "type": "EachOf",
         "expressions": []
-      }
+      },
+      "annotations": []
     }
     assert _mkshape(input_iri) == output_dict
 
