@@ -1,6 +1,6 @@
 """Mandatory / repeatable."""
 
-from dctap2shex.utils import _convert_sc_mandatory_to_sc_min, _convert_sc_repeatable_to_sc_min
+from dctap2shex.utils import _convert_sc_mandatory_to_sc_min
 
 def test_convert_sc_mandatory_to_sc_min_true():
     """@@@"""

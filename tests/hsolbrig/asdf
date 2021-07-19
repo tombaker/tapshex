@@ -1,0 +1,5 @@
+mv -vi ./tests/test_mkshex_mkshex.py ./tests/test_mkshex_mkshex.py_
+mv -vi ./tests/__init__.py ./tests/__init__.py_
+mv -vi ./tests/test_shex/test_shexj.py ./tests/test_shex/test_shexj.py_
+mv -vi ./tests/test_shex/__init__.py ./tests/test_shex/__init__.py_
+mv -vi ./tests/test_shex/test_shexc.py ./tests/test_shex/test_shexc.py_
