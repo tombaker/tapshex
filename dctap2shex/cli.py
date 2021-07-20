@@ -6,6 +6,7 @@ from pprint import pprint
 from ruamel.yaml import YAML
 import click
 from dctap.config import get_config, write_configfile
+from dctap.inspect import pprint_tapshapes
 from dctap.csvreader import csvreader
 from dctap.loggers import stderr_logger
 from dctap.utils import expand_uri_prefixes
@@ -39,7 +40,7 @@ def cli(context):
 @click.help_option(help="Show help and exit")
 @click.pass_context
 def generate(context, csvfile_obj, configfile, expand_prefixes, warnings, json):
-    """Given CSV, generate ShExJ, optionally with warnings."""
+    """Given CSV, generate text or JSON, optionally with warnings."""
     # pylint: disable=too-many-locals,too-many-arguments
 
     config_dict = get_config(configfile)
