@@ -12,9 +12,9 @@ DEFAULT_CONFIG_YAML = """# tap2shex configuration file (in YAML format)
 ## As extra elements are not supported by this module, their values are 
 ## simply passed through to the text, JSON, and YAML outputs.
 
-# extra_shape_elements:
-# - closed
-# - start
+extra_shape_elements:
+- closed
+- start
 
 extra_statement_constraint_elements:
 - min
@@ -56,6 +56,6 @@ default_shape_identifier: ":default"
 ## but this could be replaced with other common separators, such as commas 
 ## or pipes (or-bars). The program routinely strips extra whitespace from 
 ## the start and end of picklist items.
-# picklist_item_separator: ','
+picklist_item_separator: ' '
 
 """
