@@ -22,7 +22,7 @@ from tap2shex.defaults import DEFAULT_CONFIG_YAML, DEFAULT_CONFIGFILE_NAME
 @click.help_option(help="Show help and exit")
 @click.pass_context
 def cli(context):
-    """DC Tabular Application Profiles (DCTAP) to ShEx"""
+    """DCTAP/JSON to ShEx"""
 
 
 @cli.command()
@@ -72,18 +72,8 @@ def generate(context, csvfile_obj, configfile, expand_prefixes, warnings, json):
 @click.help_option(help="Show help and exit")
 @click.pass_context
 def init(context, configfile):
-    """Generate customizable configuration file [default: tap2shex.yml]."""
+    """Generate config file [default: tap2shex.yml]."""
     if not configfile:
         configfile = DEFAULT_CONFIGFILE_NAME
     write_configfile(configfile)
 
-
-@cli.command()
-@click.argument("csvfile", type=click.Path(), required=False)
-@click.help_option(help="Show help and exit")
-@click.pass_context
-def get_shapesdict(context, csvfile):
-    """Get shapes as dictionary."""
-    config_dict = get_config()
-    # pylint: disable=consider-using-with
-    pprint(csvreader(open(csvfile), config_dict)[0])
