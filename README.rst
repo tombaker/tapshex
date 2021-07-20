@@ -1,23 +1,17 @@
-dctap2shex
-==========
+tap2shex
+========
 
-Generate ShExJ from JSON input.
-
-Documentation
--------------
-
-- [dctap-python project](https://readthedocs.org/projects/dctap-python/) on readthedocs.org
-- https://dctap-python.readthedocs.io/en/latest/
+Generate ShEx from DCTAP/JSON input.
 
 Installation
 ------------
 
 .. code-block:: bash
 
-    $ git clone https://github.com/tombaker/dctap2shex.git
-    $ cd dctap2shex
-    dctap2shex$ python -m venv .venv
-    dctap2shex$ source .venv/bin/activate
-    dctap2shex$ python3 -m pip install flit Pygments
-    dctap2shex$ flit install -s
+    $ git clone https://github.com/tombaker/tap2shex.git
+    $ cd tap2shex
+    tap2shex$ python -m venv .venv
+    tap2shex$ source .venv/bin/activate
+    tap2shex$ python3 -m pip install flit Pygments
+    tap2shex$ flit install -s
 

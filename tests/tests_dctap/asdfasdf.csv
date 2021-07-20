@@ -1,3 +1,0 @@
-shapeID,shapeLabel,propertyID,propertyLabel,mandatory,repeatable,valueNodeType,valueDataType,valueConstraint,valueConstraintType,valueShape,note
-:a,Book,dct:creator,Creator,Y,N,URI,,,,:b,Typically the author.
-:b,Person,ex:name,Name,Y,N,String,xsd:string,,,,

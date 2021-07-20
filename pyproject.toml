@@ -3,10 +3,10 @@ requires = ["setuptools!=50.0","flit"]
 build-backend = "flit.buildapi"
 
 [tool.flit.metadata]
-module = "dctap2shex"
+module = "tap2shex"
 author = "Tom Baker"
 author-email = "tom@tombaker.org"
-home-page = "https://github.com/tombaker/dctap2shex"
+home-page = "https://github.com/tombaker/tap2shex"
 requires = [
     "click",
     "dataclasses",
@@ -36,4 +36,4 @@ doc = [
 ]
 
 [tool.flit.scripts]
-dctap2shex = "dctap2shex.cli:cli"
+tap2shex = "tap2shex.cli:cli"

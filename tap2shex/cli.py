@@ -10,7 +10,7 @@ from dctap.inspect import pprint_tapshapes
 from dctap.csvreader import csvreader
 from dctap.loggers import stderr_logger
 from dctap.utils import expand_uri_prefixes
-from dctap2shex.defaults import DEFAULT_CONFIG_YAML, DEFAULT_CONFIGFILE_NAME
+from tap2shex.defaults import DEFAULT_CONFIG_YAML, DEFAULT_CONFIGFILE_NAME
 
 # pylint: disable=unused-argument,no-value-for-parameter
 # => unused-argument: Allows placeholders for now.
