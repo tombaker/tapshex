@@ -2,7 +2,6 @@
 
 from typing import Union, List, Optional
 from jsonasobj import as_json, loads
-from .xclasses import TAPShapeX, TAPStatementConstraintX
 from ShExJSG import Schema
 from ShExJSG.ShExJ import (
     Shape,
@@ -12,6 +11,8 @@ from ShExJSG.ShExJ import (
     shapeExpr,
     EachOf,
 )
+
+from .xclasses import TAPShapeX, TAPStatementConstraintX
 
 
 def get_node_constraint(tap_sc: TAPStatementConstraintX) -> Optional[shapeExpr]:
@@ -66,32 +67,33 @@ def add_triple_constraint(shape: Shape, tap_sc: TAPStatementConstraintX) -> None
 
 
 def mkshex(shapes: Union[TAPShapeX, List[TAPShapeX]]) -> Schema:
-    """Convert list of csv2shape Shapes to ShExJSG Schema object."""
+    """Convert list of TAPShapes to ShExJSG Schema object."""
 
     # pylint: disable=invalid-name
     # One- and two-letter variable names do not conform to snake-case naming style
 
+
     if isinstance(shapes, TAPShapeX):
         shapes = [shapes]
-    schema_shexjsg = Schema()
+    schema = Schema()
     for s in shapes:
         shape_id = IRIREF(s.shapeID)
         if s.start:
-            if schema_shexjsg.start:
-                print(f"Multiple start shapes: <{schema_shexjsg.start}>, <{shape_id}>")
+            if schema.start:
+                print(f"Multiple start shapes: <{schema.start}>, <{shape_id}>")
             else:
-                schema_shexjsg.start = shape_id
+                schema.start = shape_id
         shape = Shape(id=shape_id)
         for tap_sc in s.tc_list:
             add_triple_constraint(shape, tap_sc)
-        if not schema_shexjsg.shapes:
-            schema_shexjsg.shapes = [shape]
+        if not schema.shapes:
+            schema.shapes = [shape]
         else:
-            schema_shexjsg.shapes.append(shape)
-    return schema_shexjsg
+            schema.shapes.append(shape)
+    return schema
 
 
-def mkshexj(schema_shexjsg):
+def mkshexj(schema):
     """Convert ShExJSG Schema object to ShExJ string."""
-    schema = mkshex(schema_shexjsg)
+    schema = mkshex(schema)
     return as_json(schema)

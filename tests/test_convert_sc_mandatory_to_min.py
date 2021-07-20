@@ -5,7 +5,7 @@ from dctap2shex.utils import _convert_sc_mandatory_to_sc_min
 def test_convert_sc_mandatory_to_sc_min_true():
     """@@@"""
     input_dict = {
-      "mandatory": "True",
+      "mandatory": "true",
     }
     output_dict = {
       "min": 1,
@@ -15,7 +15,7 @@ def test_convert_sc_mandatory_to_sc_min_true():
 def test_convert_sc_mandatory_to_sc_min_false():
     """@@@"""
     input_dict = {
-      "mandatory": "False",
+      "mandatory": "false",
     }
     output_dict = {
       "min": 0,
