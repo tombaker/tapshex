@@ -1,24 +1,25 @@
 {
     "shapes": [
         {
-            "shapeID": ":book",
+            "shapeID": "http://example.org/book",
             "shapeLabel": "Book",
             "statement_constraints": [
                 {
-                    "propertyID": "dct:creator",
+                    "propertyID": "http://purl.org/dc/terms/creator",
                     "propertyLabel": "Author",
-                    "mandatory": "True",
-                    "repeatable": "True",
+                    "mandatory": "true",
+                    "repeatable": "true",
                     "valueNodeType": "iri",
+                    "valueShape": "http://example.org/author",
                     "note": "Writer of the book"
                 },
                 {
-                    "propertyID": "dct:date",
+                    "propertyID": "http://purl.org/dc/terms/date",
                     "valueNodeType": "literal",
-                    "valueDataType": "xsd:date"
+                    "valueDataType": "http://www.w3.org/2001/XMLSchema#date"
                 },
                 {
-                    "propertyID": "dct:subject",
+                    "propertyID": "http://purl.org/dc/terms/subject",
                     "valueNodeType": "iri",
                     "valueConstraint": [
                         "https://id.loc.gov"
@@ -26,39 +27,39 @@
                     "valueConstraintType": "iristem"
                 },
                 {
-                    "propertyID": ":status",
+                    "propertyID": "http://example.org/status",
                     "valueConstraint": "confidential"
                 },
                 {
-                    "propertyID": ":language",
-                    "mandatory": "True",
-                    "repeatable": "True",
+                    "propertyID": "http://example.org/description",
+                    "mandatory": "true",
+                    "repeatable": "true",
                     "valueNodeType": "literal",
-                    "valueDataType": "xsd:string",
+                    "valueDataType": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
                     "valueConstraint": [
                         "fr",
                         "it",
                         "en"
                     ],
                     "valueConstraintType": "languagetag"
+                },
+                {
+                    "propertyID": "http://example.org/colors",
+                    "valueConstraint": [
+                        "blue",
+                        "green"
+                    ],
+                    "valueConstraintType": "picklist"
                 }
             ]
         },
         {
-            "shapeID": ":author",
+            "shapeID": "http://example.org/author",
             "statement_constraints": [
                 {
-                    "propertyID": ":nickname",
-                    "valueConstraint": "John*",
+                    "propertyID": "http://example.org/status",
+                    "valueConstraint": "confidential-*",
                     "valueConstraintType": "pattern"
-                },
-                {
-                    "propertyID": ":favcolor",
-                    "valueConstraint": [
-                        "blue,",
-                        "green"
-                    ],
-                    "valueConstraintType": "picklist"
                 }
             ]
         }
