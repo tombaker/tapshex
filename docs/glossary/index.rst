@@ -52,6 +52,12 @@ Glossary
    
    Shape 
        A set of Statement Templates **in an Application Profile** that characterize Statements expected to be found in a Description. In the now-superseded `DCMI Abstract Model <https://www.dublincore.org/specifications/dublin-core/abstract-model/>`_ of 2007, these were called Description Templates.
+
+   ShExC
+       A compact syntax for ShEx that is "meant for human eyes and fingers".
+
+   ShEx Schema
+       "A collection of shape expressions".
    
    Statement
        A property-value pair **in Instance Data** used in a Description to make claims about an Entity.

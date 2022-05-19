@@ -2,15 +2,15 @@
 
 import sys
 import json as j
-from pprint import pprint
 from ruamel.yaml import YAML
+from pprint import pprint
 import click
 from dctap.config import get_config, write_configfile
+from tap2shex.defaults import DEFAULT_CONFIG_YAML, DEFAULT_CONFIGFILE_NAME
 from dctap.inspect import pprint_tapshapes
 from dctap.csvreader import csvreader
 from dctap.loggers import stderr_logger
 from dctap.utils import expand_uri_prefixes
-from tap2shex.defaults import DEFAULT_CONFIG_YAML, DEFAULT_CONFIGFILE_NAME
 
 # pylint: disable=unused-argument,no-value-for-parameter
 # => unused-argument: Allows placeholders for now.
@@ -72,7 +72,7 @@ def generate(context, csvfile_obj, configfile, expand_prefixes, warnings, json):
 @click.help_option(help="Show help and exit")
 @click.pass_context
 def init(context, configfile):
-    """Generate config file [default: tap2shex.yml]."""
+    """Write config file [default: tap2shex.yml]."""
     if not configfile:
         configfile = DEFAULT_CONFIGFILE_NAME
     write_configfile(configfile)

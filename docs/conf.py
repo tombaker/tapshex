@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'tap2shex'
-copyright = '2021, Tom Baker'
+copyright = '2022, Tom Baker'
 author = 'Tom Baker'
 
 # The full version, including alpha/beta/rc tags
