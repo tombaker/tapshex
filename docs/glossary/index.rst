@@ -3,10 +3,12 @@
 Glossary
 --------
 
+The terminology used in the DC Tabular Application Profiles specification represents a compromise between a need to reflect the conformance of DCTAP to the RDF data model and an equally important need to be accessible to users who are either less familiar with RDF or who may want to use the DCTAP model with technologies unrelated to RDF, such as XML Schema. The terminology used for the ShEx specification, in contrast, presupposes fluency in RDF. This glossary puts terms defined in the documentation for the **dctap-python** module alongside terms as they are defined in the ShEx Primer.
+
 .. glossary::
 
    Application Profile
-       A description of the structures and terms, and their usages, expected to be found **in Instance Data**. An application profile that follows the DCTAP model is called a :term:`DCTAP Instance`.
+       A description of the structures and terms, and their usages, expected to be found in :term:`Instance Data`. An application profile that follows the DCTAP model is called a :term:`DCTAP Instance`.
    
    Blank Node
        In RDF, a blank node is a unique identifier used, typically, within the local scope of a specific file or RDF store. As described in `RDF 1.1 Concepts and Abstract Syntax <https://www.w3.org/TR/rdf11-concepts/#section-blank-nodes>`__, a blank node is distinct both from an :term:`IRI` and a :term:`Literal`. Blank nodes are of interest only to users or creators of RDF applications.
@@ -51,7 +53,7 @@ Glossary
        A pattern **in an Application Profile** descriptive of how Properties are expected to be used in Instance Data. Also commonly known as a Property Constraint.
    
    Shape 
-       A set of Statement Templates **in an Application Profile** that characterize Statements expected to be found in a Description. In the now-superseded `DCMI Abstract Model <https://www.dublincore.org/specifications/dublin-core/abstract-model/>`_ of 2007, these were called Description Templates.
+       In DCTAP: a set of :term:`Statement Template`s in an :term:`Application Profile` that characterize :terms:`Statement`s expected to be found in a Description. 
 
    ShExC
        A compact syntax for ShEx that is "meant for human eyes and fingers".
@@ -60,19 +62,19 @@ Glossary
        "A collection of shape expressions".
    
    Statement
-       A property-value pair **in Instance Data** used in a Description to make claims about an Entity.
+       A property-value pair in :term:`Instance Data` used in a Description to make claims about an Entity.
    
    Statement Template 
-       A pattern **in an Application Profile** descriptive of Statements expected to be found in Instance Data.
+       A pattern in an :term:`Application Profile` descriptive of Statements expected to be found in Instance Data. In the now-superseded `DCMI Abstract Model <https://www.dublincore.org/specifications/dublin-core/abstract-model/>`_ of 2007, these were called Description Templates.
    
    URI
        See :term:`IRI`.
    
    Value
-       A value **in Instance Data** associated with a Property in the context of a Statement. In ShEx, "value" is "a shorthand designation for the RDF node at the opposite end of an RDF data triple from a focus node.
+       A value in :term:`Instance Data` associated with a Property in the context of a Statement. In ShEx, "value" is "a shorthand designation for the RDF node at the opposite end of an RDF data triple from a focus node.
    
    Value Constraint
-       A pattern **in an Application Profile** descriptive of Values expected in Instance Data.
+       A pattern in an :term:`Application Profile` descriptive of Values expected in :term:`Instance Data`.
    
    Vocabulary
        A set of Properties and other terms used **in Instance Data** and referred to in constraints defined in an Application Profile. By convention, all properties referenced in a DC Application Profile are defined and documented separately from the profile itself.
