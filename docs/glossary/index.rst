@@ -47,35 +47,35 @@ The terminology used in the DC Tabular Application Profiles specification repres
        Along with :term:`IRI` and :term:`Blank Node`, Literal is one of the three allowable node types defined in the abstract syntax of RDF. For the purposes of DCTAP, it is close enough to think of literals as strings. Literals are used for values such as strings, numbers, and dates. Interested readers can learn more about how literals relate to "lexical forms", :term:`Datatype`\s, and :term:`Language Tag`\s by consulting `RDF 1.1 Concepts and Abstract Syntax <https://www.w3.org/TR/rdf11-concepts/#section-Graph-Literal>`__.
 
    Property
-       A controlled term **in Instance Data** denoting an attribute of an Entity used in a Statement.
+       In DCTAP: a controlled term in :term:`Instance Data` denoting an attribute of an :term:`Entity` used in a :term:`Statement`. In ShEx: an RDF property as defined in `RDF Schema 1.1 <https://www.w3.org/TR/rdf-schema/#ch_property>`__ and identified with an :term:`IRI`.
    
    Predicate Constraint
-       A pattern **in an Application Profile** descriptive of how Properties are expected to be used in Instance Data. Also commonly known as a Property Constraint.
+       In DCTAP: a pattern in an :term:`Application Profile` descriptive of how a :term:`Property` is expected to be used in :term:`Instance Data`. Also commonly known as a Property Constraint.
    
    Shape 
-       In DCTAP: a set of :term:`Statement Template`s in an :term:`Application Profile` that characterize :terms:`Statement`s expected to be found in a Description. 
+       In DCTAP: a set of :term:`Statement Template`s in an :term:`Application Profile` that characterize :term:`Statement`s expected to be found in a Description. 
 
    ShExC
-       A compact syntax for ShEx that is "meant for human eyes and fingers".
+       In ShEx: a compact syntax for ShEx that is "meant for human eyes and fingers".
 
    ShEx Schema
-       "A collection of shape expressions".
+       In ShEx: "A collection of shape expressions".
    
    Statement
-       A property-value pair in :term:`Instance Data` used in a Description to make claims about an Entity.
+       A property-value pair in :term:`Instance Data` used in a Description to make claims about an :term:`Entity`.
    
    Statement Template 
-       A pattern in an :term:`Application Profile` descriptive of Statements expected to be found in Instance Data. In the now-superseded `DCMI Abstract Model <https://www.dublincore.org/specifications/dublin-core/abstract-model/>`_ of 2007, these were called Description Templates.
+       A pattern in an :term:`Application Profile` descriptive of :term:`Statement`s expected to be found in :term:`Instance Data`. In the now-superseded `DCMI Abstract Model <https://www.dublincore.org/specifications/dublin-core/abstract-model/>`_ of 2007, these were called Description Templates.
    
    URI
        See :term:`IRI`.
    
    Value
-       A value in :term:`Instance Data` associated with a Property in the context of a Statement. In ShEx, "value" is "a shorthand designation for the RDF node at the opposite end of an RDF data triple from a focus node.
+       In DCTAP: a value in :term:`Instance Data` associated with a Property in the context of a Statement. In ShEx, "a shorthand designation for the RDF node at the opposite end of an RDF data triple from a focus node".
    
    Value Constraint
-       A pattern in an :term:`Application Profile` descriptive of Values expected in :term:`Instance Data`.
+       In DCTAP: a pattern in an :term:`Application Profile` descriptive of :term:`Value`s expected in :term:`Instance Data`.
    
    Vocabulary
-       A set of Properties and other terms used **in Instance Data** and referred to in constraints defined in an Application Profile. By convention, all properties referenced in a DC Application Profile are defined and documented separately from the profile itself.
+       In DCTAP: a set of Properties and other terms used in :term:`Instance Data` and referenced as :term:`Predicate Constraint`s in :term:`Statement Template`s defined in an :term:`Application Profile`. By convention, all properties referenced in a DC Application Profile are defined and documented separately from the profile itself.
 
