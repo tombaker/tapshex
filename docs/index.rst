@@ -16,9 +16,9 @@ This module is under development at `https://github.com/tombaker/tap2shex <https
 .. toctree::
    :maxdepth: 6
 
-   dctap_and_csv/index
-   dctap_and_shex/index
-   comparison/index
+   dctap_and_csv/index.rst
+   dctap_and_shex/index.rst
+   comparison/index.rst
    shex_extensions/index.rst
-   glossary/index
+   glossary/index.rst
 

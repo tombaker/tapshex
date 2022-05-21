@@ -10,9 +10,9 @@ Compared to ShEx, the DCTAP model does not support:
 .. toctree::
    :maxdepth: 2
 
-   reusable_expressions/index
-   combinations/index
-   nested_shapes/index
-   inverse_triple_constraints/index
-   negative_triple_constraints/index
-   imported_schemas/index
+   reusable_expressions/index.rst
+   combinations/index.rst
+   nested_shapes/index.rst
+   inverse_triple_constraints/index.rst
+   negative_triple_constraints/index.rst
+   imported_schemas/index.rst
