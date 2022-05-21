@@ -19,6 +19,6 @@ This module is under development at `https://github.com/tombaker/tap2shex <https
    dctap_and_csv/index
    dctap_and_shex/index
    comparison/index
-   shex_extensions/index
+   shex_extensions/index.rst
    glossary/index
 
