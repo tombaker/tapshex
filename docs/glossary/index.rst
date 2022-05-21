@@ -11,13 +11,13 @@ The terminology used in the DC Tabular Application Profiles specification repres
        A description of the structures and terms, and their usages, expected to be found in :term:`Instance Data`. An application profile that follows the DCTAP model is called a :term:`DCTAP Instance`.
    
    Blank Node
-       In RDF, a blank node is a unique identifier used, typically, within the local scope of a specific file or RDF store. As described in `RDF 1.1 Concepts and Abstract Syntax <https://www.w3.org/TR/rdf11-concepts/#section-blank-nodes>`__, a blank node is distinct both from an :term:`IRI` and a :term:`Literal`. Blank nodes are of interest only to users or creators of RDF applications.
+       In RDF, a unique identifier used, typically, within the local scope of a specific file or RDF store. As described in `RDF 1.1 Concepts and Abstract Syntax <https://www.w3.org/TR/rdf11-concepts/#section-blank-nodes>`__, a blank node is distinct both from an :term:`IRI` and a :term:`Literal`. Blank nodes are of interest only to users or creators of RDF applications.
    
    Compact IRI
        An IRI represented by an abbreviated syntax in which a label associated with a namespace (the prefix) is followed by a colon and by a local name which, taken together, can be expanded into a full IRI. For example, if the prefix "dcterms:" is associated with the namespace "http://purl.org/dc/terms/", then the prefixed name "dcterms:creator" can be expanded into "http://purl.org/dc/terms/creator".
 
    Constraint
-       In ShEx terms, a constraint is "a restriction on the set of permissible nodes or triples".
+       In ShEx, "a restriction on the set of permissible nodes or triples".
    
    Datatype
        As per `RDF 1.1 Concepts and Abstract Syntax <https://www.w3.org/TR/rdf11-concepts/#section-Datatypes>`__, a datatype is used to tag a :term:`Literal` as being a specific type of date or number or, by default, just a plain string. In RDF, datatypes are identified with :term:`IRI`\s.
@@ -50,32 +50,32 @@ The terminology used in the DC Tabular Application Profiles specification repres
        In DCTAP: a controlled term in :term:`Instance Data` denoting an attribute of an :term:`Entity` used in a :term:`Statement`. In ShEx: an RDF property as defined in `RDF Schema 1.1 <https://www.w3.org/TR/rdf-schema/#ch_property>`__ and identified with an :term:`IRI`.
    
    Predicate Constraint
-       In DCTAP: a pattern in an :term:`Application Profile` descriptive of how a :term:`Property` is expected to be used in :term:`Instance Data`. Also commonly known as a Property Constraint.
+       In DCTAP, a pattern in an :term:`Application Profile` descriptive of how a :term:`Property` is expected to be used in :term:`Instance Data`. Also commonly known as a Property Constraint.
    
    Shape 
-       In DCTAP: a set of :term:`Statement Template`s in an :term:`Application Profile` that characterize :term:`Statement`s expected to be found in a Description. 
+       In DCTAP, a set of :term:`Statement Template`\s in an :term:`Application Profile` that characterize :term:`Statement`\s expected to be found in a Description. 
 
    ShExC
-       In ShEx: a compact syntax for ShEx that is "meant for human eyes and fingers".
+       In ShEx, a compact syntax for ShEx that is "meant for human eyes and fingers".
 
    ShEx Schema
-       In ShEx: "A collection of shape expressions".
+       In ShEx, "A collection of shape expressions".
    
    Statement
        A property-value pair in :term:`Instance Data` used in a Description to make claims about an :term:`Entity`.
    
    Statement Template 
-       A pattern in an :term:`Application Profile` descriptive of :term:`Statement`s expected to be found in :term:`Instance Data`. In the now-superseded `DCMI Abstract Model <https://www.dublincore.org/specifications/dublin-core/abstract-model/>`_ of 2007, these were called Description Templates.
+       A pattern in an :term:`Application Profile` descriptive of :term:`Statement`\s expected to be found in :term:`Instance Data`. In the now-superseded `DCMI Abstract Model <https://www.dublincore.org/specifications/dublin-core/abstract-model/>`_ of 2007, these were called Description Templates.
    
    URI
        See :term:`IRI`.
    
    Value
-       In DCTAP: a value in :term:`Instance Data` associated with a Property in the context of a Statement. In ShEx, "a shorthand designation for the RDF node at the opposite end of an RDF data triple from a focus node".
+       In DCTAP, a value in :term:`Instance Data` associated with a Property in the context of a Statement. In ShEx, "a shorthand designation for the RDF node at the opposite end of an RDF data triple from a focus node".
    
    Value Constraint
-       In DCTAP: a pattern in an :term:`Application Profile` descriptive of :term:`Value`s expected in :term:`Instance Data`.
+       In DCTAP: a pattern in an :term:`Application Profile` descriptive of :term:`Value`\s expected in :term:`Instance Data`.
    
    Vocabulary
-       In DCTAP: a set of Properties and other terms used in :term:`Instance Data` and referenced as :term:`Predicate Constraint`s in :term:`Statement Template`s defined in an :term:`Application Profile`. By convention, all properties referenced in a DC Application Profile are defined and documented separately from the profile itself.
+       In DCTAP: a set of Properties and other terms used in :term:`Instance Data` and referenced as :term:`Predicate Constraint`\s in :term:`Statement Template`\s defined in an :term:`Application Profile`. By convention, all properties referenced in a DC Application Profile are defined and documented separately from the profile itself.
 

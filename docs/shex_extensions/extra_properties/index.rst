@@ -1,7 +1,7 @@
 .. _extra_properties:
 
-EXTRA
-.....
+Shape element: EXTRA
+....................
 
 `In ShEx, <https://shex.io/shex-primer/#extra-properties>`_, once a property is "mentioned" in a triple constraint, that mention "closes the property". As explained in the ShEx Primer: "By default, for an RDF data node to match that shape, every outgoing arc from that node that uses a mentioned predicate must match a triple constrain in the shape". 
 
