@@ -12,6 +12,8 @@ requires = [
     "dataclasses",
     "ruamel.base",
     "ruamel.yaml",
+    "ruamel.yaml[jinja2]",
+    "Jinja2",
     "PyShEx",
     "PyShExC",
     "ShExJSG",
