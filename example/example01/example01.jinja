@@ -1,18 +1,3 @@
-shex_jinja = """
-{%- for prefix, uri in namespaces.items() %}
-PREFIX {{prefix}}: <{{uri}}>
-{%- endfor %}
-BASE <http://purl.org/yama/example/mybook/v021/#>
-
-{%- for shape in shapes %}
-<{{shape.shapeID}}> {
-  {%- for statement in shape.statements%}
-  {{statement.property}} @<{{statement.statementID}}> { {{statement.minOccur}},{{statement.maxOccur}} };
-  {%- endfor %}
-}
-{%- endfor %}
-"""
-
 {%- for prefix, uri in namespaces.items() %}
 PREFIX {{prefix}}: <{{uri}}>
 {%- endfor %}
