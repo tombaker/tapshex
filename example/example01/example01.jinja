@@ -13,3 +13,25 @@ BASE <http://purl.org/yama/example/mybook/v021/#>
 {%- endfor %}
 """
 
+{%- for prefix, uri in namespaces.items() %}
+PREFIX {{prefix}}: <{{uri}}>
+{%- endfor %}
+BASE <http://purl.org/yama/example/mybook/v021/#>
+
+{%- for shape in shapes %}
+{{shape.shapeID}} {
+  {%- for statement in shape. statement_templates %}
+  {{statement.property}} {{statement.propertyID}} 
+  {%- if statement.valueNodeType %} {{statement.valueNodeType|upper}}{% endif -%}
+  {%- if statement.valueDataType %} {{statement.valueDataType}}{% endif -%}
+  {%- if statement.min or statement.max %} { {{-statement.min-}}
+        {%- if statement.max -%}
+         ,{{statement.max}} 
+        {%- endif -%} }
+  {%- endif -%}
+  {%- if statement.MaxInclusive %} MaxInclusive {{statement.MaxInclusive}} {%- endif -%}
+  {%- if statement.MinInclusive %} MinInclusive {{statement.MinInclusive}} {%- endif -%}
+  {%- if not loop.last -%} ;{%- endif -%}
+  {%- endfor %}
+}
+{%- endfor %}
