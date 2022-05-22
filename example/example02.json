@@ -1,0 +1,27 @@
+{
+        "namespaces": {
+                "ex": "http://ex.example/#",
+                "foaf": "http://xmlns.com/foaf/0.1/",
+                "school": "http://school.example/#",
+                "xsd": "http://www.w3.org/2001/XMLSchema#"
+        },
+        "shapes": [
+                {
+                        "shapeID": "school:Enrollee",
+                        "statement_templates": [
+                                {
+                                        "max": "2",
+                                        "min": "1",
+                                        "propertyID": "ex:hasGuardian",
+                                        "valueNodeType": "iri"
+                                },
+                                {
+                                        "MaxInclusive": "20",
+                                        "MinInclusive": "13",
+                                        "propertyID": "foaf:age",
+                                        "valueDataType": "xsd:integer"
+                                }
+                        ]
+                }
+        ]
+}
