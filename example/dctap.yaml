@@ -17,13 +17,14 @@ prefixes:
     "ex:":      "http://ex.example/#"
     "school:":  "http://school.example.org/#"
 
-extra_shape_elements:
-- "MinInclusive"
-- "MaxInclusive"
+# extra_shape_elements:
+# - "foo"
 
 extra_statement_template_elements:
 - "min"
 - "max"
+- "MinInclusive"
+- "MaxInclusive"
 
 extra_value_node_types:
 - "uri"
