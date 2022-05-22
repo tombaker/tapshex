@@ -1,0 +1,13 @@
+shex_jinja = """
+{%- for prefix, uri in namespaces.items() %}
+PREFIX {{prefix}}: <{{uri}}>
+{%- endfor %}
+
+{%- for shape in shapes %}
+<{{shape.shapeID}}> {
+  {%- for statement in shape.statements%}
+  {{statement.property}} @<{{statement.statementID}}> { {{statement.minOccur}},{{statement.maxOccur}} };
+  {%- endfor %}
+}
+{%- endfor %}
+"""
