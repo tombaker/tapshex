@@ -16,12 +16,12 @@
                     "valueNodeType": "iri"
                 },
                 {
-                    "MinInclusive": "13",
-                    "MaxInclusivemax": "20",
                     "propertyID": "foaf:age",
                     "valueDataType": "xsd:integer",
+                    "MinInclusive": "13",
+                    "MaxInclusive": "20"
                 }
-            ],
+            ]
         }
     ]
 }
