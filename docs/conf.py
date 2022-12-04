@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'tap2shex'
+project = 'tapshex'
 copyright = '2022, Tom Baker'
 author = 'Tom Baker'
 

@@ -1,8 +1,8 @@
 """Default settings."""
 
-DEFAULT_CONFIGFILE_NAME = "tap2shex.yml"
+DEFAULT_CONFIGFILE_NAME = "tapshex.yml"
 
-DEFAULT_CONFIG_YAML = """# tap2shex config file (YAML format)
+DEFAULT_CONFIG_YAML = """# tapshex config file (YAML format)
 
 default_shape_identifier: ":default"
 picklist_item_separator: ' '

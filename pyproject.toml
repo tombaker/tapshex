@@ -3,10 +3,10 @@ requires = ["setuptools!=50.0","flit"]
 build-backend = "flit.buildapi"
 
 [tool.flit.metadata]
-module = "tap2shex"
+module = "tapshex"
 author = "Tom Baker"
 author-email = "tom@tombaker.org"
-home-page = "https://github.com/tombaker/tap2shex"
+home-page = "https://github.com/tombaker/tapshex"
 requires = [
     "click",
     "dataclasses",
@@ -38,4 +38,4 @@ doc = [
 ]
 
 [tool.flit.scripts]
-tap2shex = "tap2shex.cli:cli"
+tapshex = "tapshex.cli:cli"

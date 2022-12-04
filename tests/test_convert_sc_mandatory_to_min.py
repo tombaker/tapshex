@@ -1,6 +1,6 @@
 """Mandatory / repeatable."""
 
-from tap2shex.utils import _convert_sc_mandatory_to_sc_min
+from tapshex.utils import _convert_sc_mandatory_to_sc_min
 
 def test_convert_sc_mandatory_to_sc_min_true():
     """If value of mandatory is "true", then "min" is 1, and mandatory deleted."""
