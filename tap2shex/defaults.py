@@ -2,15 +2,10 @@
 
 DEFAULT_CONFIGFILE_NAME = "tap2shex.yml"
 
-DEFAULT_CONFIG_YAML = """# tap2shex configuration file (in YAML format)
+DEFAULT_CONFIG_YAML = """# tap2shex config file (YAML format)
 
-## This module ignores elements (column headers) that are not part of the 
-## base DCTAP model unless they are configured here as "extra" elements.
-##
-## Extra elements must be designated either as "shape" elements (eg, "closed 
-## or "start") or as "statement constraint" elements (eg, "min" and "max").
-## As extra elements are not supported by this module, their values are 
-## simply passed through to the text, JSON, and YAML outputs.
+default_shape_identifier: ":default"
+picklist_item_separator: ' '
 
 extra_shape_elements:
 - closed
@@ -20,16 +15,12 @@ extra_statement_constraint_elements:
 - min
 - max
 
-## This module has three built-in value node types: "iri", "literal", and "bnode".
-## Extra node types can be added here, for example as aliases, such as "uri" for "iri",
-## or as combinations of node types, such as "shacl:BlankNodeOrLiteral".
 extra_value_node_types:
 - nonliteral
 
-## Aliases (case-insensitive) mapped to "official" element names (case-sensitive)
-#element_aliases:
-#    "mand": "mandatory"
-#    "rep": "repeatable"
+element_aliases:
+    "mand": "mandatory"
+    "rep": "repeatable"
 
 prefixes:
     ":":        "http://example.org/"
@@ -45,17 +36,4 @@ prefixes:
     "skosxl:":  "http://www.w3.org/2008/05/skos-xl#"
     "wdt:":     "http://www.wikidata.org/prop/direct/"
     "xsd:":     "http://www.w3.org/2001/XMLSchema#"
-
-## There must be a shape identifier in order to ensure consistency 
-## of JSON and YAML output. A different default identifier can be 
-## set here, but the module will not permit the identifier to be a 
-## string of zero length (and will revert to "default").
-default_shape_identifier: ":default"
-
-## The default separator for items in a picklist is a single blank space
-## but this could be replaced with other common separators, such as commas 
-## or pipes (or-bars). The program routinely strips extra whitespace from 
-## the start and end of picklist items.
-picklist_item_separator: ' '
-
 """
