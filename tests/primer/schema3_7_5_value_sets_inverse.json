@@ -1,0 +1,64 @@
+{
+    "@context": "http://www.w3.org/ns/shex.jsonld",
+    "type": "Schema",
+    "shapes": [
+        {
+            "id": "http://my.example/#IssueShape",
+            "type": "Shape",
+            "expression": {
+                "type": "EachOf",
+                "expressions": [
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "http://a.example/#status",
+                        "valueExpr": {
+                            "type": "NodeConstraint",
+                            "values": [
+                                {
+                                    "type": "IriStemRange",
+                                    "stem": "http://a.example/codes#"
+                                },
+                                {
+                                    "type": "IriStemRange",
+                                    "stem": "http://aux.example/terms#"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "http://a.example/#mood",
+                        "valueExpr": {
+                            "type": "NodeConstraint",
+                            "values": [
+                                {
+                                    "type": "LanguageStemRange",
+                                    "stem": {
+                                        "value": "en"
+                                    },
+                                    "exclusions": [
+                                        {
+                                            "value": "en-fr"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "inverse": true,
+                        "predicate": "http://a.example/#hasIssue",
+                        "valueExpr": {
+                            "type": "NodeConstraint",
+                            "values": [
+                                "http://my.example/#Product1",
+                                "http://my.example/#Product2"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

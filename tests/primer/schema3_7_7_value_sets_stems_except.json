@@ -1,0 +1,29 @@
+{
+    "@context": "http://www.w3.org/ns/shex.jsonld",
+    "type": "Schema",
+    "shapes": [
+        {
+            "id": "http://my.example/#IssueShape",
+            "type": "Shape",
+            "expression": {
+                "type": "TripleConstraint",
+                "predicate": "http://a.example/#status",
+                "valueExpr": {
+                    "type": "NodeConstraint",
+                    "values": [
+                        {
+                            "type": "IriStemRange",
+                            "stem": {
+                                "type": "Wildcard"
+                            },
+                            "exclusions": [
+                                "http://a.example/codes#retracted",
+                                "http://a.example/codes#assigned"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

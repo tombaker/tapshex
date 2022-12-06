@@ -1,0 +1,33 @@
+{
+    "type": "Schema",
+    "shapes": {
+        "my:UserShape": {
+            "type": "Shape",
+            "expression": {
+                "type": "group",
+                "expressions": [
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "rdf:type",
+                        "value": {
+                            "type": "NodeConstraint",
+                            "values": [
+                                "ex:Employee"
+                            ]
+                        }
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "ex:reportedBy",
+                        "value": {
+                            "type": "NodeConstraint",
+                            "values": [
+                                "foaf:Person"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

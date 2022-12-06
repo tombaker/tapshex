@@ -1,0 +1,65 @@
+{
+    "@context": "http://www.w3.org/ns/shex.jsonld",
+    "type": "Schema",
+    "shapes": [
+        {
+            "id": "http://my.example/#UserShape",
+            "type": "Shape",
+            "expression": {
+                "type": "EachOf",
+                "expressions": [
+                    {
+                        "type": "EachOf",
+                        "expressions": [
+                            {
+                                "type": "TripleConstraint",
+                                "predicate": "http://xmlns.com/foaf/0.1/name",
+                                "valueExpr": {
+                                    "type": "NodeConstraint",
+                                    "nodeKind": "literal"
+                                }
+                            },
+                            {
+                                "type": "TripleConstraint",
+                                "min": 1,
+                                "max": -1,
+                                "predicate": "http://xmlns.com/foaf/0.1/mbox",
+                                "valueExpr": {
+                                    "type": "NodeConstraint",
+                                    "nodeKind": "iri"
+                                }
+                            }
+                        ],
+                        "id": "http://my.example/#entity"
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "http://ex.example/#userID",
+                        "valueExpr": {
+                            "type": "NodeConstraint",
+                            "nodeKind": "literal"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": "http://my.example/#EmployeeShape",
+            "type": "Shape",
+            "expression": {
+                "type": "EachOf",
+                "expressions": [
+                    "http://my.example/#entity",
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "http://ex.example/#employeeID",
+                        "valueExpr": {
+                            "type": "NodeConstraint",
+                            "nodeKind": "literal"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

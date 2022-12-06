@@ -1,0 +1,22 @@
+{
+    "my:IssueShape": {
+        "type": "Shape",
+        "expression": {
+            "type": "TripleConstraint",
+            "predicate": "ex:status",
+            "value": {
+                "type": "NodeConstraint",
+                "values": [
+                    {
+                        "value": "0",
+                        "type": "http://www.w3.org/2001/XMLSchema#integer"
+                    },
+                    {
+                        "value": "1",
+                        "type": "http://www.w3.org/2001/XMLSchema#integer"
+                    }
+                ]
+            }
+        }
+    }
+}

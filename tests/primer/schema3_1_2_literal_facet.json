@@ -1,0 +1,15 @@
+{
+    "my:UserShape": {
+        "type": "Shape",
+        "expression": {
+            "type": "TripleConstraint",
+            "predicate": "ex:shoeSize",
+            "value": {
+                "type": "NodeConstraint",
+                "datatype": "http://www.w3.org/2001/XMLSchema#float",
+                "mininclusive": 5.5,
+                "maxinclusive": 12.5
+            }
+        }
+    }
+}

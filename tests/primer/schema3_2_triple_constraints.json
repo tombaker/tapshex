@@ -1,0 +1,18 @@
+{
+    "@context": "http://www.w3.org/ns/shex.jsonld",
+    "type": "Schema",
+    "shapes": [
+        {
+            "id": "http://my.example/#UserShape",
+            "type": "Shape",
+            "expression": {
+                "type": "TripleConstraint",
+                "predicate": "http://xmlns.com/foaf/0.1/name",
+                "valueExpr": {
+                    "type": "NodeConstraint",
+                    "datatype": "http://www.w3.org/2001/XMLSchema#string"
+                }
+            }
+        }
+    ]
+}

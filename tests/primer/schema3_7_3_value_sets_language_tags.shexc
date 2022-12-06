@@ -1,0 +1,6 @@
+PREFIX ex: <http://ex.example/#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+my:IssueShape {
+  ex:label [@en @fr]
+}

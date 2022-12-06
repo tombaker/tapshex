@@ -1,0 +1,10 @@
+PREFIX ex: <http://ex.example/#>
+PREFIX excodes: <http://excodes.example/#>
+PREFIX auxterms: <http://auxterms.example/#>
+
+my:IssueShape {
+  ex:status [
+      excodes:~ - excodes:unassigned - excodes:assigned
+      auxterms:~ - <http://aux.example/terms#med_>~
+  ]
+}

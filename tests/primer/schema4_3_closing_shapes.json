@@ -1,0 +1,56 @@
+{
+    "type": "Schema",
+    "shapes": [
+        {
+            "type": "Shape",
+            "id": "my:OpenUserShape",
+            "expression": {
+                "type": "group",
+                "expressions": [
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "foaf:name",
+                        "value": {
+                            "type": "NodeConstraint",
+                            "datatype": "xsd:string"
+                        }
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "foaf:mbox",
+                        "value": {
+                            "type": "NodeConstraint",
+                            "nodeKind": "iri"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Shape",
+            "id": "my:ClosedUserShape",
+            "closed": "true",
+            "expression": {
+                "type": "group",
+                "expressions": [
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "foaf:name",
+                        "value": {
+                            "type": "NodeConstraint",
+                            "datatype": "xsd:string"
+                        }
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "foaf:mbox",
+                        "value": {
+                            "type": "NodeConstraint",
+                            "nodeKind": "iri"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

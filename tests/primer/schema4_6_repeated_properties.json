@@ -1,0 +1,83 @@
+{
+    "my:IssueShape": {
+        "type": "Shape",
+        "expression": {
+            "type": "group",
+            "expressions": [
+                {
+                    "type": "TripleConstraint",
+                    "predicate": "ex:state",
+                    "value": {
+                        "type": "NodeConstraint",
+                        "values": [
+                            "ex:accepted",
+                            "ex:resolved"
+                        ]
+                    }
+                },
+                {
+                    "type": "TripleConstraint",
+                    "predicate": "ex:reproducedBy",
+                    "value": "my:TesterShape"
+                },
+                {
+                    "type": "TripleConstraint",
+                    "predicate": "ex:reproducedBy",
+                    "value": "my:ProgrammerShape"
+                }
+            ]
+        }
+    },
+    "my:TesterShape": {
+        "type": "Shape",
+        "expression": {
+            "type": "group",
+            "expressions": [
+                {
+                    "type": "TripleConstraint",
+                    "predicate": "foaf:name",
+                    "value": {
+                        "type": "NodeConstraint",
+                        "datatype": "xsd:string"
+                    }
+                },
+                {
+                    "type": "TripleConstraint",
+                    "predicate": "ex:role",
+                    "value": {
+                        "type": "NodeConstraint",
+                        "values": [
+                            "ex:testingRole"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "my:ProgrammerShape": {
+        "type": "Shape",
+        "expression": {
+            "type": "group",
+            "expressions": [
+                {
+                    "type": "TripleConstraint",
+                    "predicate": "foaf:name",
+                    "value": {
+                        "type": "NodeConstraint",
+                        "datatype": "xsd:string"
+                    }
+                },
+                {
+                    "type": "TripleConstraint",
+                    "predicate": "ex:department",
+                    "value": {
+                        "type": "NodeConstraint",
+                        "values": [
+                            "ex:Programming"
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

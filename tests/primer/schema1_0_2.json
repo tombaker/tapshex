@@ -1,0 +1,37 @@
+{
+    "@context": "http://www.w3.org/ns/shex.jsonld",
+    "type": "Schema",
+    "shapes": [
+        {
+            "id": "http://school.example/#enrolleeAge",
+            "type": "NodeConstraint",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "mininclusive": 13,
+            "maxinclusive": 20
+        },
+        {
+            "id": "http://school.example/#Enrollee",
+            "type": "Shape",
+            "expression": {
+                "type": "EachOf",
+                "expressions": [
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "http://xmlns.com/foaf/0.1/age",
+                        "valueExpr": "http://school.example/#enrolleeAge"
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "min": 1,
+                        "max": 2,
+                        "predicate": "http://ex.example/#hasGuardian",
+                        "valueExpr": {
+                            "type": "NodeConstraint",
+                            "nodeKind": "iri"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

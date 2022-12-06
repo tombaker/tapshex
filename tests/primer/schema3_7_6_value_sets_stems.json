@@ -1,0 +1,37 @@
+{
+    "@context": "http://www.w3.org/ns/shex.jsonld",
+    "type": "Schema",
+    "shapes": [
+        {
+            "id": "http://my.example/#IssueShape",
+            "type": "Shape",
+            "expression": {
+                "type": "TripleConstraint",
+                "predicate": "http://a.example/#status",
+                "valueExpr": {
+                    "type": "NodeConstraint",
+                    "values": [
+                        {
+                            "type": "IriStemRange",
+                            "stem": "http://a.example/codes#",
+                            "exclusions": [
+                                "http://a.example/codes#unassigned",
+                                "http://a.example/codes#assigned"
+                            ]
+                        },
+                        {
+                            "type": "IriStemRange",
+                            "stem": "http://aux.example/terms#",
+                            "exclusions": [
+                                {
+                                    "type": "IriStem",
+                                    "stem": "http://aux.example/terms#med_"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
