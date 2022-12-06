@@ -1,7 +1,7 @@
 """Default settings."""
 
 DEFAULT_CONFIGFILE_NAME = "tapshex.yml"
-
+DEFAULT_HIDDEN_CONFIGFILE_NAME = ".tapshexrc"
 DEFAULT_CONFIG_YAML = """# tapshex config file (YAML format)
 
 default_shape_identifier: ":default"
