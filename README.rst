@@ -1,7 +1,7 @@
-tap2shex
-========
+tapshex
+=======
 
-Generate ShEx from DCTAP/JSON input.
+Generate ShEx from tabular application profiles in DCTAP format.
 
 Installation
 ------------
