@@ -8,15 +8,22 @@ from dctap.utils import coerce_integer, coerce_numeric, is_uri_or_prefixed_uri
 
 
 @dataclass
-class TAPShExStatementTemplate(TAPStatementTemplate):
-    """Subclass of DCTAP dataclass TAPStatementTemplate."""
+class StatementTemplate(TAPStatementTemplate):
+    """Subclass of DCTAP class TAPStatementTemplate."""
 
     min: str = ""
     max: str = ""
+    mininclusive: str = ""
+    maxinclusive: str = ""
+    minexclusive: str = ""
+    maxexclusive: str = ""
+    minlength: str = ""
+    maxlength: str = ""
 
 
 @dataclass
-class TAPShExShape(TAPShape):
-    """Subclass of DCTAP dataclass TAPShape."""
+class Shape(TAPShape):
+    """Subclass of DCTAP aclass TAPShape."""
 
     closed: str = ""
+    extra: str = ""
