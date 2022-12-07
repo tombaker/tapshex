@@ -35,7 +35,11 @@ extensions = [
     "sphinx.ext.napoleon", 
     "sphinx_rtd_theme", 
     "sphinx.ext.autosectionlabel",
+    "sphinx.ext.intersphinx",
 ]
+intersphinx_mapping = {
+    "dctap": ("https://dctap-python.readthedocs.io/en/latest/", None),
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
