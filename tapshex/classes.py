@@ -27,3 +27,4 @@ class Shape(TAPShape):
 
     closed: str = ""
     extra: str = ""
+    start: str = ""
