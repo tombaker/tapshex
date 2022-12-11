@@ -4,23 +4,8 @@ DEFAULT_CONFIGFILE_NAME = "tapshex.yml"
 DEFAULT_HIDDEN_CONFIGFILE_NAME = ".tapshexrc"
 DEFAULT_CONFIG_YAML = """# tapshex config file (YAML format)
 
-default_shape_identifier: ":default"
-picklist_item_separator: ' '
-
-extra_shape_elements:
-- closed
-- start
-
-extra_statement_constraint_elements:
-- min
-- max
-
-extra_value_node_types:
-- nonliteral
-
-element_aliases:
-    "mand": "mandatory"
-    "rep": "repeatable"
+# See https://tapshex.readthedocs.io/en/latest/config/
+# for advanced configuration options
 
 prefixes:
     ":":        "http://example.org/"
@@ -36,4 +21,11 @@ prefixes:
     "skosxl:":  "http://www.w3.org/2008/05/skos-xl#"
     "wdt:":     "http://www.wikidata.org/prop/direct/"
     "xsd:":     "http://www.w3.org/2001/XMLSchema#"
+
+extra_value_node_types:
+- nonliteral
+
+element_aliases:
+    "mand": "mandatory"
+    "rep": "repeatable"
 """
