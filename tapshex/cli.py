@@ -48,7 +48,7 @@ def cli(context):
 @click.help_option(help="Show help and exit")
 @click.pass_context
 def init(context, hidden):
-    """Write config file [default: tapshex.yml]."""
+    """Write config file [default: tapshex.yaml]."""
     if hidden:
         configfile = DEFAULT_HIDDEN_CONFIGFILE_NAME
     else:
