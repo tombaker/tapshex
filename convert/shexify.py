@@ -3,7 +3,7 @@ from pyshexc.parser_impl.generate_shexj import parse
 import json
 
 tap = """
-shapeID,propertyID,valueNodeType,valueDataType,min,max,mininclusive,maxinclusive
+shapeID,propertyID,valueNodeType,valueDataType,minoccurs,maxoccurs,mininclusive,maxinclusive
 school:Enrollee,ex:hasGuardian,iri,,1,2
 ,foaf:age,,xsd:integer,,,13,20
 """
@@ -47,9 +47,9 @@ PREFIX {{prefix}}: <{{uri}}>
   {{statement.property}} {{statement.propertyID}} 
   {%- if statement.valueNodeType %} {{statement.valueNodeType|upper}}{% endif -%}
   {%- if statement.valueDataType %} {{statement.valueDataType}}{% endif -%}
-  {%- if statement.min or statement.max %} { {{-statement.min-}}
-		{%- if statement.max -%}
-		 ,{{statement.max}} 
+  {%- if statement.minoccurs or statement.maxoccurs %} { {{-statement.minoccurs-}}
+		{%- if statement.maxoccurs -%}
+		 ,{{statement.maxoccurs}} 
 		{%- endif -%} }
   {%- endif -%}
   {%- if statement.MaxInclusive %} MaxInclusive {{statement.MaxInclusive}} {%- endif -%}
