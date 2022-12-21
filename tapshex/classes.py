@@ -11,8 +11,8 @@ from dctap.utils import coerce_integer, coerce_numeric, is_uri_or_prefixed_uri
 class StatementTemplate(TAPStatementTemplate):
     """Subclass of DCTAP class TAPStatementTemplate."""
 
-    min: str = ""
-    max: str = ""
+    minoccurs: str = ""
+    maxoccurs: str = ""
     mininclusive: str = ""
     maxinclusive: str = ""
     minexclusive: str = ""
