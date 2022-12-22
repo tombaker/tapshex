@@ -17,16 +17,17 @@ from dctap.config import get_config
 from dctap.tapclasses import TAPStatementTemplate
 from dctap.csvreader import csvreader
 
-config_dict = get_config()
 
 def test_valueConstraintType_languagetag_parse():
     """If valueConstraintType list, valueConstraint parsed on whitespace."""
+    config_dict = get_config()
     sc = TAPStatementTemplate()
     sc.propertyID = "dcterms:creator"
     sc.valueConstraintType = "languagetag"
     sc.valueConstraint = "fr it de"
     sc._valueConstraintType_languageTag_parse(config_dict)
     assert sc.valueConstraint == ["fr", "it", "de"]
+
 
 def test_valueConstraintType_languagetag_item_separator_comma(tmp_path):
     """@@@"""
@@ -41,8 +42,9 @@ def test_valueConstraintType_languagetag_item_separator_comma(tmp_path):
             'ex:foo,languagetag,"fr, it, de"\n'
         )
     )
-    value_constraint = csvreader(open(csvfile_path), config_dict)[0]["shapes"][0]["statement_templates"][0]["valueConstraint"]
+    value_constraint = csvreader(open(csvfile_path), config_dict)["shapes"][0]["statement_templates"][0]["valueConstraint"]
     assert value_constraint == ["fr", "it", "de"]
+
 
 def test_valueConstraintType_languagetag_item_separator_pipe(tmp_path):
     """@@@"""
@@ -57,6 +59,6 @@ def test_valueConstraintType_languagetag_item_separator_pipe(tmp_path):
             'ex:foo,languagetag,"fr|it|de"\n'
         )
     )
-    value_constraint = csvreader(open(csvfile_path), config_dict)[0]["shapes"][0]["statement_templates"][0]["valueConstraint"]
+    value_constraint = csvreader(open(csvfile_path), config_dict)["shapes"][0]["statement_templates"][0]["valueConstraint"]
     assert value_constraint == ["fr", "it", "de"]
 

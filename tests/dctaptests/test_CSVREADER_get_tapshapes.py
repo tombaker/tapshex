@@ -1,5 +1,6 @@
 """From list of rows-as-dictionaries, output dictionary of shapes-as-dictionaries."""
 
+import pytest
 from dctap.config import get_config
 from dctap.csvreader import _get_tapshapes
 
