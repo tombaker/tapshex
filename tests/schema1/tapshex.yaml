@@ -1,0 +1,7 @@
+### dctap configuration file (in YAML format)
+
+prefixes:
+    "ex:":      "http://ex.example/#"
+    "xsd:":     "http://www.w3.org/2001/XMLSchema#"
+    "foaf:":    "http://xmlns.com/foaf/0.1/"
+    "school:":  "http://school.example/#"
