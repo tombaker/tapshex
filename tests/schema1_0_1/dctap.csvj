@@ -1,17 +1,21 @@
 {
-    "shapes": [
+  "shapes": [
+    {
+      "shapeID": "school:Enrollee",
+      "statement_templates": [
         {
-            "shapeID": "school:Enrollee",
-            "statement_templates": [
-                {
-                    "propertyID": "ex:hasGuardian",
-                    "valueNodeType": "iri"
-                },
-                {
-                    "propertyID": "http://xmlns.com/foaf/0.1/age",
-                    "valueDataType": "http://www.w3.org/2001/XMLSchema#integer"
-                }
-            ]
+          "propertyID": "ex:hasGuardian",
+          "valueNodeType": "iri"
+        },
+        {
+          "propertyID": "foaf:age",
+          "valueDataType": "xsd:integer"
         }
-    ]
+      ]
+    }
+  ],
+  "namespaces": {
+    "xsd:": "http://www.w3.org/2001/XMLSchema#",
+    "foaf:": "http://xmlns.com/foaf/0.1/"
+  }
 }
