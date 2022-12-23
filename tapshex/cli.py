@@ -5,14 +5,16 @@ Modeled on https://github.com/dcmi/dctap-python/blob/main/dctap/cli.py
 
 import sys
 import json as j
+from pprint import pprint
 from ruamel.yaml import YAML
 import click
-from .defaults import DEFAULT_CONFIGFILE_NAME, DEFAULT_HIDDEN_CONFIGFILE_NAME
 from dctap.config import get_config, write_configfile
 from dctap.csvreader import csvreader
 from dctap.inspect import pprint_tapshapes, print_warnings
 from dctap.loggers import stderr_logger
 from dctap.utils import expand_uri_prefixes
+from .defaults import DEFAULT_CONFIGFILE_NAME, DEFAULT_HIDDEN_CONFIGFILE_NAME
+from .classes import StatementTemplate, Shape
 
 # pylint: disable=unused-argument,no-value-for-parameter
 # => unused-argument: Allows placeholders for now.
@@ -67,34 +69,50 @@ def init(context, hidden):
 @click.pass_context
 def parse(context, csv, config, uris, warnings, tapj, shexc, shexj):
     """View TAP/TXT (default), TAP/JSON, ShExC, or ShExJ, optionally with warnings."""
-    # pylint: disable=too-many-locals,too-many-arguments
 
     if config:
-        config_dict = get_config(configfile_name=config)
+        config_dict = get_config(
+            configfile_name=config, shape_class=Shape, state_class=StatementTemplate
+        )
     else:
-        config_dict = get_config()
-    tapshapes_dict = csvreader(csv, config_dict)
+        config_dict = get_config(shape_class=Shape, state_class=StatementTemplate)
 
-    if expand_prefixes:
+    tapshapes_dict = csvreader(
+        open_csvfile_obj=csv,
+        config_dict=config_dict,
+        shape_class=Shape,
+        state_class=StatementTemplate,
+    )
+
+    if uris:
         tapshapes_dict = expand_uri_prefixes(tapshapes_dict, config_dict)
+
+    print("tapshapes_dict:")
+    pprint(tapshapes_dict)
+    print("")
 
     # if (tapj and shexc) or (tapj and shexj) or (shexc and shexj):
     #     echo = stderr_logger()
     #     echo.warning("Options tapj, shexc, and shexj are mutually exclusive - re-try.")
     #     click.Context.exit(0)
 
-    # if tapj:
-    #     if not warnings:
-    #         del tapshapes_dict["warnings"]
-    #     json_output = j.dumps(tapshapes_dict, indent=2)
-    #     print(json_output)
-    # elif shexc:
-    #     print("Placeholder for ShExC output.")
-    # elif shexj:
-    #     print("Placeholder for ShExJ output.")
-    # else:
-    #     pprint_output = pprint_tapshapes(tapshapes_dict, config_dict)
-    #     for line in pprint_output:
-    #         print(line, file=sys.stdout)
-    #     if warnings:
-    #         print_warnings(tapshapes_dict["warnings"])
+    if tapj:
+        if not warnings:
+            del tapshapes_dict["warnings"]
+        json_output = j.dumps(tapshapes_dict, indent=2)
+        print(json_output)
+    elif shexc:
+        print("Placeholder for ShExC output.")
+    elif shexj:
+        print("Placeholder for ShExJ output.")
+    else:
+        pprint_output = pprint_tapshapes(
+            tapshapes_dict=tapshapes_dict,
+            config_dict=config_dict,
+            shape_class=Shape,
+            state_class=StatementTemplate,
+        )
+        for line in pprint_output:
+            print(line, file=sys.stdout)
+        if warnings:
+            print_warnings(tapshapes_dict["warnings"])
