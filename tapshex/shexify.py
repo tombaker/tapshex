@@ -15,7 +15,4 @@ def shexify(dctap_as_dict=None, shex_template=None):
 def shexjfy(shexc_schema=None):
     """@@@"""
     shexj_schema=parse(shexc_schema)._as_json
-    parsed = json.loads(shexj_schema)
-    for line in shexc_schema.splitlines():
-        print(line)
-
+    return json.loads(shexj_schema)
