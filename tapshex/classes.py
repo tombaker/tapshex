@@ -11,14 +11,14 @@ from dctap.utils import coerce_integer, coerce_numeric, is_uri_or_prefixed_uri
 class StatementTemplate(TAPStatementTemplate):
     """Subclass of DCTAP class TAPStatementTemplate."""
 
-    minoccurs: str = ""
-    maxoccurs: str = ""
-    mininclusive: str = ""
-    maxinclusive: str = ""
-    minexclusive: str = ""
-    maxexclusive: str = ""
-    minlength: str = ""
-    maxlength: str = ""
+    minOccurs: str = ""
+    maxOccurs: str = ""
+    minInclusive: str = ""
+    maxInclusive: str = ""
+    minExclusive: str = ""
+    maxExclusive: str = ""
+    minLength: str = ""
+    maxLength: str = ""
 
 
 @dataclass
