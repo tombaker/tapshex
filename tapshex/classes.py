@@ -9,7 +9,7 @@ from dctap.utils import coerce_integer, coerce_numeric, is_uri_or_prefixed_uri
 
 @dataclass
 class StatementTemplate(TAPStatementTemplate):
-    """Subclass of DCTAP class TAPStatementTemplate."""
+    """Extends DCTAP class TAPStatementTemplate."""
 
     minOccurs: str = ""
     maxOccurs: str = ""
@@ -20,10 +20,13 @@ class StatementTemplate(TAPStatementTemplate):
     minLength: str = ""
     maxLength: str = ""
 
+    def normalize(self, config_dict):
+        """Invokes and extends TAPStatementTemplate.normalize."""
+        super().normalize()
 
 @dataclass
 class Shape(TAPShape):
-    """Subclass of DCTAP aclass TAPShape."""
+    """Extends DCTAP class TAPShape."""
 
     closed: str = ""
     extra: str = ""
