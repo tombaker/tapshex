@@ -23,25 +23,25 @@ class StatementTemplate(TAPStatementTemplate):
     maxLength: str = ""
 
     def normalize(self, config_dict):
-        """Invokes and extends TAPStatementTemplate.normalize."""
+        """Inherits from and extends TAPStatementTemplate.normalize."""
         super().normalize()
-        self._convert_boolean_values_to_integers(self)
+        self._convert_booleans(self)
         self._convert_mandatory_to_minoccurs(self)
         self._convert_repeatable_to_maxoccurs(self)
         self._are_nonnegative_integers(self)
         self._warn_if_values_not_numeric(self)
         return self
 
-    def _convert_boolean_values_to_integers(self):
-        """Converts boolean values to integers."""
-        elements_that_take_boolean_values = { "propertyExtra": self.propertyExtra }
-        for element in self.elements_that_take_boolean_values:
-            value = self.get(element)
+    def _convert_booleans(self):
+        """Convert booleans to integers."""
+        boolean_elements = [ "propertyExtra" ]
+        for elem in boolean_elements:
+            value = getattr(self, elem)
             if value:
                 if value.lower() == "true":
-                    self[element] = 1
+                    setattr(self, elem, 1)
                 elif value.lower() == "false":
-                    self[element] = 0
+                    setattr(self, elem, 0)
 
     def _convert_mandatory_to_minoccurs(self):
         """If mandatory has value, replace with minOccurs."""
@@ -101,16 +101,19 @@ class Shape(TAPShape):
     closed: str = ""
     start: str = ""
 
-    def _convert_boolean_values_to_integers(self):
-        """Converts boolean values to integers."""
-        elements_that_take_boolean_values = {
-            "closed": self.closed,
-            "start": self.start,
-        }
-        for element in self.elements_that_take_boolean_values:
-            value = self.get(element)
+    def normalize(self, config_dict):
+        """Inherits from and extends TAPShape.normalize."""
+        super().normalize()
+        self._convert_booleans(self)
+        return self
+
+    def _convert_booleans(self):
+        """Convert booleans to integers."""
+        boolean_elements = ["closed", "start"]
+        for elem in boolean_elements:
+            value = getattr(self, elem)
             if value:
                 if value.lower() == "true":
-                    self[element] = 1
+                    setattr(self, elem, 1)
                 elif value.lower() == "false":
-                    self[element] = 0
+                    setattr(self, elem, 0)
