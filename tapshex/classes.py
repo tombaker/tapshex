@@ -25,11 +25,10 @@ class StatementTemplate(TAPStatementTemplate):
     def normalize(self, config_dict):
         """Invokes and extends TAPStatementTemplate.normalize."""
         super().normalize()
-        self._warn_if_values_not_nonnegative_integers()
         self._convert_boolean_values_to_integers(self)
         self._convert_mandatory_to_minoccurs(self)
         self._convert_repeatable_to_maxoccurs(self)
-        self._warn_if_values_not_nonnegative_integers(self)
+        self._are_nonnegative_integers(self)
         self._warn_if_values_not_numeric(self)
         return self
 
@@ -66,25 +65,33 @@ class StatementTemplate(TAPStatementTemplate):
         del self.repeatable
         return self
 
-    def _warn_if_values_not_nonnegative_integers(self):
-        """@@@"""
+    def _are_nonnegative_integers(self):
+        """Four elements take values that must be nonnegative integers."""
         elements_that_take_nonnegative_integers = {
-            "minOccurs", self.minOccurs,
-            "maxOccurs", self.maxOccurs,
-            "minLength", self.minLength,
-            "maxLength", self.maxLength,
+            "minOccurs": self.minOccurs,
+            "maxOccurs": self.maxOccurs,
+            "minLength": self.minLength,
+            "maxLength": self.maxLength,
         }
+        for (elem, state_field) in elements_that_take_nonnegative_integers.items():
+            warning_message = f"Value {repr(state_field)} is not a nonnegative integer"
+            state_field = coerce_integer(state_field)
+            if isinstance(state_field, int):
+                if state_field < 0:
+                    self.state_warns[elem] = warning_message
+            elif state_field:  # but empty strings should not generate warnings
+                self.state_warns[elem] = warning_message
+        return self
 
     def _warn_if_values_not_numeric(self):
         """@@@"""
         elements_that_take_numerical_values = {
-            "minInclusive", self.minInclusive,
-            "maxInclusive", self.maxInclusive,
-            "minExclusive", self.minExclusive,
-            "maxExclusive", self.maxExclusive,
+            "minInclusive": self.minInclusive,
+            "maxInclusive": self.maxInclusive,
+            "minExclusive": self.minExclusive,
+            "maxExclusive": self.maxExclusive,
         }
-        if not value_is_numeric:
-            print(f"Warning: {element} value is not numeric: {value}")
+
 
 
 @dataclass
