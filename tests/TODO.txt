@@ -1,0 +1,6 @@
+class StatementTemplate
+    def _convert_boolean_values_to_integers
+    def _convert_mandatory_to_minoccurs
+    def _convert_repeatable_to_maxoccurs
+    def _warn_if_values_not_nonnegative_integers
+    def _warn_if_values_not_numeric
