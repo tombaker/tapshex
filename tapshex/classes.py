@@ -28,8 +28,8 @@ class StatementTemplate(TAPStatementTemplate):
         self._convert_booleans()
         self._convert_mandatory_to_minoccurs()
         self._convert_repeatable_to_maxoccurs()
-        self._are_nonnegative_integers()
-        self._warn_if_values_not_numeric()
+        self._try_to_coerce_nonnegative_integers()
+        self._try_to_coerce_numbers()
         return self
 
     def _convert_booleans(self):
@@ -65,33 +65,45 @@ class StatementTemplate(TAPStatementTemplate):
         del self.repeatable
         return self
 
-    def _are_nonnegative_integers(self):
+    def _try_to_coerce_nonnegative_integers(self):
         """Four elements take values that must be nonnegative integers."""
-        elements_that_take_nonnegative_integers = {
-            "minOccurs": self.minOccurs,
-            "maxOccurs": self.maxOccurs,
-            "minLength": self.minLength,
-            "maxLength": self.maxLength,
-        }
-        for (elem, state_field) in elements_that_take_nonnegative_integers.items():
-            warning_message = f"Value {repr(state_field)} is not a nonnegative integer"
-            state_field = coerce_integer(state_field)
-            if isinstance(state_field, int):
-                if state_field < 0:
+        integer_elements = [
+            "minOccurs",
+            "maxOccurs",
+            "minLength",
+            "maxLength"
+        ]
+        for elem in integer_elements:
+            actual_value = getattr(self, elem)
+            warning_message = f"Value {repr(actual_value)} is not a nonnegative integer."
+            coerced_value = coerce_integer(actual_value)
+            if isinstance(coerced_value, int):
+                if coerced_value < 0:
                     self.state_warns[elem] = warning_message
-            elif state_field:  # but empty strings should not generate warnings
+            elif coerced_value:  # though empty strings should not generate warnings
                 self.state_warns[elem] = warning_message
         return self
 
-    def _warn_if_values_not_numeric(self):
-        """@@@"""
-        elements_that_take_numerical_values = {
-            "minInclusive": self.minInclusive,
-            "maxInclusive": self.maxInclusive,
-            "minExclusive": self.minExclusive,
-            "maxExclusive": self.maxExclusive,
-        }
-
+    def _try_to_coerce_numbers(self):
+        """Four elements take values that must be integers or floats."""
+        numerical_elements = [
+            "minInclusive",
+            "maxInclusive",
+            "minExclusive",
+            "maxExclusive"
+        ]
+        for elem in numerical_elements:
+            actual_value = getattr(self, elem)
+            warning_message = f"Value {repr(actual_value)} is not a number."
+            if actual_value and not value_is_numeric(actual_value):
+                try:
+                    setattr(self, elem, int(actual_value))
+                except ValueError:
+                    try:
+                        setattr(self, elem, float(actual_value))
+                    except ValueError:
+                        self.state_warns[elem] = warning_message
+        return self
 
 
 @dataclass
