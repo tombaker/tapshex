@@ -24,12 +24,12 @@ class StatementTemplate(TAPStatementTemplate):
 
     def normalize(self, config_dict):
         """Inherits from and extends TAPStatementTemplate.normalize."""
-        super().normalize()
-        self._convert_booleans(self)
-        self._convert_mandatory_to_minoccurs(self)
-        self._convert_repeatable_to_maxoccurs(self)
-        self._are_nonnegative_integers(self)
-        self._warn_if_values_not_numeric(self)
+        super().normalize(config_dict)
+        self._convert_booleans()
+        self._convert_mandatory_to_minoccurs()
+        self._convert_repeatable_to_maxoccurs()
+        self._are_nonnegative_integers()
+        self._warn_if_values_not_numeric()
         return self
 
     def _convert_booleans(self):
@@ -103,8 +103,8 @@ class Shape(TAPShape):
 
     def normalize(self, config_dict):
         """Inherits from and extends TAPShape.normalize."""
-        super().normalize()
-        self._convert_booleans(self)
+        super().normalize(config_dict)
+        self._convert_booleans()
         return self
 
     def _convert_booleans(self):
