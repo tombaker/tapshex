@@ -3,6 +3,16 @@
 import pytest
 from tapshex.classes import Shape
 
+def test_normalize_booleans_from_dctap():
+    """In Shape.normalize, TAPShape.normalize is applied first."""
+    config_dict = {}
+    st = Shape()
+    st.closed = "TRUE"
+    st.start = "0"
+    st.normalize(config_dict)
+    assert st.closed == 1
+    assert st.start == 0
+
 def test_convert_booleans_true():
     """Convert propertyExtra true to 1."""
     st = Shape()
