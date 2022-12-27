@@ -4,7 +4,7 @@ Modeled on https://github.com/dcmi/dctap-python/blob/main/dctap/cli.py
 """
 
 import sys
-import json as j
+import json
 from pprint import pprint
 from ruamel.yaml import YAML
 import click
@@ -37,7 +37,7 @@ def cli(context):
     \b
     Show normalized view of TAP:
     $ tapshex parse x.csv              # output plain text
-    $ tapshex parse --tapj x.csv       # output TAP/JSON
+    $ tapshex parse --tapjson x.csv    # output TAP/JSON
     $ tapshex parse --shexc x.csv      # output TAP/ShExC
     $ tapshex parse --shexj x.csv      # output TAP/ShExJ
     $ tapshex parse --warnings x.csv   # also show warnings
@@ -62,12 +62,12 @@ def init(context, hidden):
 @click.option("--config", type=click.Path(exists=True), help="Nondefault config file")
 @click.option("--uris", is_flag=True, help="Expand compact URIs")
 @click.option("--warnings", is_flag=True, help="Include warnings")
-@click.option("--tapj", is_flag=True, help="View as TAP/JSON")
+@click.option("--tapjson", is_flag=True, help="View as TAP/JSON")
 @click.option("--shexc", is_flag=True, help="View as ShExC")
 @click.option("--shexj", is_flag=True, help="View as ShExJ")
 @click.help_option(help="Show help and exit")
 @click.pass_context
-def parse(context, csv, config, uris, warnings, tapj, shexc, shexj):
+def parse(context, csv, config, uris, warnings, tapjson, shexc, shexj):
     """View TAP/TXT (default), TAP/JSON, ShExC, or ShExJ, optionally with warnings."""
 
     if config:
@@ -91,15 +91,15 @@ def parse(context, csv, config, uris, warnings, tapj, shexc, shexj):
     pprint(tapshapes_dict)
     print("")
 
-    # if (tapj and shexc) or (tapj and shexj) or (shexc and shexj):
+    # if (tapjson and shexc) or (tapjson and shexj) or (shexc and shexj):
     #     echo = stderr_logger()
-    #     echo.warning("Options tapj, shexc, and shexj are mutually exclusive - re-try.")
+    #     echo.warning("Options tapjson, shexc, and shexj are mutually exclusive - re-try.")
     #     click.Context.exit(0)
 
-    if tapj:
+    if tapjson:
         if not warnings:
             del tapshapes_dict["warnings"]
-        json_output = j.dumps(tapshapes_dict, indent=2)
+        json_output = json.dumps(tapshapes_dict, indent=2)
         print(json_output)
     elif shexc:
         print("Placeholder for ShExC output.")
