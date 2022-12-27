@@ -1,5 +1,11 @@
+import io
+import json
 from pathlib import Path
 import pytest
+import ruamel.yaml as yaml
+from dctap.config import get_config
+from dctap.csvreader import csvreader
+from tapshex.classes import Shape, StatementTemplate
 from tapshex.shexify import shexify
 from tapshex.template import SHEX_JINJA
 
@@ -8,19 +14,33 @@ schema_directories = [
 #       Path("schema1_0_2"),
 ]
 
-@pytest.mark.parametrize("schemadir", schema_directories)
+@pytest.mark.parametrize('schemadir', schema_directories)
 def test_files_exist(schemadir):
-    """Given schema directory has all of the files needed for tests."""
+    """Given schema directory has all files needed for tests."""
     assert Path('tapshex.yaml').is_file()
-    assert Path(schemadir).joinpath('tap.csv').is_file()
-    assert Path(schemadir).joinpath('tap.json').is_file()
-    assert Path(schemadir).joinpath('tap.json_expected').is_file()
-    assert Path(schemadir).joinpath('primer.shexc').is_file()
-    assert Path(schemadir).joinpath('primer.shexj').is_file()
+    assert Path(schemadir).joinpath('source.csv').is_file()
+    assert Path(schemadir).joinpath('target.tapjson').is_file()
+    assert Path(schemadir).joinpath('target.tapjson_expected').is_file()
+    assert Path(schemadir).joinpath('from_primer.shexc').is_file()
+    assert Path(schemadir).joinpath('from_primer.shexj').is_file()
 
-@pytest.mark.parametrize("schemadir", schema_directories)
+
+@pytest.mark.parametrize('schemadir', schema_directories)
 def test_from_tapcsv_to_tapjson(schemadir):
     """@@@."""
+    config_yamldoc = Path('tapshex.yaml').read_text()
+    config_dict = get_config(config_yamldoc=config_yamldoc)
+    input_csv = Path(schemadir).joinpath('source.csv').read_text()
+    real_output = json.loads(Path(schemadir).joinpath('target.tapjson').read_text())
+    expected_output = json.loads(Path(schemadir).joinpath('target.tapjson_expected').read_text())
+    tapshapes_dict = csvreader(
+        open_csvfile_obj=io.StringIO(input_csv),
+        config_dict=config_dict,
+        shape_class=Shape,
+        state_class=StatementTemplate,
+    )
+    tapjson_output = json.dumps(tapshapes_dict, sort_keys=True, indent=2)
+    # assert real_output == expected_output
 
 def test_shexify_basic():
     """Takes output of dctap, which transforms CSV into Python dict.
