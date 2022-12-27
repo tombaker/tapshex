@@ -38,9 +38,9 @@ class StatementTemplate(TAPStatementTemplate):
         for elem in boolean_elements:
             value = getattr(self, elem)
             if value:
-                if value.lower() == "true":
+                if value.lower() == "true" or value == "1":
                     setattr(self, elem, 1)
-                elif value.lower() == "false":
+                elif value.lower() == "false" or value == "0":
                     setattr(self, elem, 0)
 
     def _convert_mandatory_to_minoccurs(self):
@@ -125,7 +125,7 @@ class Shape(TAPShape):
         for elem in boolean_elements:
             value = getattr(self, elem)
             if value:
-                if value.lower() == "true":
+                if value.lower() == "true" or value == "1":
                     setattr(self, elem, 1)
-                elif value.lower() == "false":
+                elif value.lower() == "false" or value == "0":
                     setattr(self, elem, 0)

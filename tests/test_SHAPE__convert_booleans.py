@@ -3,13 +3,13 @@
 import pytest
 from tapshex.classes import Shape
 
-@pytest.mark.skip(reason="Do not quite understand.")
 def test_normalize_booleans_from_dctap():
     """In Shape.normalize, TAPShape.normalize is applied first."""
     config_dict = {}
     st = Shape()
     st.closed = "TRUE"
     st.start = "0"
+    # breakpoint(context=5)
     st.normalize(config_dict)
     assert st.closed == 1
     assert st.start == 0
