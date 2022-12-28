@@ -13,13 +13,13 @@
                     "propertyID": "ex:hasGuardian",
                     "valueNodeType": "iri",
                     "minoccurs": "1",
-                    "maxoccurs": "2",
+                    "maxoccurs": "2"
                 },
                 {
                     "propertyID": "foaf:age",
                     "valueDataType": "xsd:integer",
                     "MinInclusive": "13",
-                    "MaxInclusive": "20",
+                    "MaxInclusive": "20"
                 }
             ]
         }
