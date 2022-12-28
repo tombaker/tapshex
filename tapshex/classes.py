@@ -77,7 +77,10 @@ class StatementTemplate(TAPStatementTemplate):
             actual_value = getattr(self, elem)
             warning_message = f"Value {repr(actual_value)} is not a nonnegative integer."
             coerced_value = coerce_integer(actual_value)
+            setattr(self, elem, coerced_value)
             if isinstance(coerced_value, int):
+                if isinstance(actual_value, float):
+                    self.state_warns[elem] = warning_message
                 if coerced_value < 0:
                     self.state_warns[elem] = warning_message
             elif coerced_value:  # though empty strings should not generate warnings
