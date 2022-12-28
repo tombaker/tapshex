@@ -70,12 +70,11 @@ def init(context, hidden):
 def parse(context, csv, config, uris, warnings, tapjson, shexc, shexj):
     """View TAP/TXT (default), TAP/JSON, ShExC, or ShExJ, optionally with warnings."""
 
-    if config:
-        config_dict = get_config(
-            configfile_name=config, shape_class=Shape, state_class=StatementTemplate
-        )
-    else:
-        config_dict = get_config(shape_class=Shape, state_class=StatementTemplate)
+    config_dict = get_config(
+        configfile_name=config,
+        shape_class=Shape,
+        state_class=StatementTemplate
+    )
 
     tapshapes_dict = csvreader(
         open_csvfile_obj=csv,
@@ -86,15 +85,6 @@ def parse(context, csv, config, uris, warnings, tapjson, shexc, shexj):
 
     if uris:
         tapshapes_dict = expand_uri_prefixes(tapshapes_dict, config_dict)
-
-    print("tapshapes_dict:")
-    pprint(tapshapes_dict)
-    print("")
-
-    # if (tapjson and shexc) or (tapjson and shexj) or (shexc and shexj):
-    #     echo = stderr_logger()
-    #     echo.warning("Options tapjson, shexc, and shexj are mutually exclusive - re-try.")
-    #     click.Context.exit(0)
 
     if tapjson:
         if not warnings:
@@ -108,9 +98,7 @@ def parse(context, csv, config, uris, warnings, tapjson, shexc, shexj):
     else:
         pprint_output = pprint_tapshapes(
             tapshapes_dict=tapshapes_dict,
-            config_dict=config_dict,
-            shape_class=Shape,
-            state_class=StatementTemplate,
+            config_dict=config_dict
         )
         for line in pprint_output:
             print(line, file=sys.stdout)
