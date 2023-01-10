@@ -18,9 +18,8 @@ prefixes:
     "skosxl:":  "http://www.w3.org/2008/05/skos-xl#"
     "wdt:":     "http://www.wikidata.org/prop/direct/"
     "xsd:":     "http://www.w3.org/2001/XMLSchema#"
-    "ex":       "http://ex.example/#"
-    "xsd":      "http://www.w3.org/2001/XMLSchema#"
-    "school":   "http://school.example/#"
+    "ex:":      "http://ex.example/#"
+    "school:":  "http://school.example/#"
 """
 
 @pytest.fixture(scope="session")
