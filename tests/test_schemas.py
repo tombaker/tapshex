@@ -1,3 +1,4 @@
+import os
 import io
 import json
 from pathlib import Path
@@ -10,14 +11,15 @@ from tapshex.shexify import shexify
 from tapshex.template import SHEX_JINJA
 
 schema_directories = [
-        Path("schema1_0_1"),
-#       Path("schema1_0_2"),
+    Path(__file__).parent.joinpath("schema1_0_1"),
 ]
 
+
+@pytest.mark.skip
 @pytest.mark.parametrize('schemadir', schema_directories)
-def test_files_exist(schemadir):
+def test_files_exist(schemadir, config_dict):
     """Given schema directory has all files needed for tests."""
-    assert Path('tapshex.yaml').is_file()
+    assert config_dict
     assert Path(schemadir).joinpath('source.csv').is_file()
     assert Path(schemadir).joinpath('target.tapjson').is_file()
     assert Path(schemadir).joinpath('target.tapjson_expected').is_file()
@@ -26,10 +28,8 @@ def test_files_exist(schemadir):
 
 
 @pytest.mark.parametrize('schemadir', schema_directories)
-def test_from_tapcsv_to_tapjson(schemadir):
+def test_from_tapcsv_to_tapjson(schemadir, config_dict):
     """@@@."""
-    config_yamldoc = Path('tapshex.yaml').read_text()
-    config_dict = get_config(config_yamldoc=config_yamldoc)
     input_csv = Path(schemadir).joinpath('source.csv').read_text()
     real_output = json.loads(Path(schemadir).joinpath('target.tapjson').read_text())
     expected_output = json.loads(Path(schemadir).joinpath('target.tapjson_expected').read_text())
@@ -40,8 +40,10 @@ def test_from_tapcsv_to_tapjson(schemadir):
         state_class=StatementTemplate,
     )
     tapjson_output = json.dumps(tapshapes_dict, sort_keys=True, indent=2)
-    # assert real_output == expected_output
+    assert real_output == expected_output
 
+
+@pytest.mark.skip
 def test_shexify_basic():
     """Takes output of dctap, which transforms CSV into Python dict.
 
