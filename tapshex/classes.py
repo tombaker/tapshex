@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 from typing import List
 from .utils import value_is_numeric
 from dctap.tapclasses import TAPStatementTemplate, TAPShape
-from dctap.utils import coerce_integer, coerce_numeric, is_uri_or_prefixed_uri
+from dctap.utils import coerce_integer, coerce_numeric, looks_like_uri_or_curie
 
 
 @dataclass
