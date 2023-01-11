@@ -40,7 +40,7 @@ def test_shape_initialized_by_assignment():
 
 def test_shape_initialized_with_no_shapeid_field_should_pass_for_now():
     """Shape initialized with no shapeID will use default shapeID."""
-    config_dict = dict()
+    config_dict = {}
     config_dict["default_shape_identifier"] = "default"
     shap = TAPShape()
     shap.state_list = []
@@ -49,12 +49,10 @@ def test_shape_initialized_with_no_shapeid_field_should_pass_for_now():
     shap.state_list.append({"propertyID": "dct:date", "valueNodeType": "Literal"})
     shap._normalize_default_shapeID(config_dict)
     assert shap == TAPShape(
-        shapeID = "default",
+        shapeID="default",
         state_list=[
             {"propertyID": "dct:creator", "valueNodeType": "IRI"},
             {"propertyID": "dct:subject", "valueNodeType": "IRI"},
             {"propertyID": "dct:date", "valueNodeType": "Literal"},
         ],
     )
-
-

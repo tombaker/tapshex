@@ -7,11 +7,13 @@ from dctap.config import get_config
 from dctap.tapclasses import TAPStatementTemplate
 from dctap.csvreader import csvreader
 
+# pylint: disable=redefined-outer-name
 config_dict = get_config()
+
 config_dict["picklist_elements"] = [
-    "propertyID", 
-    "valueNodeType", 
-    "valueDataType", 
+    "propertyID",
+    "valueNodeType",
+    "valueDataType",
     "valueShape",
 ]
 
@@ -62,7 +64,7 @@ def test_picklist_item_separator_defaults_to_single_blank():
     """Setting picklist_item_separator of None defaults to single blank."""
     sc = TAPStatementTemplate()
     config_dict = get_config()
-    config_dict["picklist_elements"] = [ "valueNodeType" ]
+    config_dict["picklist_elements"] = ["valueNodeType"]
     config_dict["picklist_item_separator"] = None
     sc.valueNodeType = "iri bnode"
     sc._parse_elements_configured_as_picklist_elements(config_dict)
