@@ -1,0 +1,46 @@
+[build-system]
+requires = ["flit"]
+build-backend = "flit.buildapi"
+
+[tool.flit.metadata]
+module = "tapshex"
+author = "Tom Baker"
+author-email = "tom@tombaker.org"
+home-page = "https://github.com/tombaker/tapshex"
+requires = [
+    "click",
+    "dataclasses",
+    "ruamel.base",
+    "ruamel.yaml",
+    "ruamel.yaml[jinja2]",
+    "Jinja2",
+    "PyShEx",
+    "dctap",
+    "pip-tools",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+description-file = 'README.rst'
+requires-python = '>=3.8'
+
+[tool.flit.metadata.requires-extra]
+test = [
+    "coverage",
+    "ipdb",
+    "ipykernel",
+    "ipython",
+    "pytest",
+    "pytest-cov",
+]
+doc = [
+    "sphinx",
+    "sphinx_rtd_theme",
+]
+
+[tool.flit.scripts]
+tapshex = "tapshex.cli:cli"
