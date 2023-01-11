@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools!=50.0","flit"]
+requires = ["flit"]
 build-backend = "flit.buildapi"
 
 [tool.flit.metadata]
@@ -22,6 +22,7 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
 ]
 description-file = 'README.rst'
 requires-python = '>=3.8'

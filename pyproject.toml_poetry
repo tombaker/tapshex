@@ -1,0 +1,49 @@
+
+[tool.poetry]
+name = "tapshex"
+version = "0.2.1"
+description = "Converts Tabular Application Profile into ShEx Schema"
+license = "MIT"
+authors = [
+    "Tom Baker <tom@tombaker.org>",
+    "Nishad Thalhath <nishad@thalhath.org>",
+]
+readme = "README.rst"
+homepage = "https://pypi.org/project/tapshex/"
+repository = "https://github.com/tombaker/tapshex"
+documentation = "https://tapshex.readthedocs.io/en/latest"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+include = ["CHANGELOG.rst", "LICENSE", "README.rst"]
+
+[tool.poetry.dependencies]
+dctap = "^0.4.0"
+python = "^3.10"
+click = "^7.1.2"
+Jinja2 = "^3.1.2"
+PyShExC = "^0.9.1"
+PyShEx = "^0.8.1"
+pytest = "^6.2.4"
+ruamel.base = "^1.0.0"
+ruamel.yaml = "^0.17.10"
+ruamel.yaml.clib = "^0.2.6"
+ruamel.yaml.jinja2 = "^0.2.7"
+dataclasses = "^0.6"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^6.2.4"
+pytest-cov = "^4.0.0"
+coverage = "^6.4.4"
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^5.1.1"
+sphinx_rtd_theme = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
