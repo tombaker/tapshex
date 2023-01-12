@@ -5,6 +5,7 @@ def get_schema_attributes(schema):
     """@@@"""
     return {attrib for attrib in schema}
 
+
 def test_get_schema_attributes():
     """@@@"""
     attributes = get_schema_attributes(SCHEMA)
@@ -15,10 +16,12 @@ def test_get_schema_attributes():
     assert isinstance(SCHEMA["shapes"], list)
     assert isinstance(SCHEMA["type"], str)
 
+
 # Shape list
 def get_shape_list(schema):
     """@@@"""
     return [shape for shape in schema["shapes"]]
+
 
 def test_get_shape_list():
     """@@@"""
@@ -27,6 +30,7 @@ def test_get_shape_list():
     for item in shape_list:
         assert isinstance(item, dict)
 
+
 def get_shape_attributes(schema):
     """@@@"""
     shape_attributes = list()
@@ -34,6 +38,7 @@ def get_shape_attributes(schema):
         for key in shape:
             shape_attributes.append(key)
     return set(shape_attributes)
+
 
 def test_get_shape_attributes():
     """@@@"""
@@ -50,6 +55,7 @@ def test_get_shape_attributes():
         assert isinstance(shape["id"], str)
         assert isinstance(shape["type"], str)
 
+
 def get_annotation_attributes(schema):
     """@@@"""
     shapes = SCHEMA["shapes"]
@@ -61,9 +67,10 @@ def get_annotation_attributes(schema):
                     annotation_attributes.append(key)
     return set(annotation_attributes)
 
+
 def test_get_annotation_attributes():
     """@@@"""
-    expected_annotation_attributes = {'object', 'predicate', 'type'}
+    expected_annotation_attributes = {"object", "predicate", "type"}
     annotation_attributes = get_annotation_attributes(SCHEMA)
     assert get_annotation_attributes(SCHEMA) == expected_annotation_attributes
     assert "type" in annotation_attributes
@@ -76,6 +83,7 @@ def test_get_annotation_attributes():
                 assert isinstance(annotation.get("type"), str)
                 assert isinstance(annotation.get("predicate"), str)
                 assert isinstance(annotation.get("object"), dict)
+
 
 def get_eachof_expression_attributes(schema):
     """Gets attributes from items of list "expressions" in object of type "EachOf"."""
@@ -90,9 +98,17 @@ def get_eachof_expression_attributes(schema):
                         expression_attributes.append(key)
     return set(expression_attributes)
 
+
 def test_get_eachof_expression_attributes():
     """@@@"""
-    expected_expression_attributes = {'valueExpr', 'predicate', 'type', 'min', 'max', 'annotations'}
+    expected_expression_attributes = {
+        "valueExpr",
+        "predicate",
+        "type",
+        "min",
+        "max",
+        "annotations",
+    }
     expression_attributes = get_eachof_expression_attributes(SCHEMA)
     assert get_eachof_expression_attributes(SCHEMA) == expected_expression_attributes
     assert get_eachof_expression_attributes(SCHEMA) == expression_attributes
@@ -117,153 +133,107 @@ def test_get_eachof_expression_attributes():
                         assert isinstance(expression.get("annotations"), list)
 
 
-
-
-
-
-
-
-
-
-
-
-
 SCHEMA = {
-  "type": "Schema",
-  "shapes": [
-    {
-      "type": "Shape",
-      "id": "http://ex.example/#author",
-      "expression": {
-        "type": "TripleConstraint",
-        "predicate": "http://ex.example/#nickname",
-        "valueExpr": {
-          "type": "NodeConstraint",
-          "pattern": "John*"
-        }
-      }
-    },
-    {
-      "type": "Shape",
-      "id": "http://ex.example/#book",
-      "expression": {
-        "type": "EachOf",
-        "expressions": [
-          {
-            "type": "TripleConstraint",
-            "predicate": "http://purl.org/dc/terms/creator",
-            "valueExpr": {
-              "type": "ShapeAnd",
-              "shapeExprs": [
-                {
-                  "type": "NodeConstraint",
-                  "nodeKind": "iri"
-                },
-                "http://ex.example/#author"
-              ]
-            },
-            "min": 1,
-            "max": 1,
-            "annotations": [
-              {
-                "type": "Annotation",
-                "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
-                "object": {
-                  "value": "Author"
-                }
-              },
-              {
-                "type": "Annotation",
-                "predicate": "http://www.w3.org/2000/01/rdf-schema#comment",
-                "object": {
-                  "value": "Writer of the book"
-                }
-              }
-            ]
-          },
-          {
-            "type": "TripleConstraint",
-            "predicate": "http://purl.org/dc/terms/date",
-            "valueExpr": {
-              "type": "NodeConstraint",
-              "datatype": "http://www.w3.org/2001/XMLSchema#date"
-            }
-          },
-          {
-            "type": "TripleConstraint",
-            "predicate": "http://purl.org/dc/terms/subject",
-            "valueExpr": {
-              "type": "NodeConstraint",
-              "values": [
-                {
-                  "type": "IriStem",
-                  "stem": "https://id.loc.gov"
-                }
-              ]
-            }
-          },
-          {
-            "type": "TripleConstraint",
-            "predicate": "http://ex.example/#status",
-            "valueExpr": {
-              "type": "NodeConstraint",
-              "values": [
-                {
-                  "value": "confidential"
-                }
-              ]
-            }
-          },
-          {
-            "type": "TripleConstraint",
-            "predicate": "http://ex.example/#description",
-            "valueExpr": {
-              "type": "NodeConstraint",
-              "values": [
-                {
-                  "type": "Language",
-                  "languageTag": "fr"
-                },
-                {
-                  "type": "Language",
-                  "languageTag": "it"
-                },
-                {
-                  "type": "Language",
-                  "languageTag": "en"
-                }
-              ]
-            },
-            "min": 1,
-            "max": 1
-          },
-          {
-            "type": "TripleConstraint",
-            "predicate": "http://ex.example/#colors",
-            "valueExpr": {
-              "type": "NodeConstraint",
-              "values": [
-                {
-                  "value": "blue"
-                },
-                {
-                  "value": "green"
-                }
-              ]
-            }
-          },
-        ]
-      },
-      "annotations": [
+    "type": "Schema",
+    "shapes": [
         {
-          "type": "Annotation",
-          "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
-          "object": {
-            "value": "Book"
-          }
-        }
-      ]
-    }
-  ],
-  "@context": "http://www.w3.org/ns/shex.jsonld"
+            "type": "Shape",
+            "id": "http://ex.example/#author",
+            "expression": {
+                "type": "TripleConstraint",
+                "predicate": "http://ex.example/#nickname",
+                "valueExpr": {"type": "NodeConstraint", "pattern": "John*"},
+            },
+        },
+        {
+            "type": "Shape",
+            "id": "http://ex.example/#book",
+            "expression": {
+                "type": "EachOf",
+                "expressions": [
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "http://purl.org/dc/terms/creator",
+                        "valueExpr": {
+                            "type": "ShapeAnd",
+                            "shapeExprs": [
+                                {"type": "NodeConstraint", "nodeKind": "iri"},
+                                "http://ex.example/#author",
+                            ],
+                        },
+                        "min": 1,
+                        "max": 1,
+                        "annotations": [
+                            {
+                                "type": "Annotation",
+                                "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                                "object": {"value": "Author"},
+                            },
+                            {
+                                "type": "Annotation",
+                                "predicate": "http://www.w3.org/2000/01/rdf-schema#comment",
+                                "object": {"value": "Writer of the book"},
+                            },
+                        ],
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "http://purl.org/dc/terms/date",
+                        "valueExpr": {
+                            "type": "NodeConstraint",
+                            "datatype": "http://www.w3.org/2001/XMLSchema#date",
+                        },
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "http://purl.org/dc/terms/subject",
+                        "valueExpr": {
+                            "type": "NodeConstraint",
+                            "values": [
+                                {"type": "IriStem", "stem": "https://id.loc.gov"}
+                            ],
+                        },
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "http://ex.example/#status",
+                        "valueExpr": {
+                            "type": "NodeConstraint",
+                            "values": [{"value": "confidential"}],
+                        },
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "http://ex.example/#description",
+                        "valueExpr": {
+                            "type": "NodeConstraint",
+                            "values": [
+                                {"type": "Language", "languageTag": "fr"},
+                                {"type": "Language", "languageTag": "it"},
+                                {"type": "Language", "languageTag": "en"},
+                            ],
+                        },
+                        "min": 1,
+                        "max": 1,
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "http://ex.example/#colors",
+                        "valueExpr": {
+                            "type": "NodeConstraint",
+                            "values": [{"value": "blue"}, {"value": "green"}],
+                        },
+                    },
+                ],
+            },
+            "annotations": [
+                {
+                    "type": "Annotation",
+                    "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                    "object": {"value": "Book"},
+                }
+            ],
+        },
+    ],
+    "@context": "http://www.w3.org/ns/shex.jsonld",
 }

@@ -3,6 +3,7 @@
 Unclear: generate entire TripleConstraint (as here) or just node constraint?
 """
 
+
 def _convert_sc_vct_languagetag_picklist(sc):
     """@@@"""
     if sc.get("valueConstraintType") == "languagetag":
@@ -22,37 +23,24 @@ def _convert_sc_vct_languagetag_picklist(sc):
         tc["valueExpr"]["values"] = valueexpr_values
     return tc
 
+
 def test_convert_picklist_of_two_literals():
     """@@@"""
     input_dict = {
-      "propertyID": "http://ex.example/#description",
-      "valueConstraint": [
-          "fr",
-          "it",
-          "en"
-      ],
-      "valueConstraintType": "languagetag"
+        "propertyID": "http://ex.example/#description",
+        "valueConstraint": ["fr", "it", "en"],
+        "valueConstraintType": "languagetag",
     }
     output_dict = {
-      "type": "TripleConstraint",
-      "predicate": "http://ex.example/#description",
-      "valueExpr": {
-        "type": "NodeConstraint",
-        "values": [
-          {
-            "type": "Language",
-            "languageTag": "fr"
-          },
-          {
-            "type": "Language",
-            "languageTag": "it"
-          },
-          {
-            "type": "Language",
-            "languageTag": "en"
-          }
-        ]
-      }
+        "type": "TripleConstraint",
+        "predicate": "http://ex.example/#description",
+        "valueExpr": {
+            "type": "NodeConstraint",
+            "values": [
+                {"type": "Language", "languageTag": "fr"},
+                {"type": "Language", "languageTag": "it"},
+                {"type": "Language", "languageTag": "en"},
+            ],
+        },
     }
     assert _convert_sc_vct_languagetag_picklist(input_dict) == output_dict
-

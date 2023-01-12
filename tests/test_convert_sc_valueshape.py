@@ -1,5 +1,6 @@
 """Convert value shape to TripleConstraint."""
 
+
 def _convert_sc_value_shape_to_tc(sc):
     """@@@"""
     if sc.get("valueShape"):
@@ -10,11 +11,12 @@ def _convert_sc_value_shape_to_tc(sc):
         tc["valueExpr"] = sc.get("valueShape")
     return tc
 
+
 def test_convert_sc_value_shape_to_tc():
     """@@@
-    See: ttp://shex.io/shex-primer/#combined-constraints 
+    See: ttp://shex.io/shex-primer/#combined-constraints
 
-    Whereas Eric seemed to say that a "ShapeAnd" would be 
+    Whereas Eric seemed to say that a "ShapeAnd" would be
     required:
 
             "valueExpr": {
@@ -32,11 +34,11 @@ def test_convert_sc_value_shape_to_tc():
     """
     input_dict = {
         "propertyID": "http://purl.org/dc/terms/creator",
-    	"valueNodeType": "iri",
+        "valueNodeType": "iri",
         "valueShape": "http://example.org/author",
     }
     output_tc_dict = {
-        "type": "TripleConstraint",	
+        "type": "TripleConstraint",
         "predicate": "http://purl.org/dc/terms/creator",
         "valueExpr": "http://example.org/author",
     }
