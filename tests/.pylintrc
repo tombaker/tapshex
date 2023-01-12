@@ -1,0 +1,5 @@
+[MESSAGES CONTROL]
+disable=unsubscriptable-object,invalid-name,redefined-outer-name
+# unsubscriptable-object: Flake8 does not like use of square brackets with type hints.
+# invalid-name: 1/2-letter and camelcase variables do not conform to snakecase style
+# redefined-outer-name: pytest fixtures are not recognized as such by pylint
