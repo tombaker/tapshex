@@ -5,7 +5,6 @@ Modeled on https://github.com/dcmi/dctap-python/blob/main/dctap/cli.py
 
 import sys
 import json as j
-from ruamel.yaml import YAML
 import click
 from .defaults import DEFAULT_CONFIGFILE_NAME, DEFAULT_HIDDEN_CONFIGFILE_NAME
 from dctap.config import get_config, write_configfile
