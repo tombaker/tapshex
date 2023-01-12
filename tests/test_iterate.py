@@ -33,7 +33,7 @@ def test_get_shape_list():
 
 def get_shape_attributes(schema):
     """@@@"""
-    shape_attributes = list()
+    shape_attributes = []
     for shape in schema["shapes"]:
         for key in shape:
             shape_attributes.append(key)
@@ -59,7 +59,7 @@ def test_get_shape_attributes():
 def get_annotation_attributes(schema):
     """@@@"""
     shapes = SCHEMA["shapes"]
-    annotation_attributes = list()
+    annotation_attributes = []
     for shape in shapes:
         if shape.get("annotations"):
             for annotation in shape.get("annotations"):
@@ -88,7 +88,7 @@ def test_get_annotation_attributes():
 def get_eachof_expression_attributes(schema):
     """Gets attributes from items of list "expressions" in object of type "EachOf"."""
     shapes = SCHEMA["shapes"]
-    expression_attributes = list()
+    expression_attributes = []
     for shape in shapes:
         if shape.get("expression"):
             expression = shape.get("expression")
@@ -124,6 +124,7 @@ def test_get_eachof_expression_attributes():
             expression = shape.get("expression")
             if expression.get("type") == "EachOf":
                 for eachof_expression in expression["expressions"]:
+                    # pylint: disable=unused-variable
                     for key in eachof_expression:
                         assert isinstance(expression.get("type"), str)
                         assert isinstance(expression.get("predicate"), str)

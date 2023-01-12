@@ -4,13 +4,12 @@
 def _simplify_eachof_to_tc_when_just_one(eachof_expression):
     """@@@"""
     if len(eachof_expression.get("expressions")) == 1:
-        tc = dict()
+        tc = {}
         tc["type"] = "TripleConstraint"
         tc["predicate"] = eachof_expression["expressions"][0].get("predicate")
         tc["valueExpr"] = eachof_expression["expressions"][0].get("valueExpr")
         return tc
-    else:
-        return eachof_expression
+    return eachof_expression
 
 
 def test_simplify_eachof_to_tc_when_just_one():
