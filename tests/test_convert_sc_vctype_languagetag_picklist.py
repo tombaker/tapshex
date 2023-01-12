@@ -9,16 +9,16 @@ def _convert_sc_vct_languagetag_picklist(sc):
     if sc.get("valueConstraintType") == "languagetag":
         tc_predicate = sc.get("propertyID")
         # breakpoint(context=5)
-        valueexpr_values = list()
+        valueexpr_values = []
         for langtag in sc.get("valueConstraint"):
-            nc_value = dict()
+            nc_value = {}
             nc_value["type"] = "Language"
             nc_value["languageTag"] = langtag
             valueexpr_values.append(nc_value)
-        tc = dict()
+        tc = {}
         tc["type"] = "TripleConstraint"
         tc["predicate"] = tc_predicate
-        tc["valueExpr"] = dict()
+        tc["valueExpr"] = {}
         tc["valueExpr"]["type"] = "NodeConstraint"
         tc["valueExpr"]["values"] = valueexpr_values
     return tc

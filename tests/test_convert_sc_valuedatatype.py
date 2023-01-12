@@ -5,10 +5,10 @@ def _convert_sc_valuedatatype(sc):
     """@@@"""
     if sc.get("valueDataType"):
         tc_predicate = sc.get("propertyID")
-        tc = dict()
+        tc = {}
         tc["type"] = "TripleConstraint"
         tc["predicate"] = tc_predicate
-        tc["valueExpr"] = dict()
+        tc["valueExpr"] = {}
         tc["valueExpr"]["type"] = "NodeConstraint"
         tc["valueExpr"]["datatype"] = sc.get("valueDataType")
     return tc

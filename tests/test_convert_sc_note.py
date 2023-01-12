@@ -4,10 +4,10 @@
 def _convert_sc_note_to_annotation(sc):
     """NOTE: Resulting annotation to be appended to list tc["annotations"]."""
     if sc.get("note"):
-        annotation = dict()
+        annotation = {}
         annotation["type"] = "Annotation"
         annotation["predicate"] = "http://www.w3.org/2000/01/rdf-schema#comment"
-        annotation["object"] = dict()
+        annotation["object"] = {}
         annotation["object"]["value"] = sc.get("note")
     return annotation
 

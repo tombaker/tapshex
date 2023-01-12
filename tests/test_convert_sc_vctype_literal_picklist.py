@@ -6,15 +6,15 @@ def _convert_sc_vct_picklist(sc):
     if sc.get("valueConstraintType") == "picklist":
         tc_predicate = sc.get("propertyID")
         # breakpoint(context=5)
-        valueexpr_values = list()
+        valueexpr_values = []
         for literal_value in sc.get("valueConstraint"):
-            nc_value = dict()
+            nc_value = {}
             nc_value["value"] = literal_value
             valueexpr_values.append(nc_value)
-        tc = dict()
+        tc = {}
         tc["type"] = "TripleConstraint"
         tc["predicate"] = tc_predicate
-        tc["valueExpr"] = dict()
+        tc["valueExpr"] = {}
         tc["valueExpr"]["type"] = "NodeConstraint"
         tc["valueExpr"]["values"] = valueexpr_values
     return tc

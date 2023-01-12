@@ -3,7 +3,7 @@
 # Schema attributes
 def get_schema_attributes(schema):
     """@@@"""
-    return {attrib for attrib in schema}
+    return set(schema)
 
 
 def test_get_schema_attributes():
@@ -20,7 +20,7 @@ def test_get_schema_attributes():
 # Shape list
 def get_shape_list(schema):
     """@@@"""
-    return [shape for shape in schema["shapes"]]
+    return list(schema["shapes"])
 
 
 def test_get_shape_list():

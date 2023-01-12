@@ -1,6 +1,6 @@
 """Convert statement constraints of value constraint type "picklist".
 
-Can ignore: 
+Can ignore:
     "valueNodeType": "IRI"
 """
 
@@ -9,16 +9,16 @@ def _convert_sc_vct_iristem_picklist_to_tc(sc):
     """@@@"""
     if sc.get("valueConstraintType") == "iristem":
         tc_predicate = sc.get("propertyID")
-        valueexpr_values = list()
+        valueexpr_values = []
         for iristem in sc.get("valueConstraint"):
-            nc_value = dict()
+            nc_value = {}
             nc_value["type"] = "IriStem"
             nc_value["stem"] = iristem
             valueexpr_values.append(nc_value)
-        tc = dict()
+        tc = {}
         tc["type"] = "TripleConstraint"
         tc["predicate"] = tc_predicate
-        tc["valueExpr"] = dict()
+        tc["valueExpr"] = {}
         tc["valueExpr"]["type"] = "NodeConstraint"
         tc["valueExpr"]["values"] = valueexpr_values
     return tc

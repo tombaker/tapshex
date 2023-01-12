@@ -4,7 +4,7 @@
 def _convert_sc_vct_pattern_to_nc(sc):
     """@@@"""
     if sc.get("valueConstraintType") == "pattern":
-        nc = dict()
+        nc = {}
         nc["type"] = "NodeConstraint"
         nc["pattern"] = sc.get("valueConstraint")
     return nc

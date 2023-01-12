@@ -5,7 +5,7 @@ def _convert_sc_value_shape_to_tc(sc):
     """@@@"""
     if sc.get("valueShape"):
         tc_predicate = sc.get("propertyID")
-        tc = dict()
+        tc = {}
         tc["type"] = "TripleConstraint"
         tc["predicate"] = tc_predicate
         tc["valueExpr"] = sc.get("valueShape")

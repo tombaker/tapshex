@@ -4,7 +4,7 @@
 def _convert_sc_valuenodetype(sc):
     """@@@"""
     if sc.get("valueNodeType"):
-        nc = dict()
+        nc = {}
         nc["type"] = "NodeConstraint"
         nc["nodekind"] = sc.get("valueNodeType")
     return nc

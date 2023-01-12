@@ -3,13 +3,13 @@
 
 def _convert_sc_vc_untyped_to_nc(sc):
     """@@@"""
-    values_value = dict()
+    values_value = {}
     values_value["value"] = sc.get("valueConstraint")
     if sc.get("valueConstraint"):
         if not sc.get("valueConstraintType"):
-            nc = dict()
+            nc = {}
             nc["type"] = "NodeConstraint"
-            nc["values"] = list()
+            nc["values"] = []
             nc["values"].append(values_value)
     return nc
 
