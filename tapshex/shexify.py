@@ -1,8 +1,8 @@
 from jinja2 import Template
 from pprint import pprint
-from pyshexc.parser_impl.generate_shexj import parse
 from .template import SHEX_JINJA
-import json
+# from pyshexc.parser_impl.generate_shexj import parse
+# import json
 
 
 def shexify(dctap_as_dict=None, shex_template=None):
@@ -12,7 +12,7 @@ def shexify(dctap_as_dict=None, shex_template=None):
     return template.render(dctap_as_dict)
 
 
-def shexjfy(shexc_schema=None):
-    """@@@"""
-    shexj_schema=parse(shexc_schema)._as_json
-    return json.loads(shexj_schema)
+# def shexjfy(shexc_schema=None):
+#     """@@@"""
+#     shexj_schema=parse(shexc_schema)._as_json
+#     return json.loads(shexj_schema)
