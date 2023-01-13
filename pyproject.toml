@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tapshex"
-version = "0.2.1"
+version = "0.2.2"
 description = "Converts Tabular Application Profile into ShEx Schema"
 authors = [
     "Tom Baker <tom@tombaker.org>",
