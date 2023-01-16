@@ -21,4 +21,3 @@ About dctap-python
   - :doc:`dctap:design/shapes_on_own_rows/index`
   - :doc:`dctap:design/shapes_declared_once/index`
   - :doc:`dctap:design/elements_repurposed/index`
-

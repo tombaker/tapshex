@@ -4,26 +4,26 @@ ShEx Glossary
 -------------
 
 This glossary defines terms that are specific to ShEx; definitions in double quotes are taken verbatim from the `Shape Expressions Primer <https://shexspec.github.io/primer/>`_. See the :doc:`DCTAP Glossary <dctap:glossary/index>` for definitions of
-**Application Profile**, 
-**Blank Node**, 
-**Compact IRI**, 
-**CSV File**, 
-**Datatype**, 
-**DCTAP Element**, 
-**DCTAP CSV File**, 
-**Description**, 
-**Entity**, 
-**Instance Data**, 
-**IRI**, 
-**Language Tag**, 
-**Literal**, 
-**Property**, 
-**Predicate Constraint**, 
-**Shape**, 
-**Statement**, 
-**Statement Template**, 
-**URI**, 
-**Value**, 
+**Application Profile**,
+**Blank Node**,
+**Compact IRI**,
+**CSV File**,
+**Datatype**,
+**DCTAP Element**,
+**DCTAP CSV File**,
+**Description**,
+**Entity**,
+**Instance Data**,
+**IRI**,
+**Language Tag**,
+**Literal**,
+**Property**,
+**Predicate Constraint**,
+**Shape**,
+**Statement**,
+**Statement Template**,
+**URI**,
+**Value**,
 **Value Constraint**, and
 **Vocabulary**.
 
@@ -53,7 +53,7 @@ This glossary defines terms that are specific to ShEx; definitions in double quo
    ShEx Schema
        "A collection of shape expressions."
 
-   Triple Constraint 
+   Triple Constraint
        "A constraint with a given predicate which is tested against RDF triples with that predicate and the focus node as subject (or object, for Inverse Triple Constraints)."
 
    Triple Expression

@@ -9,4 +9,3 @@ ShEx supports the use of `XML Schema constraining facets <https://www.w3.org/TR/
 - ``MinLength`` / ``MaxLength``, which are used to define a minimum and maximum length of a string value.
 
 The string contraining facet ``pattern`` is already `supported by dctap <https://dctap-python.readthedocs.io/en/latest/elements/valueConstraintType/Pattern/index.html>`_ by using a regular expression with **valueConstraint** and the keyword "pattern" with **valueConstraintType**.
-

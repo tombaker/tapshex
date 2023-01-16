@@ -22,7 +22,7 @@ If just one triple constraint
 ----------------------------------------------------------
 If more than one triple constraint
 
-      "expression": {                               
+      "expression": {
         "type": "EachOf",
         "expressions": [
           {
@@ -42,7 +42,7 @@ If more than one triple constraint
             "valueExpr": {
               "type": "NodeConstraint",
               "pattern": "John*"                    # pattern
-              or 
+              or
               "datatype": "http://www...."          # valueDataType
               or
               "nodekind":                           # valueNodeType (if no value shape)
@@ -68,9 +68,9 @@ If more than one triple constraint
 
             "annotations": [
               {
-                "type": "Annotation",               
+                "type": "Annotation",
                 "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
                 "object": {                        # propertyLabel
-                or 
+                or
                 "predicate": "http://www.w3.org/2000/01/rdf-schema#comment",
                 "object": {                        # note

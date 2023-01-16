@@ -5,8 +5,8 @@ my:IssueShape {
   ex:reproducedBy @my:EmployeeShape
 }
 
-my:EmployeeShape IRI                      
- /^http:\/\/hr\.example\/id#[0-9]+/ {      
-  foaf:name LITERAL;                      
+my:EmployeeShape IRI
+ /^http:\/\/hr\.example\/id#[0-9]+/ {
+  foaf:name LITERAL;
   ex:department [ex:ProgrammingDepartment]
 }

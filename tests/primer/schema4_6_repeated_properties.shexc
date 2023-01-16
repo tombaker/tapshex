@@ -4,12 +4,12 @@ my:IssueShape {
   ex:reproducedBy @my:ProgrammerShape
 }
 
-my:TesterShape {          
-  foaf:name xsd:string;   
+my:TesterShape {
+  foaf:name xsd:string;
   ex:role [ex:testingRole]
-}                         
+}
 
-my:ProgrammerShape {                      
-  foaf:name xsd:string;                   
+my:ProgrammerShape {
+  foaf:name xsd:string;
   ex:department [ex:ProgrammingDepartment]
-}                         
+}

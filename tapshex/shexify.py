@@ -1,6 +1,7 @@
 from jinja2 import Template
 from pprint import pprint
 from .template import SHEX_JINJA
+
 # from pyshexc.parser_impl.generate_shexj import parse
 # import json
 

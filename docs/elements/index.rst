@@ -41,4 +41,3 @@ Shape Elements
 There are two Shape elements. If the shapeID element is not used in a given DCTAP instance, it will be assigned a default value (which can be customized in the config file - see :ref:`default_shape_name`).
 
 - :doc:`dctap:elements/shapeID/index`
-
