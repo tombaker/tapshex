@@ -42,13 +42,11 @@ coverage = "^6.4.4"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-
-
-
-
-
-
-
 [tool.poetry.group.docs.dependencies]
 sphinx = "^5.1.1"
 sphinx_rtd_theme = "^1.0.0"
+
+[tool.pytest.ini_options]
+addopts = "-s -rf -v --showlocals --tb=short --strict-markers --ignore-glob='_*.py' --ignore=notes --capture=sys --ignore=tests/tests_dctap --ignore=tests_dctap"
+testpaths = ["tests"]
+filterwarnings = "ignore::PendingDeprecationWarning"
