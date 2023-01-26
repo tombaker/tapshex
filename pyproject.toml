@@ -30,7 +30,7 @@ ipython = "^8.8.0"
 pre-commit = "^2.21.0"
 black = "^22.12.0"
 ipdb = "^0.13.11"
-dctap = {git = "https://github.com/dcmi/dctap-python.git", develop = true}
+dctap = {path = "../dctap-python", develop = true}
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^6.2.4"
@@ -40,6 +40,8 @@ coverage = "^7.1.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
 
 
 

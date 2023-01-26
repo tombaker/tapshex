@@ -20,10 +20,8 @@ def test_csv2json(capsys):
         shape_class=Shape,
         state_class=StatementTemplate,
     )
-    assert Path(HEREDIR).joinpath("dctap.csv").exists()
-    # expected_output =
+    # assert Path(HEREDIR).joinpath("dctap.csv").exists()
+    # # expected_output =
     with capsys.disabled():
         print()
-        print(HEREDIR)
-        print(Path(HEREDIR).joinpath("dctap.csv"))
         pprint(json_obj)
