@@ -36,7 +36,7 @@ dctap = {git = "https://github.com/dcmi/dctap-python.git", develop = true}
 [tool.poetry.group.dev.dependencies]
 pytest = "^6.2.4"
 pytest-cov = "^4.0.0"
-coverage = "^6.4.4"
+coverage = "^7.1.0"
 
 [build-system]
 requires = ["poetry-core"]
