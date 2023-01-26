@@ -5,14 +5,15 @@ from tapshex.classes import Shape, StatementTemplate
 
 
 def tapshex_csvreader(
-    open_csvfile_obj=None,
+    csvfile_str=None,
     config_dict=None,
     shape_class=Shape,
     state_class=StatementTemplate,
 ):
     """From open CSV file object, return Tapshex shapes dict."""
+    # Passing an open file object does not work because cannot be read twice.
     return csvreader(
-        open_csvfile_obj=open_csvfile_obj,
+        csvfile_str=csvfile_str,
         config_dict=config_dict,
         shape_class=shape_class,
         state_class=state_class,
