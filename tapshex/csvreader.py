@@ -11,7 +11,7 @@ def tapshex_csvreader(
     state_class=StatementTemplate,
 ):
     """From open CSV file object, return Tapshex shapes dict."""
-    # Passing an open file object does not work because cannot be read twice.
+    # Open file object not passable because cannot be read twice.
     return csvreader(
         csvfile_str=csvfile_str,
         config_dict=config_dict,
