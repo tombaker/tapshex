@@ -20,11 +20,4 @@ prefixes:
     "skosxl:":  "http://www.w3.org/2008/05/skos-xl#"
     "wdt:":     "http://www.wikidata.org/prop/direct/"
     "xsd:":     "http://www.w3.org/2001/XMLSchema#"
-
-extra_value_node_types:
-- nonliteral
-
-element_aliases:
-    "mand": "mandatory"
-    "rep": "repeatable"
 """

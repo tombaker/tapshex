@@ -12,16 +12,17 @@ from pprint import pprint
 def test_csv2json(capsys):
     """From open CSV file, convert to JSON."""
     HEREDIR = Path(__file__).resolve().parent 
+    assert Path(HEREDIR).joinpath("dctap.csv").exists()
     config_dict = tapshex_config()
     csvfile_str = Path(HEREDIR).joinpath("dctap.csv").read_text()
-    json_obj = tapshex_csvreader(
+    output_jsonobj = tapshex_csvreader(
         csvfile_str=csvfile_str,
         config_dict=config_dict,
         shape_class=Shape,
         state_class=StatementTemplate,
     )
-    # assert Path(HEREDIR).joinpath("dctap.csv").exists()
-    # # expected_output =
     with capsys.disabled():
         print()
-        pprint(json_obj)
+        # pprint(config_dict)
+        # pprint(csvfile_str)
+        pprint(output_jsonobj)
