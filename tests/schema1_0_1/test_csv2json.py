@@ -18,16 +18,13 @@ prefixes:
 
 def test_csv2json(capsys):
     """From open CSV file, convert to JSON."""
-    HEREDIR = Path(__file__).resolve().parent
-    assert Path(HEREDIR).joinpath("dctap.csv").exists()
-    csvfile_str = Path(HEREDIR).joinpath("dctap.csv").read_text()
     config_dict = tapshex_config(nondefault_configyaml_str=NONDEFAULT_CONFIGYAML_STR)
-    output_pyobj = tapshex_csvreader(
-        csvfile_str=csvfile_str,
-        config_dict=config_dict,
-        shape_class=Shape,
-        state_class=StatementTemplate,
-    )
+    tap_csv = """\
+    # https://shexspec.github.io/primer/#quickStart
+    shapeID         , propertyID     , valueNodeType , valueDataType , minoccurs , maxoccurs , mininclusive , maxinclusive
+    school:Enrollee , ex:hasGuardian , iri           ,               , 1         , 2
+                    , foaf:age       ,               , xsd:integer   ,           ,           , 13           , 20
+    """
     expected_output_pyobj = {
         "namespaces": {
             "ex:": "http://ex.example/#",
@@ -56,22 +53,37 @@ def test_csv2json(capsys):
         ],
         "warnings": {"school:Enrollee": {}},
     }
-    # output_pyobj, the output of tapshex_csvreader:
-    # output_pyobj: dict
-    assert isinstance(output_pyobj, dict)
     #
-    # output_pyobj["namespaces"]: dict
-    assert isinstance(output_pyobj["namespaces"], dict)
-    assert output_pyobj["namespaces"] == expected_output_pyobj["namespaces"]
+    HEREDIR = Path(__file__).resolve().parent
+    csvfile_str = Path(HEREDIR).joinpath("dctap.csv").read_text()
+    output_pyobj_from_disk = tapshex_csvreader(
+        csvfile_str=csvfile_str,
+        config_dict=config_dict,
+        shape_class=Shape,
+        state_class=StatementTemplate,
+    )
     #
-    # output_pyobj["shapes"]: list
-    assert isinstance(output_pyobj["shapes"], list)
-    assert sorted(output_pyobj["shapes"]) == sorted(expected_output_pyobj["shapes"])
-    #
-    with capsys.disabled():
-        print()
-        # pprint(config_dict)
-        # pprint(csvfile_str)
-        # pprint(config_dict["prefixes"])
-        pprint(f'output_pyobj["namespaces"]: {output_pyobj["namespaces"]}')
-        pprint(f'expected_output_pyobj["namespaces"]: {expected_output_pyobj["namespaces"]}')
+    csvfile_str = tap_csv
+    output_pyobj_from_variable = tapshex_csvreader(
+        csvfile_str=csvfile_str,
+        config_dict=config_dict,
+        shape_class=Shape,
+        state_class=StatementTemplate,
+    )
+    assert isinstance(output_pyobj_from_disk, dict)
+    assert isinstance(output_pyobj_from_variable, dict)
+    assert isinstance(output_pyobj_from_disk["namespaces"], dict)
+    assert isinstance(output_pyobj_from_variable["namespaces"], dict)
+    assert output_pyobj_from_disk["namespaces"] == expected_output_pyobj["namespaces"]
+    assert output_pyobj_from_variable["namespaces"] == expected_output_pyobj["namespaces"]
+    assert isinstance(output_pyobj_from_disk["shapes"], list)
+    assert sorted(output_pyobj_from_variable["shapes"]) == sorted(expected_output_pyobj["shapes"])
+    assert output_pyobj_from_disk == expected_output_pyobj
+    assert output_pyobj_from_variable == expected_output_pyobj
+    # with capsys.disabled():
+    #     print()
+    #     # pprint(config_dict)
+    #     # pprint(csvfile_str)
+    #     # pprint(config_dict["prefixes"])
+    #     pprint(f'output_pyobj_from_variable["namespaces"]: {output_pyobj_from_variable["namespaces"]}')
+    #     pprint(f'expected_output_pyobj["namespaces"]: {expected_output_pyobj["namespaces"]}')
