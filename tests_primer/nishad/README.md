@@ -15,4 +15,4 @@ The features not yet supported are:
   - Would it perhaps be easier to use the regular syntax for cardinality - ie, `{1,}`?
 
 The result should look like: 
-- https://github.com/tombaker/tapshex/blob/main/tests_primer/nishad/primer.shexc#L7-L13
+- https://github.com/tombaker/tapshex/blob/main/tests_primer/nishad/primer.shexc#L7-L8
