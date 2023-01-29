@@ -12,6 +12,7 @@ The features not yet supported are:
 - Value shape: https://github.com/tombaker/tapshex/blob/main/tests_primer/nishad/test_csv_to_dict.py#L48
 - "At least one statement" (ie, `IRI+`) - https://github.com/tombaker/tapshex/blob/main/tests_primer/nishad/test_csv_to_dict.py#L60
   - I find this syntax confusing because the `+` sign refers to the cardinality of the statement, not of the node type `IRI`.
+  - Would it perhaps be easier to use the regular syntax for cardinality - ie, `{1,}`?
 
 The result should look like: 
 - https://github.com/tombaker/tapshex/blob/main/tests_primer/nishad/primer.shexc#L7-L13
