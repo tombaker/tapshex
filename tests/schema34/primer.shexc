@@ -1,0 +1,12 @@
+# DCTAP does not support constraints on _subject_ node of a shape.
+
+my:IssueShape {
+  ex:state [ex:accepted ex:resolved];
+  ex:reproducedBy @my:EmployeeShape
+}
+
+my:EmployeeShape IRI
+ /^http:\/\/hr\.example\/id#[0-9]+/ {
+  foaf:name LITERAL;
+  ex:department [ex:ProgrammingDepartment]
+}

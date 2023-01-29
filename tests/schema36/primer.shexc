@@ -1,0 +1,15 @@
+# DCTAP does not support choice of this or that statement template.
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX my: <http://my.example/#>
+
+my:UserShape {
+  (
+     foaf:name LITERAL
+
+    |
+      foaf:givenName LITERAL+;
+      foaf:familyName LITERAL
+  );
+  foaf:mbox IRI
+}
