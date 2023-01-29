@@ -1,12 +1,19 @@
-"""Tests for tapshex.csvreader."""
+"""
+Convert from CSV string to Python dict:
+- https://shexspec.github.io/primer/#quickStart
+- uses Jinja template at ../../tapshex/template.py
+"""
 
+# pylint: disable=unused-import
+# pylint: disable=unused-argument
+# pylint: disable=import-error
 import os
 from pathlib import Path
+from pprint import pprint
 import pytest
 from tapshex.classes import Shape, StatementTemplate
 from tapshex.config import tapshex_config
 from tapshex.csvreader import tapshex_csvreader
-from pprint import pprint
 
 NONDEFAULT_CONFIGYAML_STR = """
 prefixes:
@@ -15,6 +22,7 @@ prefixes:
     "foaf:":    "http://xmlns.com/foaf/0.1/"
     "school:":  "http://school.example/#"
 """
+
 
 def test_csv2json(capsys):
     """From open CSV file, convert to JSON."""
@@ -53,9 +61,9 @@ def test_csv2json(capsys):
         ],
         "warnings": {"school:Enrollee": {}},
     }
-    #
+    # pylint: disable=invalid-name
     HEREDIR = Path(__file__).resolve().parent
-    csvfile_str = Path(HEREDIR).joinpath("dctap.csv").read_text()
+    csvfile_str = Path(HEREDIR).joinpath("dctap.csv").read_text(encoding="utf-8")
     output_pyobj_from_disk = tapshex_csvreader(
         csvfile_str=csvfile_str,
         config_dict=config_dict,
@@ -75,15 +83,18 @@ def test_csv2json(capsys):
     assert isinstance(output_pyobj_from_disk["namespaces"], dict)
     assert isinstance(output_pyobj_from_variable["namespaces"], dict)
     assert output_pyobj_from_disk["namespaces"] == expected_output_pyobj["namespaces"]
-    assert output_pyobj_from_variable["namespaces"] == expected_output_pyobj["namespaces"]
+    assert (
+        output_pyobj_from_variable["namespaces"] == expected_output_pyobj["namespaces"]
+    )
     assert isinstance(output_pyobj_from_disk["shapes"], list)
-    assert sorted(output_pyobj_from_variable["shapes"]) == sorted(expected_output_pyobj["shapes"])
+    assert sorted(output_pyobj_from_variable["shapes"]) == sorted(
+        expected_output_pyobj["shapes"]
+    )
     assert output_pyobj_from_disk == expected_output_pyobj
     assert output_pyobj_from_variable == expected_output_pyobj
-    # with capsys.disabled():
-    #     print()
+    with capsys.disabled():
+        print(Shape)
     #     # pprint(config_dict)
     #     # pprint(csvfile_str)
     #     # pprint(config_dict["prefixes"])
-    #     pprint(f'output_pyobj_from_variable["namespaces"]: {output_pyobj_from_variable["namespaces"]}')
-    #     pprint(f'expected_output_pyobj["namespaces"]: {expected_output_pyobj["namespaces"]}')
+    #     pprint(f'Output: {output_pyobj_from_variable}')
