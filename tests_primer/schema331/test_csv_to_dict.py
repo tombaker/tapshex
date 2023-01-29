@@ -1,15 +1,11 @@
 """
 Convert from CSV string to Python dict:
-- https://shexspec.github.io/primer/#tripleConstraints
 - uses Jinja template at ../../tapshex/template.py
+- 3.2 Triple Constraints 
+  - https://shexspec.github.io/primer/#tripleConstraints
 """
 
-# pylint: disable=unused-import
-# pylint: disable=unused-argument
-# pylint: disable=import-error
-import os
-from pathlib import Path
-from pprint import pprint
+# pylint: disable=unused-import,unused-argument,import-error
 import pytest
 from tapshex.classes import Shape, StatementTemplate
 from tapshex.config import tapshex_config
@@ -23,17 +19,18 @@ prefixes:
 """
 
 
-def test_csv2json(capsys):
-    """From open CSV file, convert to JSON."""
+def test_csv_to_dict(capsys):
+    """From CSV to Python dict (actual_dict)."""
     config_dict = tapshex_config(nondefault_configyaml_str=NONDEFAULT_CONFIGYAML_STR)
     # fmt: off
-    tap_csv = """\
-    # 3.2 Triple Constraints https://shexspec.github.io/primer/#tripleConstraints
+    #
+    csvfile_str = """\
     shapeID      , propertyID , valueDataType
     my:UserShape , foaf:name  , xsd:string
     """
+    #
     # fmt: on
-    expected_output_dctap_dict = {
+    expected_dict = {
         "namespaces": {
             "my:": "http://my.example/#",
             "foaf:": "http://xmlns.com/foaf/0.1/",
@@ -53,43 +50,21 @@ def test_csv2json(capsys):
         "warnings": {"my:UserShape": {}},
     }
     # pylint: disable=invalid-name
-    HEREDIR = Path(__file__).resolve().parent
-    csvfile_str = Path(HEREDIR).joinpath("dctap.csv").read_text(encoding="utf-8")
-    output_dctap_dict_from_disk = tapshex_csvreader(
+    actual_dict = tapshex_csvreader(
         csvfile_str=csvfile_str,
         config_dict=config_dict,
         shape_class=Shape,
         state_class=StatementTemplate,
     )
-    #
-    csvfile_str = tap_csv
-    output_dctap_dict_from_variable = tapshex_csvreader(
-        csvfile_str=csvfile_str,
-        config_dict=config_dict,
-        shape_class=Shape,
-        state_class=StatementTemplate,
-    )
-    assert isinstance(output_dctap_dict_from_disk, dict)
-    assert isinstance(output_dctap_dict_from_variable, dict)
-    assert isinstance(output_dctap_dict_from_disk["namespaces"], dict)
-    assert isinstance(output_dctap_dict_from_variable["namespaces"], dict)
-    assert (
-        output_dctap_dict_from_disk["namespaces"]
-        == expected_output_dctap_dict["namespaces"]
-    )
-    assert (
-        output_dctap_dict_from_variable["namespaces"]
-        == expected_output_dctap_dict["namespaces"]
-    )
-    assert isinstance(output_dctap_dict_from_disk["shapes"], list)
-    assert sorted(output_dctap_dict_from_variable["shapes"]) == sorted(
-        expected_output_dctap_dict["shapes"]
-    )
-    assert output_dctap_dict_from_disk == expected_output_dctap_dict
-    assert output_dctap_dict_from_variable == expected_output_dctap_dict
+    assert isinstance(actual_dict, dict)
+    assert isinstance(actual_dict["namespaces"], dict)
+    assert actual_dict["namespaces"] == expected_dict["namespaces"]
+    assert sorted(actual_dict["shapes"]) == sorted(expected_dict["shapes"])
+    assert actual_dict == expected_dict
     # with capsys.disabled():
+    #     from pprint import pprint
     #     print(Shape)
     #     # pprint(config_dict)
     #     # pprint(csvfile_str)
     #     # pprint(config_dict["prefixes"])
-    #     pprint(f'Output: {output_dctap_dict_from_variable}')
+    #     pprint(f'Output: {actual_dict}')

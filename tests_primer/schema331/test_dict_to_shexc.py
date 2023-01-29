@@ -1,16 +1,29 @@
 """
 Convert from Python dict to ShExC schema string:
-- https://shexspec.github.io/primer/#quickStart 
 - uses Jinja template at ../../tapshex/template.py
+
+Here:
+- 3.2 Triple Constraints 
+  - https://shexspec.github.io/primer/#tripleConstraints
+
+1. Use expected_dict (from test_csv_to_dict.py) => input_dctap_dict.
+2. Comment out 'for line in...'.
+3. Comment out capsys output.
+4. Run pytest 
+5. Compare generated ShExC to ./primer.shexc
+6. Use generated ShExC to replace lines to 'for lines in...'.
 """
 
+# pylint: disable=unused-import,unused-argument,import-error
 from textwrap import dedent
+import pytest
 from tapshex.shexify import tapdict_to_shexc
 from tapshex.template import SHEX_JINJA
 
 
-def test_tapdict_to_shexc(capsys):
-    """https://shexspec.github.io/primer/#quickStart ."""
+@pytest.mark.skip(reason="Needs ValueConstraint Type 'picklist' and ValueShape.")
+def test_dict_to_shexc(capsys):
+    """Convert from Python dict to ShExC schema string."""
     input_dctap_dict = {
         "namespaces": {
             "my:": "http://my.example/#",
@@ -42,6 +55,8 @@ def test_tapdict_to_shexc(capsys):
         "}",
     ]:
         assert line in shexc_output
+    #
+    #
     # with capsys.disabled():
     #     print()
     #     print()

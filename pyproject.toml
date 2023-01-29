@@ -49,7 +49,7 @@ sphinx_rtd_theme = "^1.0.0"
 [tool.pytest.ini_options]
 addopts = "-s -rf -v --showlocals --tb=short --ignore-glob='_*.py' --ignore=notes --capture=sys --ignore=tests/tests_dctap --ignore=tests_dctap"
 testpaths = ["tests", "tests_primer", "tests_dctap"]
-filterwarnings = "ignore::PendingDeprecationWarning"
+filterwarnings = ["ignore::PendingDeprecationWarning", "ignore::DeprecationWarning"]
 markers = [
   "done: tests pass and are considered done",
   "todo: tests to do eventually",
