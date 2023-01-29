@@ -1,0 +1,2 @@
+shapeID      , propertyID , valueDataType
+my:UserShape , foaf:name  , xsd:string

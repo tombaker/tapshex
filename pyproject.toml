@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "tapshex"
 version = "0.2.2"
-description = "Converts Tabular Application Profile into ShEx Schema"
+description = "Converts DC Tabular Application Profile into ShEx Schema"
 authors = [
     "Tom Baker <tom@tombaker.org>",
     "Nishad Thalhath <nishad@thalhath.org>",
@@ -31,6 +31,7 @@ pre-commit = "^2.21.0"
 black = "^22.12.0"
 ipdb = "^0.13.11"
 dctap = {path = "../dctap-python", develop = true}
+pyshexc = "^0.9.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^6.2.4"
@@ -41,16 +42,16 @@ coverage = "^7.1.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-
-
-
-
-
 [tool.poetry.group.docs.dependencies]
 sphinx = "^5.1.1"
 sphinx_rtd_theme = "^1.0.0"
 
 [tool.pytest.ini_options]
-addopts = "-s -rf -v --showlocals --tb=short --strict-markers --ignore-glob='_*.py' --ignore=notes --capture=sys --ignore=tests/tests_dctap --ignore=tests_dctap"
-testpaths = ["tests"]
+addopts = "-s -rf -v --showlocals --tb=short --ignore-glob='_*.py' --ignore=notes --capture=sys --ignore=tests/tests_dctap --ignore=tests_dctap"
+testpaths = ["tests", "tests_primer", "tests_dctap"]
 filterwarnings = "ignore::PendingDeprecationWarning"
+markers = [
+  "done: tests pass and are considered done",
+  "todo: tests to do eventually",
+  "now: tests to do soon",
+]

@@ -3,7 +3,7 @@
 
 SHEX_JINJA = """
 {%- for prefix, uri in namespaces.items() %}
-PREFIX {{prefix}}: <{{uri}}>
+PREFIX {{prefix}} <{{uri}}>
 {%- endfor %}
 
 {%- for shape in shapes %}
@@ -17,8 +17,8 @@ PREFIX {{prefix}}: <{{uri}}>
 		 ,{{statement.maxoccurs}}
 		{%- endif -%} }
   {%- endif -%}
-  {%- if statement.MaxInclusive %} MaxInclusive {{statement.MaxInclusive}} {%- endif -%}
-  {%- if statement.MinInclusive %} MinInclusive {{statement.MinInclusive}} {%- endif -%}
+  {%- if statement.mininclusive %} MinInclusive {{statement.mininclusive}} {%- endif -%}
+  {%- if statement.maxinclusive %} MaxInclusive {{statement.maxinclusive}} {%- endif -%}
   {%- if not loop.last -%} ;{%- endif -%}
   {%- endfor %}
 }
