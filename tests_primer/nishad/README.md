@@ -16,3 +16,31 @@ The features not yet supported are:
 
 The result should look like: 
 - https://github.com/tombaker/tapshex/blob/main/tests_primer/nishad/primer.shexc#L7-L13
+
+---------------------------------------------------------
+Added 2023-01-31
+
+Given:
+
+#        {
+#            'propertyID': 'ex:state',
+#            'valueConstraint': ['ex:unassigned', 'ex:assigned'],
+#            'valueConstraintType': 'picklist'
+#        }
+
+Something like:
+
+#    {%- if state.valueConstraint %}
+#         {%- if statement.valueConstraintType == "picklist" %}
+#             {%- for vc in statement.valueConstraint -%}
+#               {{vc}}
+#             {%- endfor -%}
+#         {%- endif -%} }
+
+Should generate:
+
+#      ex:state [ex:unassigned ex:assigned];
+
+Some questions:
+- Where to put the square brackets.
+- How to ensure that the items are separated by a space.
