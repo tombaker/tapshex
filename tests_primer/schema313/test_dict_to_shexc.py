@@ -3,15 +3,11 @@ Convert from Python dict to ShExC schema string:
 - uses Jinja template at ../../tapshex/template.py
 
 Here:
-- 3.1 Node Constraints 
+- 3.1 Node Constraints: node kind
+  - A node constraint that specifies whether an RDF data node is of 
+    lind Literal, IRI, BNode, or NonLiteral
+  - Note: keywords come out uppercased in ShExC: LITERAL, IRI, BNODE, NONLITERAL
   - https://shexspec.github.io/primer/#nodeConstraints
-
-1. Use expected_dict (from test_csv_to_dict.py) as input_dctap_dict.
-2. Comment out 'for line in...'.
-3. Comment out capsys output.
-4. Run pytest 
-5. Compare generated ShExC to ./primer.shexc
-6. Use generated ShExC to replace lines to 'for lines in...'.
 """
 
 # pylint: disable=unused-import,unused-argument,import-error

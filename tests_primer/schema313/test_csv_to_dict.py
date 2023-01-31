@@ -1,6 +1,8 @@
 """
 Convert from CSV string to Python dict:
 - uses Jinja template at ../../tapshex/template.py
+
+Here:
 - 3.1 Node Constraints: node kind
   - A node constraint that specifies whether an RDF data node is of 
     lind Literal, IRI, BNode, or NonLiteral
