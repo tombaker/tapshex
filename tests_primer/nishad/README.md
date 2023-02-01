@@ -22,24 +22,35 @@ Added 2023-01-31
 
 Given:
 
-#        {
-#            'propertyID': 'ex:state',
-#            'valueConstraint': ['ex:unassigned', 'ex:assigned'],
-#            'valueConstraintType': 'picklist'
-#        }
+```json
+{
+  "propertyID": "ex:state",
+  "valueConstraint": [
+    "ex:unassigned",
+    "ex:assigned"
+  ],
+  "valueConstraintType": "picklist"
+}
+
+```
 
 Something like:
 
-#    {%- if state.valueConstraint %}
-#         {%- if statement.valueConstraintType == "picklist" %}
-#             {%- for vc in statement.valueConstraint -%}
-#               {{vc}}
-#             {%- endfor -%}
-#         {%- endif -%} }
+```django
+    {%- if state.valueConstraint %}
+         {%- if statement.valueConstraintType == "picklist" %}
+             {%- for vc in statement.valueConstraint -%}
+               {{vc}}
+             {%- endfor -%}
+         {%- endif -%}
+    {%- endif -%}
+```
 
 Should generate:
 
-#      ex:state [ex:unassigned ex:assigned];
+```turtle
+      ex:state [ex:unassigned ex:assigned];
+```
 
 Some questions:
 - Where to put the square brackets.
