@@ -2,7 +2,7 @@
 Convert from CSV string to Python dict:
 - uses Jinja template at ../../tapshex/template.py
 - 3.2 Triple Constraints 
-  - https://shexspec.github.io/primer/#tripleConstraints
+  - https://shexspec.github.io/primer/\#tripleConstraints
 """
 
 # pylint: disable=unused-import,unused-argument,import-error
