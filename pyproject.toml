@@ -32,6 +32,7 @@ black = "^22.12.0"
 ipdb = "^0.13.11"
 dctap = {path = "../dctap-python", develop = true}
 pyshexc = "^0.9.1"
+jinja2-cli = "^0.8.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^6.2.4"
@@ -41,6 +42,7 @@ coverage = "^7.1.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
 
 [tool.poetry.group.docs.dependencies]
 sphinx = "^5.1.1"
