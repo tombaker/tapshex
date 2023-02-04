@@ -20,10 +20,14 @@ PREFIX {{prefix}} <{{uri}}>
             {{" "}}[{{ statement.valueConstraint | join(" ") }}]
         {%- endif -%}
   {%- endif -%}
-  {%- if statement.minoccurs or statement.maxoccurs %} { {{-statement.minoccurs-}}
-		{%- if statement.maxoccurs -%}
-		 ,{{statement.maxoccurs}}
-		{%- endif -%} }
+  {%- if statement.minoccurs is defined %} { {{- statement.minoccurs -}}
+        {%- if statement.maxoccurs is not defined -%}
+            ,}
+		{%- elif statement.maxoccurs|int == -1 -%}
+            ,}
+		{%- else -%}
+		 ,{{statement.maxoccurs}}}
+		{%- endif -%} 
   {%- endif -%}
   {%- if statement.mininclusive %} MinInclusive {{statement.mininclusive}} {%- endif -%}
   {%- if statement.maxinclusive %} MaxInclusive {{statement.maxinclusive}} {%- endif -%}
