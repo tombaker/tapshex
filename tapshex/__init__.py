@@ -1,4 +1,4 @@
-"""Generate ShEx from DCTAP instances."""
+"""Converts TAP/CSV into ShEx Schema."""
 
 from dctap.tapclasses import TAPShape, TAPStatementTemplate
 from dctap.csvreader import csvreader

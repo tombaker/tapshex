@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "tapshex"
 version = "0.2.2"
-description = "Converts DC Tabular Application Profile into ShEx Schema"
+description = "Converts TAP/CSV into ShEx Schema"
 authors = [
     "Tom Baker <tom@tombaker.org>",
     "Nishad Thalhath <nishad@thalhath.org>",

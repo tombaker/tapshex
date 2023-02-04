@@ -6,13 +6,6 @@ Here:
 - 3.1 Node Constraints: literal datatype
   - A node constraint that identifies the datatype of an RDF literal.
   - https://shexspec.github.io/primer/#nodeConstraints
-
-1. Use expected_dict (from test_csv_to_dict.py) as input_dctap_dict.
-2. Comment out 'for line in...'.
-3. Comment out capsys output.
-4. Run pytest 
-5. Compare generated ShExC to ./primer.shexc
-6. Use generated ShExC to replace lines to 'for lines in...'.
 """
 
 # pylint: disable=unused-import,unused-argument,import-error
@@ -27,36 +20,35 @@ def test_dict_to_shexc(capsys):
     input_dctap_dict = {
         "namespaces": {
             "my:": "http://my.example/#",
-            "foaf:": "http://xmlns.com/foaf/0.1/",
-            "xsd:": "http://www.w3.org/2001/XMLSchema#",
+            "ex:": "http://ex.example/#",
         },
         "shapes": [
             {
-                "shapeID": "my:UserShape",
+                "shapeID": "my:IssueShape",
                 "statement_templates": [
                     {
-                        "propertyID": "foaf:name",
-                        "valueDataType": "xsd:string",
+                        "propertyID": "ex:state",
+                        "valueConstraint": ["unassigned", "assigned"],
+                        "valueConstraintType": "picklist",
                     },
                 ],
             }
         ],
-        "warnings": {"my:UserShape": {}},
+        "warnings": {"my:IssueShape": {}},
     }
     shexc_output = tapdict_to_shexc(
         dctap_as_dict=input_dctap_dict, shex_template=SHEX_JINJA
     )
     for line in [
-        "PREFIX my: <http://my.example/#>",
-        "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
-        "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>",
-        "my:UserShape {",
-        "  foaf:name xsd:string",
-        "}",
+        'PREFIX my: <http://my.example/#>',
+        'PREFIX ex: <http://ex.example/#>',
+        'ex:state ["unassigned" "assigned"]',
+        'my:IssueShape {',
+        '}',
     ]:
         assert line in shexc_output
 
-    #
+
     # with capsys.disabled():
     #     print()
     #     print()

@@ -9,10 +9,15 @@ PREFIX {{prefix}} <{{uri}}>
 {%- for shape in shapes %}
 {{shape.shapeID}} {
   {%- for statement in shape.statement_templates %}
-  {{statement.property}} {{statement.propertyID}}
+  {{statement.propertyID}}
   {%- if statement.valueNodeType %} {{statement.valueNodeType|upper}}{% endif -%}
   {%- if statement.valueDataType %} {{statement.valueDataType}}{% endif -%}
   {%- if statement.valueShape %} @{{statement.valueShape}}{% endif -%}
+  {%- if statement.valueConstraint is defined -%} 
+        {%- if statement.valueConstraintType == 'picklist' -%}
+            {{" "}}[{{ statement.valueConstraint | map('tojson') | join(" ") }}]
+        {%- endif -%}
+  {%- endif -%}
   {%- if statement.minoccurs or statement.maxoccurs %} { {{-statement.minoccurs-}}
 		{%- if statement.maxoccurs -%}
 		 ,{{statement.maxoccurs}}

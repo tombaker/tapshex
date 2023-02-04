@@ -7,6 +7,7 @@ import json
 
 def tapdict_to_shexc(dctap_as_dict=None, shex_template=None):
     """Given TAP as Python dict, generate ShExC schema."""
+    # template = Template(SHEX_JINJA, trim_blocks=True, lstrip_blocks=True)
     template = Template(SHEX_JINJA)
     return template.render(dctap_as_dict)
 

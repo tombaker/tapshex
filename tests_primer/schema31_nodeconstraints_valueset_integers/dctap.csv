@@ -1,1 +1,2 @@
-shapeID,shapeLabel,closed,extra,start,propertyID,propertyLabel,valueNodeType,valueDataType,valueConstraint,valueConstraintType,mininclusive,maxinclusive,minexclusive,maxexclusive,minlength,maxlength,valueShape,mandatory,repeatable,minoccurs,maxoccursnote
+shapeID       , propertyID , valueConstraint , valueConstraintType
+my:IssueShape , ex:state   , 0 1             , picklist
