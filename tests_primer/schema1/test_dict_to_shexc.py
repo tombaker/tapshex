@@ -46,7 +46,7 @@ def test_tapdict_to_shexc(capsys):
         "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>",
         "school:Enrollee {",
         "  ex:hasGuardian IRI {1,2}",
-        # "  foaf:age xsd:integer MinInclusive 13 MaxInclusive 20",
+        "  foaf:age xsd:integer MinInclusive 13 MaxInclusive 20",
         "}",
     ]:
         assert line in shexc_output
