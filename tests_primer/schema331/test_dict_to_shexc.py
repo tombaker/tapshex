@@ -13,7 +13,6 @@ import pytest
 from tapshex.shexify import tapdict_to_shexc
 from tapshex.template import SHEX_JINJA
 
-@pytest.mark.skip(reason="Unclear how to indicate n in {m,n}")
 def test_dict_to_shexc(capsys):
     """Convert from Python dict to ShExC schema string."""
     input_dctap_dict = {
@@ -39,7 +38,8 @@ def test_dict_to_shexc(capsys):
                     }, {
                         'propertyID': 'foaf:mbox', 
                         'valueNodeType': 'iri', 
-                        'minoccurs': '1'
+                        'minoccurs': '1',
+                        'maxoccurs': '-1',
                     }
                 ]
             }
@@ -75,6 +75,7 @@ def test_dict_to_shexc(capsys):
         assert line in shexc_output
 
     # with capsys.disabled():
+    #     from pprint import pprint
     #     print()
     #     print()
-    #     print(shexc_output)
+    #     pprint(shexc_output)
