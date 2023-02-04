@@ -46,7 +46,6 @@ def test_dict_to_shexc(capsys):
     ]:
         assert line in shexc_output
 
-
     # with capsys.disabled():
     #     print()
     #     print()

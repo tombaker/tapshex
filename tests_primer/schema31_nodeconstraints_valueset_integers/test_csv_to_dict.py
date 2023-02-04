@@ -25,11 +25,11 @@ def test_valueConstraintType_picklist_parse(capsys):
     config_dict = tapshex_config()
     st = StatementTemplate()
     st.propertyID = "dcterms:creator"
-    st.valueConstraintType = "picklist"
+    st.valueConstraintType = "picklist_quoted"
     st.valueConstraint = "0 1"
-    st._valueConstraintType_picklist_parse(config_dict)
+    st.normalize(config_dict)
     assert st.valueConstraint == ["0", "1"]
-    assert st.valueConstraintType == "picklist"
+    assert st.valueConstraintType == "picklist_quoted"
     #with capsys.disabled():
     #    from pprint import pprint
     #    pprint(st)
@@ -79,7 +79,9 @@ def test_csv_to_dict(capsys):
     # with capsys.disabled():
     #     from pprint import pprint
     #     print(Shape)
+    #     print(Shape)
+    #     print(Shape)
     #     # pprint(config_dict)
     #     # pprint(csvfile_str)
     #     # pprint(config_dict["prefixes"])
-    #     pprint(f'Output: {actual_dict}')
+    #     pprint(actual_dict)

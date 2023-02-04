@@ -29,7 +29,7 @@ def test_dict_to_shexc(capsys):
                     {
                         "propertyID": "ex:state",
                         "valueConstraint": ["unassigned", "assigned"],
-                        "valueConstraintType": "picklist",
+                        "valueConstraintType": "picklist_quoted",
                     },
                 ],
             }

@@ -4,7 +4,7 @@ Convert from CSV string to Python dict:
 
 Here:
 - 3.1 Node Constraints: literal datatype
-  - A node constraint that identifies the datatype of an RDF literal.
+  - Node constraint that identifies datatype of RDF literal.
   - https://shexspec.github.io/primer/#nodeConstraints
 """
 
@@ -25,11 +25,11 @@ def test_valueConstraintType_picklist_parse(capsys):
     config_dict = tapshex_config()
     st = StatementTemplate()
     st.propertyID = "dcterms:creator"
-    st.valueConstraintType = "picklist"
+    st.valueConstraintType = "picklist_quoted"
     st.valueConstraint = "0 1"
     st._valueConstraintType_picklist_parse(config_dict)
-    assert st.valueConstraint == ["0", "1"]
-    assert st.valueConstraintType == "picklist"
+    assert st.valueConstraint == "0 1"
+    assert st.valueConstraintType == "picklist_quoted"
     #with capsys.disabled():
     #    from pprint import pprint
     #    pprint(st)
@@ -41,7 +41,7 @@ def test_csv_to_dict(capsys):
     #
     csvfile_str = """\
     shapeID       , propertyID , valueConstraint     , valueConstraintType
-    my:IssueShape , ex:state   , unassigned assigned , picklist
+    my:IssueShape , ex:state   , unassigned assigned , picklist_quoted
     """
     #
     # fmt: on
@@ -57,7 +57,7 @@ def test_csv_to_dict(capsys):
                     {
                         "propertyID": "ex:state",
                         "valueConstraint": ["unassigned", "assigned"],
-                        "valueConstraintType": "picklist",
+                        "valueConstraintType": "picklist_quoted",
                     },
                 ],
             }
@@ -78,8 +78,4 @@ def test_csv_to_dict(capsys):
     assert actual_dict == expected_dict
     # with capsys.disabled():
     #     from pprint import pprint
-    #     print(Shape)
-    #     # pprint(config_dict)
-    #     # pprint(csvfile_str)
-    #     # pprint(config_dict["prefixes"])
-    #     pprint(f'Output: {actual_dict}')
+    #     pprint(actual_dict)

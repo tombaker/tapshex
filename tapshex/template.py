@@ -14,8 +14,10 @@ PREFIX {{prefix}} <{{uri}}>
   {%- if statement.valueDataType %} {{statement.valueDataType}}{% endif -%}
   {%- if statement.valueShape %} @{{statement.valueShape}}{% endif -%}
   {%- if statement.valueConstraint is defined -%} 
-        {%- if statement.valueConstraintType == 'picklist' -%}
+        {%- if statement.valueConstraintType == 'picklist_quoted' -%}
             {{" "}}[{{ statement.valueConstraint | map('tojson') | join(" ") }}]
+        {%- elif statement.valueConstraintType == "picklist" -%}
+            {{" "}}[{{ statement.valueConstraint | join(" ") }}]
         {%- endif -%}
   {%- endif -%}
   {%- if statement.minoccurs or statement.maxoccurs %} { {{-statement.minoccurs-}}
@@ -30,3 +32,5 @@ PREFIX {{prefix}} <{{uri}}>
 }
 {%- endfor %}
 """
+#            {%- elif statement.valueDataType == 'xsd:integer' or statement.valueDataType == "http://www.w3.org/2001/XMLSchema#integer " -%}
+#                {{" "}}[{{ statement.valueConstraint | join(" ") }}]

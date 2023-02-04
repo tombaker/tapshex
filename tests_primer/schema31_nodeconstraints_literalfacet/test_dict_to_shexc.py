@@ -5,13 +5,10 @@ Convert from Python dict to ShExC schema string:
 Here:
 - 3.1 Node Constraints 
   - https://shexspec.github.io/primer/#nodeConstraints
-
-1. Use expected_dict (from test_csv_to_dict.py) as input_dctap_dict.
-2. Comment out 'for line in...'.
-3. Comment out capsys output.
-4. Run pytest 
-5. Compare generated ShExC to ./primer.shexc
-6. Use generated ShExC to replace lines to 'for lines in...'.
+  - Numeric facets, which apply only to numeric RDF literals
+    MinInclusive, MinExclusive, MaxInclusive, MaxExclusive, TotalDigits, FractionDigits
+  - String facets, which apply to all RDF literals
+    Length, MinLength, MaxLength, Pattern
 """
 
 # pylint: disable=unused-import,unused-argument,import-error
@@ -50,8 +47,8 @@ def test_dict_to_shexc(capsys):
         "PREFIX ex: <http://ex.example/#>",
         "PREFIX my: <http://my.example/#>",
         "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>",
-        "ex:shoeSize xsd:float MinInclusive 5.5 MaxInclusive 12.5",
         "my:UserShape {",
+        "ex:shoeSize xsd:float MinInclusive 5.5 MaxInclusive 12.5",
         "}",
     ]:
         assert line in shexc_output
