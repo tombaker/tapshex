@@ -14,7 +14,9 @@ PREFIX {{prefix}} <{{uri}}>
   {%- if statement.valueDataType %} {{statement.valueDataType}}{% endif -%}
   {%- if statement.valueShape %} @{{statement.valueShape}}{% endif -%}
   {%- if statement.valueConstraint is defined -%} 
-        {%- if statement.valueConstraintType == 'picklist_quoted' -%}
+        {%- if not statement.valueConstraintType is defined -%}
+            {{" "}}[{{ statement.valueConstraint }}]
+        {%- elif statement.valueConstraintType == 'picklist_quoted' -%}
             {{" "}}[{{ statement.valueConstraint | map('tojson') | join(" ") }}]
         {%- elif statement.valueConstraintType == "picklist" -%}
             {{" "}}[{{ statement.valueConstraint | join(" ") }}]
