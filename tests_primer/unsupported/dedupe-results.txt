@@ -1,0 +1,4 @@
+rm -v /Users/tbaker/github/tap/tapshex/tests_primer/unsupported/inverse_triple_constraints.shexc
+mv -vi /Users/tbaker/github/tap/tapshex/tests_primer/unsupported/schema3_7_7_value_sets* mv -vi /Users/tbaker/github/tap/tapshex/tests_primer/unsupported/schema3_7_7_value_sets_stem_exclusions_anyexcept.shexc
+mv -vi /Users/tbaker/github/tap/tapshex/tests_primer/unsupported/schema3_7_5_value_s* /Users/tbaker/github/tap/tapshex/tests_primer/unsupported/schema3_7_5_value_sets_stem_exclusions_langtags.shexc
+rm -v /Users/tbaker/github/tap/tapshex/tests_primer/unsupported/stem_exclusions_langtags.shexc

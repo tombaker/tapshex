@@ -1,0 +1,56 @@
+{
+    "type": "Schema",
+    "shapes": {
+        "my:IssueShape": {
+            "type": "Shape",
+            "expression": {
+                "type": "group",
+                "expressions": [
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "ex:state",
+                        "value": {
+                            "type": "NodeConstraint",
+                            "values": [
+                                "ex:unassigned",
+                                "ex:assigned"
+                            ]
+                        }
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "ex:reportedIssue",
+                        "inverse": true,
+                        "value": "my:IssueShape"
+                    }
+                ]
+            }
+        },
+        "my:UserShape": {
+            "type": "Shape",
+            "expression": {
+                "type": "group",
+                "expressions": [
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "foaf:name",
+                        "value": {
+                            "type": "NodeConstraint",
+                            "datatype": "xsd:string"
+                        }
+                    },
+                    {
+                        "type": "TripleConstraint",
+                        "predicate": "foaf:mbox",
+                        "value": {
+                            "type": "NodeConstraint",
+                            "nodeKind": "iri"
+                        },
+                        "min": 1,
+                        "max": -1
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+PREFIX ex: <http://ex.example/#>
+PREFIX excodes: <http://excodes.example/#>
+PREFIX my: <http://my.example/#>
+
+my:IssueShape {
+  ex:status [
+    . - excodes:retracted - excodes:assigned
+  ]
+}
