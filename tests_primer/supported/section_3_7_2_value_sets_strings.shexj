@@ -1,0 +1,14 @@
+{ 
+    "id": "http://a.example/my#IssueShape", 
+    "type": "Shape",
+    "expression": { 
+        "type": "TripleConstraint", 
+        "predicate": "http://a.example/ex#state",
+        "valueExpr": { 
+            "type": "NodeConstraint", 
+            "values": [
+                { "value": "unassigned" },
+                { "value": "assigned" }
+            ] 
+    } 
+}

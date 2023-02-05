@@ -1,0 +1,13 @@
+{
+    "my:UserShape": {
+        "type": "Shape",
+        "expression": {
+            "type": "TripleConstraint",
+            "predicate": "foaf:name",
+            "value": {
+                "type": "NodeConstraint", 
+                "datatype": "xsd:string"
+            },
+        },
+    }
+}
