@@ -8,8 +8,7 @@ from textwrap import dedent
 import pytest
 from tapshex.shexify import shexc_to_shexj
 
-@pytest.mark.skip(reason="postponed")
-def test_shexc_to_shexj(capsys):
+def __test_shexc_to_shexj(capsys):
     """Convert ShExC schema into ShExJ schema."""
     input_shexc = """
     PREFIX ex: <http://ex.example/#>
@@ -49,12 +48,44 @@ def test_shexc_to_shexj(capsys):
         ]
     }
     output_shexj = shexc_to_shexj(shexc_schema=input_shexc)
-    # assert output_shexj == expected_output_shexj
+    assert output_shexj['type'] == expected_output_shexj['type']
     with capsys.disabled():
         from pprint import pprint
         print()
-        output_shexj
+        pprint(output_shexj)
         # pprint(f"output_shexj: {output_shexj}")
         # print(f"expected_output_shexj: {type(expected_output_shexj)}")
         # print(f"output_shexj: {type(output_shexj)}")
 
+
+# output_shexj
+#
+#     {
+#         "shapes": [
+#             {
+#                 "expression": {
+#                     "expressions": [
+#                         {
+#                             "predicate": "http://ex.example/#hasGuardian",
+#                             "type": "TripleConstraint",
+#                             "valueExpr": {"nodeKind": "iri", "type": "NodeConstraint"},
+#                         },
+#                         {
+#                             "predicate": "http://xmlns.com/foaf/0.1/age",
+#                             "type": "TripleConstraint",
+#                             "valueExpr": {
+#                                 "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+#                                 "maxinclusive": 20,
+#                                 "mininclusive": 13,
+#                                 "type": "NodeConstraint",
+#                             },
+#                         },
+#                     ],
+#                     "type": "EachOf",
+#                 },
+#                 "id": "http://school.example/#Enrollee",
+#                 "type": "Shape",
+#             }
+#         ],
+#         "type": "Schema",
+#     }
