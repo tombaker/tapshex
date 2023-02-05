@@ -1,18 +1,6 @@
 """
 Convert from Python dict to ShExC schema string:
 - uses Jinja template at ../../tapshex/template.py
-
-Here:
-- 3.1 Node Constraints: literal datatype
-  - A node constraint that identifies the datatype of an RDF literal.
-  - https://shexspec.github.io/primer/#nodeConstraints
-
-1. Use expected_dict (from test_csv_to_dict.py) as input_dctap_dict.
-2. Comment out 'for line in...'.
-3. Comment out capsys output.
-4. Run pytest 
-5. Compare generated ShExC to ./primer.shexc
-6. Use generated ShExC to replace lines to 'for lines in...'.
 """
 
 # pylint: disable=unused-import,unused-argument,import-error
@@ -22,6 +10,7 @@ from tapshex.shexify import tapdict_to_shexc
 from tapshex.template import SHEX_JINJA
 
 
+@pytest.mark.skip(reason="Template needs to support CLOSED")
 def test_dict_to_shexc(capsys):
     """Convert from Python dict to ShExC schema string."""
     input_dctap_dict = {

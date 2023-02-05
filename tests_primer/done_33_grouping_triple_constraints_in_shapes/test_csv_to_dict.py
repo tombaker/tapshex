@@ -1,6 +1,8 @@
 """
 Convert from CSV string to Python dict:
 - uses Jinja template at ../../tapshex/template.py
+
+Here:
 - 3.2 Triple Constraints 
   - https://shexspec.github.io/primer/\#tripleConstraints
 """
