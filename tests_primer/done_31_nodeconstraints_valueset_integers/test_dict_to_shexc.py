@@ -42,7 +42,7 @@ def test_dict_to_shexc(capsys):
     for line in [
         "PREFIX my: <http://my.example/#>",
         "PREFIX ex: <http://ex.example/#>",
-        "my:IssueShape {",
+        "my:IssueShape", "{",
         "ex:state [0 1]",
         "}",
     ]:

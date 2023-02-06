@@ -40,11 +40,11 @@ def test_dict_to_shexc(capsys):
         dctap_as_dict=input_dctap_dict, shex_template=SHEX_JINJA
     )
     for line in [
-        'PREFIX my: <http://my.example/#>',
-        'PREFIX ex: <http://ex.example/#>',
-        'ex:state [ex:unassigned ex:assigned]',
-        'my:IssueShape {',
-        '}',
+        "PREFIX my: <http://my.example/#>",
+        "PREFIX ex: <http://ex.example/#>",
+        "ex:state [ex:unassigned ex:assigned]",
+        "my:IssueShape", "{",
+        "}",
     ]:
         assert line in shexc_output
 

@@ -42,7 +42,7 @@ def test_dict_to_shexc(capsys):
     for line in [
         "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
         "PREFIX my: <http://my.example/#>",
-        "my:UserShape {",
+        "my:UserShape", "{",
         "foaf:mbox IRI",
         "}",
     ]:

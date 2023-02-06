@@ -44,7 +44,7 @@ def test_tapdict_to_shexc(capsys):
         "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
         "PREFIX school: <http://school.example/#>",
         "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>",
-        "school:Enrollee {",
+        "school:Enrollee", "{",
         "  ex:hasGuardian IRI {1,2}",
         "  foaf:age xsd:integer MinInclusive 13 MaxInclusive 20",
         "}",

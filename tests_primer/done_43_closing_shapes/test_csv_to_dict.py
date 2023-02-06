@@ -19,7 +19,6 @@ prefixes:
     "foaf:":    "http://xmlns.com/foaf/0.1/"
 """
 
-
 def test_csv_to_dict(capsys):
     """From CSV to Python dict (actual_dict)."""
     config_dict = tapshex_config(nondefault_configyaml_str=NONDEFAULT_CONFIGYAML_STR)

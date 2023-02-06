@@ -43,7 +43,7 @@ def test_dict_to_shexc(capsys):
         'PREFIX my: <http://my.example/#>',
         'PREFIX ex: <http://ex.example/#>',
         'ex:state ["unassigned" "assigned"]',
-        'my:IssueShape {',
+        'my:IssueShape', '{',
         '}',
     ]:
         assert line in shexc_output

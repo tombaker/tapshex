@@ -50,7 +50,7 @@ def test_dict_to_shexc(capsys):
         "PREFIX my: <http://my.example/#>",
         "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
         "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>",
-        "my:UserShape {",
+        "my:UserShape", "{",
         "  foaf:name xsd:string",
         "}",
     ]:

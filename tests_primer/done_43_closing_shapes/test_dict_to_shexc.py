@@ -1,7 +1,4 @@
-"""
-Convert from Python dict to ShExC schema string:
-- uses Jinja template at ../../tapshex/template.py
-"""
+"""Convert from Python dict to ShExC schema string using ../../tapshex/template.py."""
 
 # pylint: disable=unused-import,unused-argument,import-error
 from textwrap import dedent
@@ -9,8 +6,6 @@ import pytest
 from tapshex.shexify import tapdict_to_shexc
 from tapshex.template import SHEX_JINJA
 
-
-@pytest.mark.skip(reason="Template needs to support CLOSED")
 def test_dict_to_shexc(capsys):
     """Convert from Python dict to ShExC schema string."""
     input_dctap_dict = {
@@ -21,16 +16,34 @@ def test_dict_to_shexc(capsys):
         },
         "shapes": [
             {
-                "shapeID": "my:UserShape",
+                "shapeID": "my:OpenUserShape",
                 "statement_templates": [
                     {
                         "propertyID": "foaf:name",
                         "valueDataType": "xsd:string",
                     },
+                    {
+                        "propertyID": "foaf:mbox",
+                        "valueNodeType": "iri",
+                    },
+                ],
+            },
+            {
+                "shapeID": "my:ClosedUserShape",
+                "closed": "True",
+                "statement_templates": [
+                    {
+                        "propertyID": "foaf:name",
+                        "valueDataType": "xsd:string",
+                    },
+                    {
+                        "propertyID": "foaf:mbox",
+                        "valueNodeType": "iri",
+                    },
                 ],
             }
         ],
-        "warnings": {"my:UserShape": {}},
+        "warnings": {"my:OpenUserShape": {}, "my:ClosedUserShape": {}},
     }
     shexc_output = tapdict_to_shexc(
         dctap_as_dict=input_dctap_dict, shex_template=SHEX_JINJA
@@ -39,8 +52,10 @@ def test_dict_to_shexc(capsys):
         "PREFIX my: <http://my.example/#>",
         "PREFIX foaf: <http://xmlns.com/foaf/0.1/>",
         "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>",
-        "my:UserShape {",
+        "my:OpenUserShape  {",
+        "my:ClosedUserShape CLOSED {",
         "  foaf:name xsd:string",
+        "  foaf:mbox IRI",
         "}",
     ]:
         assert line in shexc_output

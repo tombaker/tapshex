@@ -47,7 +47,7 @@ def test_dict_to_shexc(capsys):
         "PREFIX ex: <http://ex.example/#>",
         "PREFIX my: <http://my.example/#>",
         "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>",
-        "my:UserShape {",
+        "my:UserShape", "{",
         "ex:shoeSize xsd:float MinInclusive 5.5 MaxInclusive 12.5",
         "}",
     ]:

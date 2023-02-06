@@ -40,10 +40,10 @@ def test_dict_to_shexc(capsys):
         dctap_as_dict=input_dctap_dict, shex_template=SHEX_JINJA
     )
     for line in [
-        'PREFIX my: <http://my.example/#>',
-        'my:UserShape {',
-        'rdf:type [foaf:Person]',
-        '}',
+        "PREFIX my: <http://my.example/#>",
+        "my:UserShape", "{",
+        "rdf:type [foaf:Person]",
+        "}",
     ]:
         assert line in shexc_output
 
