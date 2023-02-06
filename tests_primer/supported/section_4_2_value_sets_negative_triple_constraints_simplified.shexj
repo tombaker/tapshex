@@ -23,13 +23,6 @@
                         "predicate": "http://ex.example/#component",
                         "min": 0,
                         "max": 0
-                    },
-                    {
-                        "type": "TripleConstraint",
-                        "inverse": true,
-                        "predicate": "http://ex.example/#component",
-                        "min": 0,
-                        "max": 0
                     }
                 ]
             }

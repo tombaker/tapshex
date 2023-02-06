@@ -8,6 +8,6 @@ my:IssueShape {
 }
 
 my:UserShape {
-  foaf:name LITERAL?;
-  foaf:mbox IRI*
+  foaf:name LITERAL {0,1};
+  foaf:mbox IRI {0,}
 }
