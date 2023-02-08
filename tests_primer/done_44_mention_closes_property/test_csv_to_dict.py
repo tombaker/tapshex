@@ -35,7 +35,9 @@ def test_csv_to_dict(capsys):
     expected_dict = {
         "namespaces": {
             "my:": "http://my.example/#",
-            "rdf:": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            "ex:": "http://ex.example/#",
+            "rdf:": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "foaf:": "http://xmlns.com/foaf/0.1/"
         },
         "shapes": [
             {

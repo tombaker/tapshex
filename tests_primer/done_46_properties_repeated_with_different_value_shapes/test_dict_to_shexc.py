@@ -1,11 +1,4 @@
-"""
-Convert from Python dict to ShExC schema string:
-- uses Jinja template at ../../tapshex/template.py
-
-Here:
-- 3.3 Grouping Triple Constaints in Shapes
-  - https://shexspec.github.io/primer/#simple-expressions
-"""
+"""Convert from Python dict to ShExC using ../../tapshex/template.py"""
 
 # pylint: disable=unused-import,unused-argument,import-error
 from textwrap import dedent

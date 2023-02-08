@@ -28,8 +28,10 @@ def test_csv_to_dict(capsys):
     # fmt: on
     expected_dict = {
         "namespaces": {
+            "ex:": "http://ex.example/#",
             "my:": "http://my.example/#",
-            "rdf:": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            "rdf:": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "foaf:": "http://xmlns.com/foaf/0.1/",
         },
         "shapes": [
             {
