@@ -1,4 +1,4 @@
-"""Convert from CSV string to Python dict using ../../tapshex/template.py."""
+"""Convert CSV string to Python dict using ../../tapshex/template.py."""
 
 # pylint: disable=unused-import,unused-argument,import-error
 import pytest
@@ -10,21 +10,17 @@ NONDEFAULT_CONFIGYAML_STR = """
 prefixes:
     "my:":      "http://my.example/#"
     "ex:":      "http://ex.example/#"
-    "foaf:":    "http://xmlns.com/foaf/0.1/"
 """
 
-@pytest.mark.skip(reason="Unclear why dot needed in 'ex:component . {0}'")
 def test_csv_to_dict(capsys):
     """From CSV to Python dict (actual_dict)."""
     config_dict = tapshex_config(nondefault_configyaml_str=NONDEFAULT_CONFIGYAML_STR)
     # fmt: off
     #
     csvfile_str = """\
-    shapeID       , propertyID    , valueNodeType , valueConstraint           , valueConstraintType , valueShape   , minoccurs , maxoccurs
-    my:IssueShape , ex:state      ,               , ex:unassigned ex:assigned , picklist            ,              ,
-                  , ex:reportedBy ,               ,                           ,                     , my:UserShape ,           ,
-    my:UserShape  , foaf:name     , literal       ,                           ,                     ,              , 0         , 1
-                  , foaf:mbox     , iri           ,                           ,                     ,              , 0         ,
+    shapeID               , propertyID   , valueConstraint           , valueConstraintType , minoccurs , maxoccurs
+    my:SolitaryIssueShape , ex:state     , ex:unassigned ex:assigned , picklist            ,           ,
+                          , ex:component ,                           ,                     , 0         ,
     """
     #
     # fmt: on
@@ -32,11 +28,10 @@ def test_csv_to_dict(capsys):
         "namespaces": {
             "my:": "http://my.example/#",
             "ex:": "http://ex.example/#",
-            "foaf:": "http://xmlns.com/foaf/0.1/",
         },
         "shapes": [
             {
-                "shapeID": "my:IssueShape",
+                "shapeID": "my:SolitaryIssueShape",
                 "statement_templates": [
                     {
                         "propertyID": "ex:state",
@@ -44,31 +39,14 @@ def test_csv_to_dict(capsys):
                         "valueConstraintType": "picklist",
                     },
                     {
-                        "propertyID": "ex:reportedBy",
-                        "valueShape": "my:UserShape",
-                    },
-                ],
-            },
-            {
-                "shapeID": "my:UserShape",
-                "statement_templates": [
-                    {
-                        "propertyID": "foaf:name",
-                        "valueNodeType": "literal",
+                        "propertyID": "ex:component",
                         "minoccurs": "0",
-                        "maxoccurs": "1",
-                    },
-                    {
-                        "propertyID": "foaf:mbox",
-                        "valueNodeType": "iri",
-                        "minoccurs": "0",
-                    },
+                    }
                 ],
             }
         ],
         "warnings": {
-            "my:UserShape": {},
-            "my:IssueShape": {}
+            "my:SolitaryIssueShape": {}
         },
     }
     # pylint: disable=invalid-name
@@ -82,7 +60,6 @@ def test_csv_to_dict(capsys):
     assert isinstance(actual_dict["namespaces"], dict)
     assert actual_dict["namespaces"] == expected_dict["namespaces"]
     assert actual_dict == expected_dict
-
     # with capsys.disabled():
     #     from pprint import pprint
     #     # pprint(config_dict)
