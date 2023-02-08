@@ -1,11 +1,6 @@
 """
 Convert from CSV string to Python dict:
 - uses Jinja template at ../../tapshex/template.py
-
-Here:
-- 3.1 Node Constraints: literal datatype
-  - Node constraint that identifies datatype of RDF literal.
-  - https://shexspec.github.io/primer/#nodeConstraints
 """
 
 # pylint: disable=unused-import,unused-argument,import-error
@@ -36,6 +31,7 @@ def test_csv_to_dict(capsys):
         "namespaces": {
             "my:": "http://my.example/#",
             "rdf:": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+            "foaf:": "http://xmlns.com/foaf/0.1/",
         },
         "shapes": [
             {
@@ -59,9 +55,9 @@ def test_csv_to_dict(capsys):
     )
     assert isinstance(actual_dict, dict)
     assert isinstance(actual_dict["namespaces"], dict)
-    # Note: "foaf:" not listed: prefixes in used in valueConstraint not recognized
+    # Note: "foaf:" listed because prefixes in used in valueConstraint now recognized
     assert "foaf:" in config_dict["prefixes"]
-    assert "foaf:" not in actual_dict["namespaces"]
+    assert "foaf:" in actual_dict["namespaces"]
     assert actual_dict["namespaces"] == expected_dict["namespaces"]
     assert actual_dict == expected_dict
     # with capsys.disabled():
