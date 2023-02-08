@@ -22,8 +22,9 @@ class StatementTemplate(TAPStatementTemplate):
 
     def normalize(self, config_dict):
         """Normalizes specific fields."""
-        super().normalize(config_dict)
+        super(StatementTemplate, self).normalize(config_dict)
         self._valueConstraintType_picklist_quoted_parse(config_dict)
+        return self
 
     def _valueConstraintType_picklist_quoted_parse(self, config_dict):
         """valueConstraintType "picklist": split valueConstraint on item separator."""
