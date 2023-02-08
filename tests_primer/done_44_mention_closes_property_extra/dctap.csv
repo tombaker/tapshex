@@ -1,0 +1,4 @@
+shapeID      , extra    , propertyID , valueConstraint
+my:UserShape , rdf:type , rdf:type   , ex:Employee
+my:UserShape , rdf:type , rdf:type   , foaf:Person
+

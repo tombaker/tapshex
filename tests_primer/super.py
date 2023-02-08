@@ -16,9 +16,12 @@ class ChildClass(ParentClass):
         self.value += 1
         return self
 
-obj = ChildClass()
-obj.value = 10
-obj = obj.modify()
-print(obj.value) # Output: 21
-
-
+if __name__ == '__main__':
+    obj = ChildClass()
+    obj.value = 10
+    print(f"obj.modify().value: {obj.modify().value}")
+    print(f"obj.value: {obj.value}") # Output: 21
+    obj2 = ChildClass()
+    obj2.value = 40
+    print(f"obj2.modify().value: {obj2.modify().value}")
+    print(f"obj2.value: {obj2.value}") # Output: 21

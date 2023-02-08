@@ -1,8 +1,9 @@
 PREFIX ex: <http://ex.example/#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX my: <http://my.example/#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 my:UserShape {
-  a [ex:Employee];
-  a [foaf:Person]
+  rdf:type [ex:Employee];
+  rdf:type [foaf:Person]
 }

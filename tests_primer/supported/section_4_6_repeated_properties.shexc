@@ -1,3 +1,7 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://ex.example/#>
+PREFIX my: <http://my.example/#>
+
 my:IssueShape {
   ex:state [ex:accepted ex:resolved];
   ex:reproducedBy @my:TesterShape;
