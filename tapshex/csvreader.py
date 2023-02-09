@@ -10,7 +10,7 @@ def tapshex_csvreader(
     shape_class=Shape,
     state_class=StatementTemplate,
 ):
-    """From open CSV file object, return Tapshex shapes dict."""
+    """From CSV string, return DCTAP shapes dict."""
     # Open file object not passable because cannot be read twice.
     return csvreader(
         csvfile_str=csvfile_str,
