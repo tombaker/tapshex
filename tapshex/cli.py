@@ -6,8 +6,12 @@ Modeled on https://github.com/dcmi/dctap-python/blob/main/dctap/cli.py
 import sys
 import json
 import click
+from pathlib import Path
 from tapshex.defaults import DEFAULT_CONFIGFILE
 from tapshex.config import tapshex_config
+from tapshex.csvreader import tapshex_csvreader
+from tapshex.shexify import tapdict_to_shexc
+from tapshex.template import SHEX_JINJA
 from dctap.config import get_config, write_configfile
 from dctap.csvreader import csvreader
 from dctap.inspect import pprint_tapshapes, print_warnings
@@ -72,7 +76,7 @@ def parse(context, csvfile, config, uris, warnings, tapjson, shexc):
         csvfile_str=csvfile_str,
         config_dict=config_dict
     )
-    if expand_prefixes:
+    if uris:
         tapshapes_dict = expand_uri_prefixes(tapshapes_dict, config_dict)
 
     if tapjson:
@@ -81,7 +85,12 @@ def parse(context, csvfile, config, uris, warnings, tapjson, shexc):
         json_output = json.dumps(tapshapes_dict, indent=2)
         print(json_output)
     elif shexc:
-        print("Placeholder for ShExC output.")
+        shexc_output = tapdict_to_shexc(
+            dctap_as_dict=tapshapes_dict, 
+            shex_template=SHEX_JINJA,
+        )
+        for line in shexc_output.splitlines():
+            print(line)
     else:
         pprint_output = pprint_tapshapes(tapshapes_dict, config_dict)
         for line in pprint_output:
