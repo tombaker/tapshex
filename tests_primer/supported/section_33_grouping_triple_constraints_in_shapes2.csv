@@ -1,0 +1,5 @@
+shapeID       , propertyID    , valueNodeType , valueConstraint           , valueConstraintType , valueShape   , minoccurs , maxoccurs
+my:IssueShape , ex:state      ,               , ex:unassigned ex:assigned , picklist            ,              ,
+              , ex:reportedBy ,               ,                           ,                     , my:UserShape ,           ,
+my:UserShape  , foaf:name     , literal       ,                           ,                     ,              , 0         , 1
+              , foaf:mbox     , iri           ,                           ,                     ,              , 0         ,

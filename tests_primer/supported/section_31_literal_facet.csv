@@ -1,0 +1,2 @@
+shapeID      , propertyID  , valueDataType , mininclusive , maxinclusive
+my:UserShape , ex:shoeSize , xsd:float     , 5.5          , 12.5

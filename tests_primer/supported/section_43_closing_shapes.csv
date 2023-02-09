@@ -1,0 +1,5 @@
+shapeID           , closed , propertyID , valueNodeType , valueDataType
+my:OpenUserShape  ,        , foaf:name  ,               , xsd:string
+                  ,        , foaf:mbox  , IRI           ,
+myClosedUserShape , True   , foaf:name  ,               , xsd:string
+                  ,        , foaf:mbox  , IRI           ,

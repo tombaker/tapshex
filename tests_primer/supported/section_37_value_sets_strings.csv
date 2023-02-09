@@ -1,0 +1,2 @@
+shapeID       , propertyID , valueConstraint     , valueConstraintType
+my:IssueShape , ex:state   , unassigned assigned , picklist_quoted

@@ -1,0 +1,9 @@
+prefixes:
+    "ex:":      "http://ex.example/#"
+    "my:":      "http://my.example/#"
+    "foaf:":    "http://xmlns.com/foaf/0.1/"
+    "rdf:":     "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    "school:":  "http://school.example/#"
+    "ui:":      "http://ui.example/#"
+    "ux:":      "http://ux.example/#"
+    "xsd:":     "http://www.w3.org/2001/XMLSchema#"
