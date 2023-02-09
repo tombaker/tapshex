@@ -30,7 +30,7 @@ ipython = "8.8.0"
 pre-commit = "^2.21.0"
 black = "^22.12.0"
 ipdb = "^0.13.11"
-dctap = {path = "../dctap-python", develop = true}
+dctap = "^0.4.4"
 pyshexc = "^0.9.1"
 jinja2-cli = "^0.8.2"
 
@@ -43,12 +43,12 @@ coverage = "^7.1.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-
-
-
 [tool.poetry.group.docs.dependencies]
 sphinx = "^5.1.1"
 sphinx_rtd_theme = "^1.0.0"
+
+[tool.poetry.scripts]
+tapshex = 'tapshex.cli:cli'
 
 [tool.pytest.ini_options]
 addopts = "-s -rf -v --showlocals --tb=short --ignore-glob='_*.py' --ignore=notes --capture=sys --ignore=tests/tests_dctap --ignore=tests_dctap"
