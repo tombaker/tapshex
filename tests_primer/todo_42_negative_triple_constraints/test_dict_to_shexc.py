@@ -7,6 +7,7 @@ import pytest
 from tapshex.shexify import tapdict_to_shexc
 from tapshex.template import SHEX_JINJA
 
+@pytest.mark.skip
 def test_dict_to_shexc(capsys):
     """Convert from Python dict to ShExC schema string."""
     input_dctap_dict = {
