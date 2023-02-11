@@ -16,6 +16,7 @@ PREFIX {{prefix}} <{{uri}}>
     {{" {"}}
   {%- for statement in shape.statement_templates %}
     {{statement.propertyID}}
+    {%- if statement.dot_placeholder %} {{statement.dot_placeholder}}{% endif -%}
     {%- if statement.valueNodeType %} {{statement.valueNodeType|upper}}{% endif -%}
     {%- if statement.valueDataType %} {{statement.valueDataType}}{% endif -%}
     {%- if statement.valueShape %} @{{statement.valueShape}}{% endif -%}
