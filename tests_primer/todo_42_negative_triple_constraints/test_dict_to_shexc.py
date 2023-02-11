@@ -26,6 +26,7 @@ def test_dict_to_shexc(capsys):
                     {
                         "propertyID": "ex:component",
                         "minoccurs": "0",
+                        "maxoccurs": "0",
                     }
                 ],
             }
@@ -37,15 +38,15 @@ def test_dict_to_shexc(capsys):
     shexc_output = tapdict_to_shexc(
         dctap_as_dict=input_dctap_dict, shex_template=SHEX_JINJA
     )
-    # for line in [
-    #     "PREFIX my: <http://my.example/#>",
-    #     "PREFIX ex: <http://ex.example/#>",
-    #     "my:SolitaryIssueShape {",
-    #     "  ex:state [ex:unassigned ex:assigned]",
-    #     "  ex:component {0,}",
-    #     "}",
-    # ]:
-    #     assert line in shexc_output
+    for line in [
+        "PREFIX my: <http://my.example/#>",
+        "PREFIX ex: <http://ex.example/#>",
+        "my:SolitaryIssueShape {",
+        "  ex:state . [ex:unassigned ex:assigned]",
+        "  ex:component . {0,0}",
+        "}",
+    ]:
+        assert line in shexc_output
     
     with capsys.disabled():
         print()

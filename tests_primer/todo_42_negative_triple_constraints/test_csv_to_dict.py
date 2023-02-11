@@ -20,7 +20,7 @@ def test_csv_to_dict(capsys):
     csvfile_str = """\
     shapeID               , propertyID   , valueConstraint           , valueConstraintType , minoccurs , maxoccurs
     my:SolitaryIssueShape , ex:state     , ex:unassigned ex:assigned , picklist            ,           ,
-                          , ex:component ,                           ,                     , 0         ,
+                          , ex:component ,                           ,                     , 0         , 0
     """
     #
     # fmt: on
@@ -41,6 +41,7 @@ def test_csv_to_dict(capsys):
                     {
                         "propertyID": "ex:component",
                         "minoccurs": "0",
+                        "maxoccurs": "0",
                     }
                 ],
             }

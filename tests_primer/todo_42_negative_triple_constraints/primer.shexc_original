@@ -2,6 +2,6 @@ PREFIX ex: <http://ex.example/#>
 PREFIX my: <http://my.example/#>
 
 my:SolitaryIssueShape {
-  ex:state . [ex:unassigned ex:assigned];
-  ex:component . {0,0} ;
+  ex:state [ex:unassigned ex:assigned];
+  ex:component . {0} ;
 }
