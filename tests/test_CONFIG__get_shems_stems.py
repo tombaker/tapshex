@@ -14,6 +14,7 @@ def test_get_Shape_elements_when_no_config_dict_specified():
 def test_get_StatementTemplate_elements_when_no_config_dict_specified():
     """List StatementTemplate elements (minus state_warns)."""
     expected = [
+        '_dot',
         'propertyID',
         'propertyLabel',
         'mandatory',
