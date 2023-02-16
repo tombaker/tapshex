@@ -7,7 +7,7 @@ from tapshex.classes import StatementTemplate
 def test__dot_placeholder(capsys):
     """@@@"""
     st = StatementTemplate()
-    assert st.dot_placeholder == True
+    assert st._dot == True
     triple_constraints = [
         st.minoccurs,
         st.maxoccurs,
@@ -30,7 +30,7 @@ def test__dot_placeholder(capsys):
         assert not bool(tc)
     st.valueNodeType = "IRI"
     st._dot_placeholder()
-    assert st.dot_placeholder == False
+    assert st._dot == False
     # with capsys.disabled():
     #     print()
-    #     pprint(st.dot_placeholder)
+    #     pprint(st._dot)
