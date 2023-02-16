@@ -11,6 +11,7 @@ from dctap.utils import coerce_integer, coerce_numeric, looks_like_uri_or_curie
 class StatementTemplate(TAPStatementTemplate):
     """Subclass of DCTAP class TAPStatementTemplate."""
 
+    dot_placeholder: bool = True
     minoccurs: str = ""
     maxoccurs: str = ""
     mininclusive: str = ""
@@ -24,6 +25,29 @@ class StatementTemplate(TAPStatementTemplate):
         """Normalizes specific fields."""
         super(StatementTemplate, self).normalize(config_dict)
         self._valueConstraintType_picklist_quoted_parse(config_dict)
+        self._dot_placeholder()
+        return self
+
+    def _dot_placeholder(self):
+        """Flag whether dot is needed as placeholder for triple constraint."""
+        triple_constraints = [
+            self.minoccurs,
+            self.maxoccurs,
+            self.mininclusive,
+            self.maxinclusive,
+            self.minexclusive,
+            self.maxexclusive,
+            self.minlength,
+            self.maxlength,
+            self.mandatory,
+            self.repeatable,
+            self.valueNodeType,
+            self.valueDataType,
+            self.valueConstraint,
+            self.valueConstraintType,
+            self.valueShape,
+        ]
+        self.dot_placeholder = not any(triple_constraints)
         return self
 
     def _valueConstraintType_picklist_quoted_parse(self, config_dict):
