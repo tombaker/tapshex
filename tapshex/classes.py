@@ -9,7 +9,7 @@ from dctap.utils import coerce_integer, coerce_numeric, looks_like_uri_or_curie
 
 @dataclass
 class StatementTemplate(TAPStatementTemplate):
-    """Subclass of DCTAP class TAPStatementTemplate."""
+    """StatementTemplate - subclass of DCTAP class TAPStatementTemplate."""
 
     _dot: bool = True
     minoccurs: str = ""
@@ -24,6 +24,8 @@ class StatementTemplate(TAPStatementTemplate):
     def normalize(self, config_dict):
         """Normalizes specific fields."""
         super(StatementTemplate, self).normalize(config_dict)
+        self._convert_st_mandatory_to_minoccurs()
+        self._convert_st_repeatable_to_maxoccurs()
         self._valueConstraintType_picklist_quoted_parse(config_dict)
         self._dot_placeholder()
         return self
@@ -46,6 +48,38 @@ class StatementTemplate(TAPStatementTemplate):
         self._dot = not any(triple_constraints)
         return self
 
+    def _convert_st_mandatory_to_minoccurs(self):
+        """If mandatory "true" or "false", set minoccurs, delete mandatory."""
+        if hasattr(self, "mandatory"):
+            mand = self.mandatory.lower()
+            if mand == "true":
+                self.minoccurs = "1"
+            elif mand == "false":
+                self.minoccurs = "0"
+        del self.mandatory
+        return self
+
+    def _convert_st_repeatable_to_maxoccurs(self):
+        """If repeatable "true" or "false", set maxoccurs, delete repeatable."""
+        if hasattr(self, "repeatable"):
+            repeat = self.repeatable.lower()
+            if repeat == "true":
+                self.maxoccurs = "-1"
+            elif repeat == "false":
+                self.maxoccurs = "1"
+        del self.repeatable
+        return self
+        
+    def _valueConstraintType_picklist_quoted_parse(self, config_dict):
+        """valueConstraintType "picklist": split valueConstraint on item separator."""
+        self.valueConstraintType = self.valueConstraintType.lower()
+        sep = config_dict.get("picklist_item_separator", " ")
+        if self.valueConstraintType == "picklist_quoted":
+            if self.valueConstraint:
+                self.valueConstraint = self.valueConstraint.split(sep)
+                self.valueConstraint = [x.strip() for x in self.valueConstraint if x]
+        return self
+        
     def _valueConstraintType_picklist_quoted_parse(self, config_dict):
         """valueConstraintType "picklist": split valueConstraint on item separator."""
         self.valueConstraintType = self.valueConstraintType.lower()
@@ -56,9 +90,10 @@ class StatementTemplate(TAPStatementTemplate):
                 self.valueConstraint = [x.strip() for x in self.valueConstraint if x]
         return self
 
+
 @dataclass
 class Shape(TAPShape):
-    """Subclass of DCTAP aclass TAPShape."""
+    """Shape - subclass of DCTAP dataclass TAPShape."""
 
     closed: str = ""
     extra: str = ""

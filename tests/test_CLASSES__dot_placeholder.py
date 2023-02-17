@@ -2,10 +2,11 @@
 
 import pytest
 from pprint import pprint
+from tapshex.config import tapshex_config
 from tapshex.classes import StatementTemplate
 
-def test__dot_placeholder(capsys):
-    """@@@"""
+def test__dot_placeholder_before_running(capsys):
+    """StatementTemplate attributes before running _dot_placeholder()."""
     st = StatementTemplate()
     assert st._dot == True
     triple_constraints = [
@@ -28,9 +29,20 @@ def test__dot_placeholder(capsys):
     for tc in triple_constraints:
         assert tc == ""
         assert not bool(tc)
+
+def test__dot_placeholder_after_added_tripleconstraint(capsys):
+    """After adding just one triple constraint, _dot is False."""
+    st = StatementTemplate()
+    assert st._dot == True
     st.valueNodeType = "IRI"
     st._dot_placeholder()
     assert st._dot == False
-    # with capsys.disabled():
-    #     print()
-    #     pprint(st._dot)
+
+def test__dot_placeholder_after_added_tripleconstraint_using_normalize(capsys):
+    """@@@"""
+    config_dict = tapshex_config()
+    st = StatementTemplate()
+    assert st._dot == True
+    st.valueNodeType = "IRI"
+    st.normalize(config_dict)
+    assert st._dot == False
