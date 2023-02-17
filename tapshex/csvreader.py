@@ -11,7 +11,7 @@ def dctap_csvreader(
     state_class=StatementTemplate,
 ):
     """From CSV string, return DCTAP shapes dict."""
-    # Open file object not passable because cannot be read twice.
+    # Open file object not passable because it can only be read once.
     tapshapes = csvreader(
         csvfile_str=csvfile_str,
         config_dict=config_dict,
