@@ -31,7 +31,7 @@ class StatementTemplate(TAPStatementTemplate):
         return self
 
     def _dot_placeholder(self):
-        """False when dot is NOT needed as placeholder triple constraint."""
+        """False when dot NOT needed as placeholder triple constraint."""
         triple_constraints = [
             self.mininclusive,
             self.maxinclusive,
@@ -68,16 +68,6 @@ class StatementTemplate(TAPStatementTemplate):
             elif repeat == "false":
                 self.maxoccurs = "1"
         del self.repeatable
-        return self
-        
-    def _valueConstraintType_picklist_quoted_parse(self, config_dict):
-        """valueConstraintType "picklist": split valueConstraint on item separator."""
-        self.valueConstraintType = self.valueConstraintType.lower()
-        sep = config_dict.get("picklist_item_separator", " ")
-        if self.valueConstraintType == "picklist_quoted":
-            if self.valueConstraint:
-                self.valueConstraint = self.valueConstraint.split(sep)
-                self.valueConstraint = [x.strip() for x in self.valueConstraint if x]
         return self
         
     def _valueConstraintType_picklist_quoted_parse(self, config_dict):
