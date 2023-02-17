@@ -12,6 +12,7 @@ prefixes:
     "ex:":      "http://ex.example/#"
 """
 
+@pytest.mark.skip(reason="TODO: 42 Negative Triple Constraints")
 def test_csv_to_dict(capsys):
     """From CSV to Python dict (actual_dict)."""
     config_dict = tapshex_config(nondefault_configyaml_str=NONDEFAULT_CONFIGYAML_STR)
@@ -63,7 +64,7 @@ def test_csv_to_dict(capsys):
     assert isinstance(actual_dict["namespaces"], dict)
     assert actual_dict["namespaces"] == expected_dict["namespaces"]
     assert actual_dict["warnings"] == expected_dict["warnings"]
-    # assert actual_dict["shapes"][0]["statement_templates"][0] == expected_dict["shapes"][0]["statement_templates"][0] # problem here
+    assert actual_dict["shapes"][0]["statement_templates"][0].keys() == expected_dict["shapes"][0]["statement_templates"][0].keys()
     assert actual_dict["shapes"][0]["statement_templates"][1] == expected_dict["shapes"][0]["statement_templates"][1]
     # assert actual_dict == expected_dict
 

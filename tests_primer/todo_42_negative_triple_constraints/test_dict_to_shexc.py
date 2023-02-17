@@ -7,6 +7,8 @@ import pytest
 from tapshex.shexify import tapdict_to_shexc
 from tapshex.template import SHEX_JINJA
 
+
+@pytest.mark.skip(reason="TODO: 42 Negative Triple Constraints")
 def test_dict_to_shexc(capsys):
     """Convert from Python dict to ShExC schema string."""
     input_dctap_dict = {
@@ -42,6 +44,7 @@ def test_dict_to_shexc(capsys):
          "PREFIX my: <http://my.example/#>",
          "PREFIX ex: <http://ex.example/#>",
          "my:SolitaryIssueShape",
+         "ex:state [ex:unassigned ex:assigned]",
          "{",
          "}",
     ]:
@@ -52,7 +55,7 @@ def test_dict_to_shexc(capsys):
         #     "PREFIX my: <http://my.example/#>",
         #     "PREFIX ex: <http://ex.example/#>",
         #     "my:SolitaryIssueShape {",
-        #     "  ex:state . [ex:unassigned ex:assigned]",
+        #     "  ex:state [ex:unassigned ex:assigned]",
         #     "  ex:component . {0,0}",
         #     "}",
         #]:
