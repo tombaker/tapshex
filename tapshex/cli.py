@@ -9,7 +9,7 @@ import click
 from pathlib import Path
 from tapshex.defaults import DEFAULT_CONFIGFILE
 from tapshex.config import tapshex_config
-from tapshex.csvreader import tapshex_csvreader
+from tapshex.csvreader import dctap_csvreader
 from tapshex.shexify import tapdict_to_shexc
 from tapshex.template import SHEX_JINJA
 from dctap.config import get_config, write_configfile
@@ -72,7 +72,7 @@ def parse(context, csvfile, config, uris, warnings, tapjson, shexc):
     else:
         config_dict = tapshex_config()
 
-    tapshapes_dict = tapshex_csvreader(
+    tapshapes_dict = dctap_csvreader(
         csvfile_str=csvfile_str,
         config_dict=config_dict
     )

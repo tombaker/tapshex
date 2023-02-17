@@ -13,7 +13,7 @@ from pprint import pprint
 import pytest
 from tapshex.classes import Shape, StatementTemplate
 from tapshex.config import tapshex_config
-from tapshex.csvreader import tapshex_csvreader
+from tapshex.csvreader import dctap_csvreader
 
 NONDEFAULT_CONFIGYAML_STR = """
 prefixes:
@@ -65,7 +65,7 @@ def test_csv2json(capsys):
     # pylint: disable=invalid-name
     HEREDIR = Path(__file__).resolve().parent
     csvfile_str = Path(HEREDIR).joinpath("dctap.csv").read_text(encoding="utf-8")
-    output_dctap_dict_from_disk = tapshex_csvreader(
+    output_dctap_dict_from_disk = dctap_csvreader(
         csvfile_str=csvfile_str,
         config_dict=config_dict,
         shape_class=Shape,
@@ -73,7 +73,7 @@ def test_csv2json(capsys):
     )
     #
     csvfile_str = tap_csv
-    output_dctap_dict_from_variable = tapshex_csvreader(
+    output_dctap_dict_from_variable = dctap_csvreader(
         csvfile_str=csvfile_str,
         config_dict=config_dict,
         shape_class=Shape,

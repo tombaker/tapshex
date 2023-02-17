@@ -4,7 +4,7 @@
 import pytest
 from tapshex.classes import Shape, StatementTemplate
 from tapshex.config import tapshex_config
-from tapshex.csvreader import tapshex_csvreader
+from tapshex.csvreader import dctap_csvreader
 
 NONDEFAULT_CONFIGYAML_STR = """
 prefixes:
@@ -89,7 +89,7 @@ def test_csv_to_dict(capsys):
         }
     }
     # pylint: disable=invalid-name
-    result_dict = tapshex_csvreader(
+    result_dict = dctap_csvreader(
         csvfile_str=csvfile_str,
         config_dict=config_dict,
         shape_class=Shape,

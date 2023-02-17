@@ -1,6 +1,6 @@
 """Mandatory / repeatable."""
 
-from tapshex.utils import _convert_sc_mandatory_to_sc_min
+from tapshex.csvreader import _convert_sc_mandatory_to_sc_min
 
 
 def test_convert_sc_mandatory_to_sc_min_true():
