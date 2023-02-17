@@ -12,9 +12,11 @@ def tapshex_csvreader(
 ):
     """From CSV string, return DCTAP shapes dict."""
     # Open file object not passable because cannot be read twice.
-    return csvreader(
+    dctap_dict = csvreader(
         csvfile_str=csvfile_str,
         config_dict=config_dict,
         shape_class=shape_class,
         state_class=state_class,
     )
+    # TODO: Add tapshex-specific processing here.
+    return dctap_dict

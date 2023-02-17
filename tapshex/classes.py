@@ -29,18 +29,14 @@ class StatementTemplate(TAPStatementTemplate):
         return self
 
     def _dot_placeholder(self):
-        """Flag whether dot is needed as placeholder for triple constraint."""
+        """False when dot is NOT needed as placeholder triple constraint."""
         triple_constraints = [
-            self.minoccurs,
-            self.maxoccurs,
             self.mininclusive,
             self.maxinclusive,
             self.minexclusive,
             self.maxexclusive,
             self.minlength,
             self.maxlength,
-            self.mandatory,
-            self.repeatable,
             self.valueNodeType,
             self.valueDataType,
             self.valueConstraint,
